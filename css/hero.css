@@ -1,0 +1,163 @@
+/*
+ * Interactive Particle Hero Section Styles
+ *
+ * A modern, premium‑quality hero section featuring a dark gradient backdrop,
+ * dynamic particle canvas that reacts to mouse movements, bold typography,
+ * and clear call‑to‑action buttons.  Designed to be responsive and
+ * device‑compatible, this stylesheet encapsulates the visual polish required
+ * for a high‑value landing page hero.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Poppins:wght@400;600;700&display=swap');
+
+/* Color palette */
+:root {
+  --hero-bg-start: #0a0f1f;
+  --hero-bg-end: #151d39;
+  --primary-color: #4a6cf7;
+  --secondary-color: #a274ff;
+  --text-light: #f7f9fc;
+  --text-muted: #d0d5e0;
+  --btn-radius: 50px;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background: var(--hero-bg-start);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* Root hero container */
+.hero-particles {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 2rem;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, var(--hero-bg-start), var(--hero-bg-end));
+  overflow: hidden;
+}
+
+/* Canvas for particles */
+.hero-particles canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Content wrapper */
+.hero-particles .hero-content {
+  z-index: 1;
+  max-width: 600px;
+}
+
+.hero-particles h1 {
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-particles p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--text-muted);
+}
+
+.hero-particles .cta-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Button base */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: var(--btn-radius);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Primary button */
+.btn-primary {
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  color: var(--hero-bg-start);
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 108, 247, 0.4);
+}
+
+/* Secondary button */
+.btn-secondary {
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+  background: transparent;
+}
+
+.btn-secondary:hover {
+  background: var(--primary-color);
+  color: var(--hero-bg-start);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(74, 108, 247, 0.4);
+}
+
+/* Image wrapper for optional visuals */
+.hero-particles .image-wrapper {
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.hero-particles .image-wrapper img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 25px rgba(74, 108, 247, 0.4));
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .hero-particles {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-particles .image-wrapper {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+  .hero-particles h1 {
+    font-size: 2.5rem;
+  }
+  .hero-particles p {
+    font-size: 1rem;
+  }
+  .hero-particles .cta-buttons {
+    justify-content: center;
+  }
+}
