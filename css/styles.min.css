@@ -511,7 +511,6 @@ body {
   transform: translateY(-2px) scale(1.02);
   box-shadow:
     0 8px 30px rgba(74, 108, 247, 0.5),
-    0 0 40px rgba(162, 116, 255, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -631,10 +630,7 @@ body {
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow:
-    0 0 60px rgba(74, 108, 247, 0.3),
-    0 0 100px rgba(162, 116, 255, 0.2),
-    inset 0 0 30px rgba(100, 222, 223, 0.1);
+  box-shadow: none;
 }
 
 .hero-image-rotator::before {
@@ -644,11 +640,9 @@ body {
   border-radius: 50%;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
   z-index: -1;
-  animation: borderGlow 4s ease-in-out infinite;
 }
 
-@keyframes borderGlow {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
+
   50% { opacity: 1; transform: scale(1.02); }
 }
 
@@ -663,8 +657,7 @@ body {
   border-radius: 50%;
   opacity: 0;
   transform: scale(1.02);
-  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-  filter: drop-shadow(0 0 30px rgba(100, 222, 223, 0.4));
+  transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), transform 2.5s cubic-bezier(0.4, 0, 0.2, 1););
 }
 
 /* Video specific styling */
@@ -689,8 +682,7 @@ video.hero-slide {
   width: 100%;
   max-width: 500px;
   height: auto;
-  border-radius: 50%;
-  filter: drop-shadow(0 0 30px rgba(100, 222, 223, 0.4));
+  border-radius: 50%;);
 }
 
 .hero h1 {
@@ -815,8 +807,7 @@ video.hero-slide {
 .why-card:hover {
   transform: translateY(-6px) scale(1.02);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(74, 108, 247, 0.1);
+    0 20px 50px rgba(0, 0, 0, 0.3);
   border-color: rgba(74, 108, 247, 0.3);
 }
 
@@ -894,8 +885,7 @@ video.hero-slide {
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.4),
-    0 0 50px rgba(74, 108, 247, 0.15);
+    0 20px 50px rgba(0, 0, 0, 0.4);
   border-color: rgba(74, 108, 247, 0.3);
 }
 
@@ -1032,7 +1022,7 @@ video.hero-slide {
 
 .service-card-premium:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 0 50px rgba(74, 108, 247, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   border-color: rgba(74, 108, 247, 0.25);
 }
 
@@ -1061,7 +1051,7 @@ video.hero-slide {
 }
 
 .service-card-premium.featured:hover {
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35), 0 0 80px rgba(74, 108, 247, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
   border-color: rgba(74, 108, 247, 0.4);
 }
 
@@ -1118,7 +1108,7 @@ video.hero-slide {
 
 @keyframes iconPulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(74, 108, 247, 0.3); }
-  50% { box-shadow: 0 0 20px 5px rgba(74, 108, 247, 0.15); }
+  50% { box-shadow: 0 4px 10px rgba(74, 108, 247, 0.15); }
 }
 
 .glass-icon svg {
@@ -1134,7 +1124,7 @@ video.hero-slide {
 
 .service-card-premium:hover .glass-icon {
   transform: scale(1.08);
-  box-shadow: 0 0 30px rgba(74, 108, 247, 0.25);
+  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.25);
 }
 
 .service-title-wrap {
@@ -1541,8 +1531,7 @@ video.hero-slide {
 .pricing-card:hover {
   transform: translateY(-6px);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    0 0 40px rgba(74, 108, 247, 0.1);
+    0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .pricing-card.featured {
@@ -1557,8 +1546,7 @@ video.hero-slide {
 .pricing-card.featured:hover {
   transform: scale(1.02) translateY(-6px);
   box-shadow:
-    0 25px 60px rgba(74, 108, 247, 0.3),
-    0 0 50px rgba(74, 108, 247, 0.15);
+    0 25px 60px rgba(74, 108, 247, 0.3);
 }
 
 .pricing-badge {
@@ -1971,7 +1959,7 @@ video.hero-slide {
   transform: translateX(8px);
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(74, 108, 247, 0.2);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2), 0 0 40px rgba(74, 108, 247, 0.08);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* Step Icon */
@@ -2010,7 +1998,7 @@ video.hero-slide {
 
 .step-card:hover .step-icon {
   transform: scale(1.05);
-  box-shadow: 0 0 30px rgba(74, 108, 247, 0.2);
+  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.2);
 }
 
 /* Step Details */
@@ -2208,7 +2196,6 @@ video.hero-slide {
   transform: translateY(-8px) scale(1.02);
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.4),
-    0 0 40px rgba(74, 108, 247, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border-color: rgba(74, 108, 247, 0.3);
 }
@@ -2316,8 +2303,7 @@ video.hero-slide {
 .testimonial-card:hover {
   transform: translateY(-6px) scale(1.01);
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.3),
-    0 0 30px rgba(74, 108, 247, 0.1);
+    0 20px 50px rgba(0, 0, 0, 0.3);
   border-color: rgba(74, 108, 247, 0.2);
 }
 
@@ -2442,7 +2428,7 @@ video.hero-slide {
 .lead-magnet input[type="email"]:focus {
   border-color: rgba(74, 108, 247, 0.5);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 25px rgba(74, 108, 247, 0.15);
+  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.15);
 }
 
 .lead-magnet button {
@@ -2468,8 +2454,7 @@ video.hero-slide {
 .lead-magnet button:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow:
-    0 8px 35px rgba(74, 108, 247, 0.5),
-    0 0 40px rgba(162, 116, 255, 0.2);
+    0 8px 35px rgba(74, 108, 247, 0.5);
 }
 
 .lead-magnet button:active {
@@ -2731,7 +2716,6 @@ video.hero-slide {
   transform: translateY(-2px) scale(1.02);
   box-shadow:
     0 8px 35px rgba(74, 108, 247, 0.5),
-    0 0 40px rgba(162, 116, 255, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
@@ -2957,7 +2941,6 @@ video.hero-slide {
   transform: translateY(-30px) scale(0.95);
   box-shadow:
     0 25px 80px rgba(0, 0, 0, 0.5),
-    0 0 60px rgba(74, 108, 247, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease;
 }
@@ -3028,7 +3011,7 @@ video.hero-slide {
 .exit-popup input:focus {
   border-color: rgba(74, 108, 247, 0.5);
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 25px rgba(74, 108, 247, 0.15);
+  box-shadow: 0 4px 12px rgba(74, 108, 247, 0.15);
 }
 
 .exit-popup .btn {
@@ -3100,7 +3083,6 @@ video.hero-slide {
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(74, 108, 247, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -3113,8 +3095,7 @@ video.hero-slide {
   background: rgba(37, 211, 102, 0.25);
   border-color: rgba(37, 211, 102, 0.5);
   box-shadow:
-    0 12px 40px rgba(37, 211, 102, 0.25),
-    0 0 30px rgba(37, 211, 102, 0.15);
+    0 12px 40px rgba(37, 211, 102, 0.25);
 }
 
 .floating-cta-btn.schedule {
@@ -3126,8 +3107,7 @@ video.hero-slide {
   background: rgba(74, 108, 247, 0.25);
   border-color: rgba(74, 108, 247, 0.5);
   box-shadow:
-    0 12px 40px rgba(74, 108, 247, 0.25),
-    0 0 30px rgba(74, 108, 247, 0.15);
+    0 12px 40px rgba(74, 108, 247, 0.25);
 }
 
 .floating-cta-icon {
@@ -3415,7 +3395,7 @@ video.hero-slide {
     box-shadow: 0 4px 20px rgba(74, 108, 247, 0.4);
   }
   50% {
-    box-shadow: 0 4px 30px rgba(74, 108, 247, 0.7), 0 0 40px rgba(162, 116, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(74, 108, 247, 0.7);
   }
 }
 
@@ -3631,7 +3611,7 @@ video.hero-slide {
 
 .booking-modal-close:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.4);
+  outline: 3px solid rgba(74, 108, 247, 0.4);
 }
 
 .booking-modal-body {
