@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatSuggestions = document.getElementById('chat-suggestions');
   const chatTypingIndicator = document.getElementById('chat-typing');
 
-  const API_ENDPOINT = '/api/chat';
+  // API Base URL - Cloudflare Worker
+  const API_BASE = 'https://techguru-api.lucas-a13.workers.dev';
+  const API_ENDPOINT = API_BASE + '/api/chat';
   const MAX_CHARS = 500;
   let isOpen = false;
   let isLoading = false;
@@ -624,7 +626,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!email) return;
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(API_BASE + '/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, source: 'chat-widget' })

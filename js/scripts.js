@@ -7,6 +7,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ============================================
+  // API BASE URL - Cloudflare Worker
+  // ============================================
+  const API_BASE = 'https://techguru-api.lucas-a13.workers.dev';
+
+  // ============================================
   // THEME TOGGLE WITH LOCALSTORAGE
   // ============================================
   const themeToggle = document.getElementById('theme-toggle');
@@ -323,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!email) return;
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(API_BASE + '/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, source: 'exit-popup' })
@@ -363,7 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(API_BASE + '/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email })
@@ -398,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
 
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch(API_BASE + '/api/contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
