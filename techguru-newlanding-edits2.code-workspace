@@ -6,5 +6,11 @@
 		{
 			"path": "../../../project_fixed/newapp/workers"
 		}
-	]
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+		
+		]
+	}
 }

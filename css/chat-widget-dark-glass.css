@@ -124,8 +124,8 @@ body.light-theme {
    ============================================ */
 .chat-widget-container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  right: 1rem;
   z-index: 9999;
   font-family: var(--font-primary);
   /* Performance: CSS containment */
@@ -167,15 +167,15 @@ body.light-theme {
    Chat Window - Dark Glassmorphism
    ============================================ */
 .chat-window {
-  position: absolute;
-  bottom: 90px;
-  right: 0;
-  width: 380px;
-  height: min(520px, calc(100vh - 140px));
-  min-width: 320px;
-  min-height: 400px;
-  max-width: 480px;
-  max-height: min(680px, calc(100vh - 140px));
+  position: fixed;
+  bottom: calc(1.5rem + 90px);
+  right: 1rem;
+  width: min(380px, calc(100vw - 2rem));
+  height: min(520px, calc(100vh - 180px));
+  min-width: 280px;
+  min-height: 350px;
+  max-width: min(400px, calc(100vw - 2rem));
+  max-height: min(580px, calc(100vh - 180px));
 
   /* Solid fallback for browsers without backdrop-filter support */
   background: #0f172a;
@@ -483,6 +483,8 @@ body.light-theme {
 .message-avatar img {
   width: 20px;
   height: 20px;
+  max-width: 20px;
+  max-height: 20px;
   object-fit: contain;
 }
 
@@ -542,8 +544,8 @@ body.light-theme {
 
 .reaction-btn,
 .copy-btn {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
@@ -553,6 +555,15 @@ body.light-theme {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.reaction-btn svg,
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--text-secondary);
   transition: all 0.15s ease;
 }
 
@@ -567,13 +578,35 @@ body.light-theme {
   border-color: var(--glass-border-hover);
 }
 
+.reaction-btn:hover svg,
+.copy-btn:hover svg {
+  stroke: var(--text-color);
+}
+
 .reaction-btn.active {
   background: var(--accent-gradient);
 }
 
+.reaction-btn.active svg {
+  stroke: white;
+}
+
 .copy-btn.copied {
   background: var(--success);
-  color: white;
+  border-color: var(--success);
+}
+
+.copy-btn.copied svg {
+  stroke: white;
+}
+
+/* File icon in chat */
+.file-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary);
+  vertical-align: middle;
+  margin-right: 0.35rem;
 }
 
 /* ============================================
@@ -1122,9 +1155,18 @@ body.light-theme {
 
 /* Tablet breakpoint */
 @media (max-width: 768px) {
+  .chat-widget-container {
+    bottom: 1rem;
+    right: 0.75rem;
+  }
+
   .chat-window {
-    width: 340px;
-    min-width: 300px;
+    position: fixed;
+    bottom: calc(1rem + 75px);
+    right: 0.75rem;
+    width: min(360px, calc(100vw - 1.5rem));
+    min-width: 260px;
+    max-width: calc(100vw - 1.5rem);
   }
 }
 

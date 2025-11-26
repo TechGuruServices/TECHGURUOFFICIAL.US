@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatSuggestions = document.getElementById('chat-suggestions');
   const chatTypingIndicator = document.getElementById('chat-typing');
 
-  // API Base URL - Cloudflare Worker
-  const API_BASE = 'https://techguru-api.lucas-a13.workers.dev';
-  const API_ENDPOINT = API_BASE + '/api/chat';
+  // API Base URL - Use relative path to route through Cloudflare Pages/Workers
+  const API_BASE = '';
+  const API_ENDPOINT = '/api/chat';
   const MAX_CHARS = 500;
   let isOpen = false;
   let isLoading = false;
@@ -194,14 +194,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
-   * Get file icon based on MIME type
+   * Get file icon based on MIME type (using SVG icons)
    */
   function getFileIcon(mimeType) {
-    if (mimeType.startsWith('image/')) return '🖼️';
-    if (mimeType.includes('pdf')) return '📄';
-    if (mimeType.includes('word') || mimeType.includes('document')) return '📝';
-    if (mimeType.includes('text')) return '📃';
-    return '📎';
+    const iconSvg = (path) => `<svg class="file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">${path}</svg>`;
+
+    if (mimeType.startsWith('image/'))
+      return iconSvg('<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>');
+    if (mimeType.includes('pdf'))
+      return iconSvg('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>');
+    if (mimeType.includes('word') || mimeType.includes('document'))
+      return iconSvg('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>');
+    if (mimeType.includes('text'))
+      return iconSvg('<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>');
+    return iconSvg('<path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>');
   }
 
   // ============================================
@@ -626,7 +632,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!email) return;
 
       try {
-        const res = await fetch(API_BASE + '/api/subscribe', {
+        const res = await fetch('/api/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email, source: 'chat-widget' })
@@ -655,13 +661,16 @@ document.addEventListener('DOMContentLoaded', () => {
    * Copy text to clipboard
    */
   const copyToClipboard = async (text, button) => {
+    const checkIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>';
+    const copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
+
     try {
       await navigator.clipboard.writeText(text);
       button.classList.add('copied');
-      button.innerHTML = '✓';
+      button.innerHTML = checkIcon;
       setTimeout(() => {
         button.classList.remove('copied');
-        button.innerHTML = '📋';
+        button.innerHTML = copyIcon;
       }, 2000);
     } catch (err) {
       console.error('Failed to copy:', err);
@@ -720,20 +729,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const thumbsUp = document.createElement('button');
       thumbsUp.className = 'reaction-btn';
-      thumbsUp.innerHTML = '👍';
+      thumbsUp.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 9V5a3 3 0 00-3-3l-4 9v11h11.28a2 2 0 002-1.7l1.38-9a2 2 0 00-2-2.3zM7 22H4a2 2 0 01-2-2v-7a2 2 0 012-2h3"/></svg>';
       thumbsUp.title = 'Helpful';
+      thumbsUp.setAttribute('aria-label', 'Mark as helpful');
       thumbsUp.addEventListener('click', () => handleReaction(thumbsUp, 'helpful'));
 
       const thumbsDown = document.createElement('button');
       thumbsDown.className = 'reaction-btn';
-      thumbsDown.innerHTML = '👎';
+      thumbsDown.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 15v4a3 3 0 003 3l4-9V2H5.72a2 2 0 00-2 1.7l-1.38 9a2 2 0 002 2.3zm7-13h2.67A2.31 2.31 0 0122 4v7a2.31 2.31 0 01-2.33 2H17"/></svg>';
       thumbsDown.title = 'Not helpful';
+      thumbsDown.setAttribute('aria-label', 'Mark as not helpful');
       thumbsDown.addEventListener('click', () => handleReaction(thumbsDown, 'not-helpful'));
 
       const copyBtn = document.createElement('button');
       copyBtn.className = 'copy-btn';
-      copyBtn.innerHTML = '📋';
+      copyBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>';
       copyBtn.title = 'Copy message';
+      copyBtn.setAttribute('aria-label', 'Copy message to clipboard');
       copyBtn.addEventListener('click', () => copyToClipboard(content, copyBtn));
 
       actionsDiv.appendChild(thumbsUp);
@@ -936,10 +948,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Prevent form submission on Enter if still loading
+  // Handle Enter key for message submission (Shift+Enter for new line)
   chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && isLoading) {
+    if (e.key === 'Enter') {
+      // If loading, prevent any action
+      if (isLoading) {
+        e.preventDefault();
+        return;
+      }
+
+      // Shift+Enter = new line (allow default behavior)
+      if (e.shiftKey) {
+        return;
+      }
+
+      // Enter without shift = submit message
       e.preventDefault();
+      const message = chatInput.value.trim();
+      if (message) {
+        // Trigger form submit
+        const submitEvent = new Event('submit', { bubbles: true, cancelable: true });
+        chatForm.dispatchEvent(submitEvent);
+      }
     }
   });
 
