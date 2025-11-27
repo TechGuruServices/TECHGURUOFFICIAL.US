@@ -206,6 +206,196 @@ body {
   overflow-x: hidden;
 }
 
+/* ============================================
+   ICON SYSTEM
+   Consistent SVG icon styling across the site
+   ============================================ */
+
+/*
+  Global icon system
+  - Introduces `.tg-icon` base and size modifiers
+  - Keeps backward compatibility by aliasing existing classes
+*/
+
+/* Base icon container */
+.tg-icon,
+.icon,
+.check-icon,
+.badge-icon,
+.metric-icon,
+.mockup-icon,
+.footer-icon,
+.section-icon,
+.response-icon,
+.modal-icon,
+.chip-icon,
+.urgency-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 0;
+}
+
+/* Ensure SVGs/images conform to container sizing */
+.tg-icon svg,
+.tg-icon img,
+.icon svg,
+.icon img,
+.glass-icon svg,
+.glass-icon img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Size scale */
+.tg-icon-xs { width: 12px; height: 12px; }
+.tg-icon-sm { width: 16px; height: 16px; }
+.tg-icon-md { width: 20px; height: 20px; }
+.tg-icon-lg { width: 28px; height: 28px; }
+.tg-icon-xl { width: 40px; height: 40px; }
+.tg-icon-xxl { width: 64px; height: 64px; }
+
+/* Back-compat for older `.icon--*` size modifiers */
+.icon--xs { width: 12px; height: 12px; }
+.icon--sm { width: 16px; height: 16px; }
+.icon--md { width: 20px; height: 20px; }
+.icon--lg { width: 28px; height: 28px; }
+.icon--xl { width: 40px; height: 40px; }
+.icon--xxl { width: 64px; height: 64px; }
+
+/* Check icon - used in lists */
+.check-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent, #64dedf);
+  margin-right: 0.5rem;
+}
+
+/* Badge icons - featured labels */
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  stroke: none;
+  margin-right: 0.25rem;
+}
+
+/* Metric icons - service cards */
+.metric-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent, #64dedf);
+  margin-right: 0.35rem;
+}
+
+/* Mockup icons - lead magnet preview */
+.mockup-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 0.5rem;
+  color: var(--color-primary, #4a6cf7);
+}
+
+/* Footer icons */
+.footer-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+}
+
+/* Section header icons */
+.section-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-primary, #4a6cf7);
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+}
+
+/* Response time icon */
+.response-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent, #64dedf);
+  margin-right: 0.35rem;
+  vertical-align: -0.15em;
+}
+
+/* Modal header icons */
+.modal-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--color-primary, #4a6cf7);
+  margin-right: 0.5rem;
+  vertical-align: -0.15em;
+}
+
+/* Suggestion chip icons */
+.chip-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.35rem;
+}
+
+/* Urgency icon */
+.urgency-icon {
+  width: 16px;
+  height: 16px;
+  color: #ef4444;
+  margin-right: 0.35rem;
+  fill: #ef4444;
+  stroke: none;
+}
+
+/* Contact item icon container */
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--glass-bg-light);
+  border-radius: 12px;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--color-primary, #4a6cf7);
+}
+
+/* Footer social link icons */
+.footer-social .social-link svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  transition: transform 0.2s ease;
+}
+
+.footer-social .social-link:hover svg {
+  transform: scale(1.1);
+}
+
+/* Chat CTA icon styling */
+.chat-cta-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+}
+
 /* Navigation */
 .navbar {
   position: sticky;
@@ -561,6 +751,20 @@ body {
   text-shadow: 0 0 2px hsla(var(--highlight-color-hue), 100%, 90%, 90%);
   animation: none;
   color: #fff;
+}
+
+/* Header CTA: match header font and purple→black gradient, enlarge icon */
+.navbar .nav-cta.chat-send {
+  background: linear-gradient(135deg, #6e48aa 0%, #0a0a0f 100%);
+  border: none;
+}
+.navbar .nav-cta.chat-send .send-icon {
+  width: 20px;
+  height: 20px;
+}
+.navbar .nav-cta .send-txt-wrapper {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.08em;
 }
 
 /* Hamburger Menu */

@@ -390,7 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   // CONTACT FORM
   // ============================================
-  const contactForm = document.getElementById('contact-form');
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();

@@ -1,0 +1,628 @@
+Attached HTML and CSS Context
+
+<a href="#contact" class="nav-cta chat-send">
+                <svg class="tg-icon tg-icon-sm send-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
+                    <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+                <div class="send-txt-wrapper" aria-hidden="true">
+                    <div class="send-txt-1">
+                        <span class="send-letter">B</span>
+                        <span class="send-letter">o</span>
+                        <span class="send-letter">o</span>
+                        <span class="send-letter">k</span>
+                        <span class="send-letter"> </span>
+                        <span class="send-letter">F</span>
+                        <span class="send-letter">R</span>
+                        <span class="send-letter">E</span>
+                        <span class="send-letter">E</span>
+                        <span class="send-letter"> </span>
+                        <span class="send-letter">C</span>
+                        <span class="send-letter">a</span>
+                        <span class="send-letter">l</span>
+                        <span class="send-letter">l</span>
+                        <span class="send-letter"> </span>
+                        <span class="send-letter">S</span>
+                        <span class="send-letter">t</span>
+                        <span class="send-letter">r</span>
+                        <span class="send-letter">a</span>
+                        <span class="send-letter">t</span>
+                        <span class="send-letter">e</span>
+                        <span class="send-letter">g</span>
+                        <span class="send-letter">y</span>
+                    </div>
+                    <div class="send-txt-2">
+                        <span class="send-letter">B</span>
+                        <span class="send-letter">o</span>
+                        <span class="send-letter">o</span>
+                        <span class="send-letter">k</span>
+                        <span class="send-letter">i</span>
+                        <span class="send-letter">n</span>
+                        <span class="send-letter">g</span>
+                        <span class="send-letter">.</span>
+                        <span class="send-letter">.</span>
+                        <span class="send-letter">.</span>
+                    </div>
+                </div>
+            </a>
+
+
+/* Matched Rule from user-agent */
+a:-webkit-any-link {
+  color: -webkit-link;
+  text-decoration-line: underline;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  cursor: pointer;
+}
+
+/* Matched Rule from regular */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Matched Rule from regular */
+.nav-cta {
+  flex-shrink: 0;
+  text-decoration: none;
+  flex-shrink: 0;
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+/* Matched Rule from regular */
+.chat-send {
+  --border-radius: 24px;
+  --padding: 3px;
+  --transition: 0.3s;
+  --button-color: #101018;
+  --highlight-color-hue: 220deg;
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.6em 1em 0.6em 0.8em;
+  font-family: var(--font-primary);
+  font-size: 0.85em;
+  font-weight: 500;
+  min-width: 90px;
+  height: 44px;
+  background-color: var(--button-color);
+  box-shadow: /* inset highlights */
+    inset 0px 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0px 2px 2px rgba(255, 255, 255, 0.1),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.08),
+    inset 0px 8px 8px rgba(255, 255, 255, 0.04),
+    /* drop shadows */
+    0px -1px 1px rgba(0, 0, 0, 0.02),
+    0px -2px 2px rgba(0, 0, 0, 0.03),
+    0px -4px 4px rgba(0, 0, 0, 0.05),
+    0px -8px 8px rgba(0, 0, 0, 0.06);
+  border: solid 1px rgba(255, 255, 255, 0.12);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: box-shadow var(--transition),
+    border var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+  --border-radius: 24px;
+  --padding: 3px;
+  --transition: 0.3s;
+  --button-color: #101018;
+  --highlight-color-hue: 220deg;
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.4rem;
+  column-gap: 0.4rem;
+  padding-top: 0.6em;
+  padding-right: 1em;
+  padding-bottom: 0.6em;
+  padding-left: 0.8em;
+  font-family: var(--font-primary);
+  font-size: 0.85em;
+  font-weight: 500;
+  min-width: 90px;
+  height: 44px;
+  background-color: var(--button-color);
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 1px 1px inset, rgba(255, 255, 255, 0.1) 0px 2px 2px inset, rgba(255, 255, 255, 0.08) 0px 4px 4px inset, rgba(255, 255, 255, 0.04) 0px 8px 8px inset, rgba(0, 0, 0, 0.02) 0px -1px 1px, rgba(0, 0, 0, 0.03) 0px -2px 2px, rgba(0, 0, 0, 0.05) 0px -4px 4px, rgba(0, 0, 0, 0.06) 0px -8px 8px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-right-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 255, 255, 0.12);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  cursor: pointer;
+}
+
+/* Matched Rule from regular */
+.nav-cta.chat-send {
+  --border-radius: 24px;
+  --padding: 3px;
+  --transition: 0.3s;
+  --button-color: #101018;
+  --highlight-color-hue: 220deg;
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6em 1.5em 0.6em 1.2em;
+  font-family: var(--font-primary);
+  font-size: 0.85em;
+  font-weight: 500;
+  min-width: 220px;
+  height: 42px;
+  white-space: nowrap;
+  background-color: var(--button-color);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.15),
+    inset 0px 2px 2px rgba(255, 255, 255, 0.1),
+    inset 0px 4px 4px rgba(255, 255, 255, 0.08),
+    inset 0px 8px 8px rgba(255, 255, 255, 0.04),
+    0px -1px 1px rgba(0, 0, 0, 0.02),
+    0px -2px 2px rgba(0, 0, 0, 0.03),
+    0px -4px 4px rgba(0, 0, 0, 0.05),
+    0px -8px 8px rgba(0, 0, 0, 0.06);
+  border: solid 1px rgba(255, 255, 255, 0.12);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: box-shadow var(--transition),
+    border var(--transition),
+    background-color var(--transition),
+    transform var(--transition);
+  --border-radius: 24px;
+  --padding: 3px;
+  --transition: 0.3s;
+  --button-color: #101018;
+  --highlight-color-hue: 220deg;
+  position: relative;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+  padding-top: 0.6em;
+  padding-right: 1.5em;
+  padding-bottom: 0.6em;
+  padding-left: 1.2em;
+  font-family: var(--font-primary);
+  font-size: 0.85em;
+  font-weight: 500;
+  min-width: 220px;
+  height: 42px;
+  white-space-collapse: collapse;
+  text-wrap-mode: nowrap;
+  background-color: var(--button-color);
+  box-shadow: rgba(255, 255, 255, 0.15) 0px 1px 1px inset, rgba(255, 255, 255, 0.1) 0px 2px 2px inset, rgba(255, 255, 255, 0.08) 0px 4px 4px inset, rgba(255, 255, 255, 0.04) 0px 8px 8px inset, rgba(0, 0, 0, 0.02) 0px -1px 1px, rgba(0, 0, 0, 0.03) 0px -2px 2px, rgba(0, 0, 0, 0.05) 0px -4px 4px, rgba(0, 0, 0, 0.06) 0px -8px 8px;
+  border-top-width: 1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: rgba(255, 255, 255, 0.12);
+  border-right-color: rgba(255, 255, 255, 0.12);
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+  border-left-color: rgba(255, 255, 255, 0.12);
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+  cursor: pointer;
+}
+
+/* Matched Rule from regular */
+.btn-primary:hover, .btn-secondary:hover, .cta-button:hover, .nav-cta:hover, .chat-send:hover, button:hover[type="submit"] {
+  filter: brightness(1.15);
+  transition: filter 0.2s ease;
+  filter: brightness(1.15);
+  transition-behavior: normal;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  transition-property: filter;
+}
+
+/* Matched Rule from regular */
+.btn-primary, .cta-button, .nav-cta.chat-send {
+  background: var(--gradient-cta);
+  background-image: var(--gradient-cta);
+  border: none;
+  background-image: var(--gradient-cta);
+  border-top-width: initial;
+  border-right-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Matched Rule from regular */
+.chat-send:hover {
+  border: solid 1px hsla(var(--highlight-color-hue), 100%, 80%, 40%);
+}
+
+/* Matched Rule from regular */
+.nav-cta.chat-send:hover {
+  border: solid 1px hsla(var(--highlight-color-hue), 100%, 80%, 40%);
+}
+
+/* Matched Rule from regular */
+.navbar .nav-cta.chat-send {
+  background: linear-gradient(135deg, #6e48aa 0%, #0a0a0f 100%);
+  border: none;
+  background-image: linear-gradient(135deg, rgb(110, 72, 170) 0%, rgb(10, 10, 15) 100%);
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  border-top-width: initial;
+  border-right-width: initial;
+  border-bottom-width: initial;
+  border-left-width: initial;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  border-top-color: initial;
+  border-right-color: initial;
+  border-bottom-color: initial;
+  border-left-color: initial;
+  border-image-source: initial;
+  border-image-slice: initial;
+  border-image-width: initial;
+  border-image-outset: initial;
+  border-image-repeat: initial;
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+article, aside, footer, header, hgroup, main, nav, search, section {
+  display: block;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.navbar, .why-card, .feature-card, .faq-item, .service-card-premium, .process-card, .contact-form, .contact-info, .footer, .lead-magnet, input, textarea, select {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  transition-behavior: normal, normal, normal, normal;
+  transition-duration: 0.3s, 0.3s, 0.3s, 0.3s;
+  transition-timing-function: ease, ease, ease, ease;
+  transition-delay: 0s, 0s, 0s, 0s;
+  transition-property: background-color, border-color, color, box-shadow;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(8, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  background-image: initial;
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: rgba(8, 10, 15, 0.95);
+  backdrop-filter: blur(10px);
+  transition-behavior: normal, normal;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+  transition-property: transform, opacity;
+}
+
+/* Inherited from ancestor level 3 (user-agent) */
+body {
+  display: block;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+  transition-behavior: normal, normal;
+  transition-duration: 0.3s, 0.3s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0s, 0s;
+  transition-property: background-color, color;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text-light);
+  line-height: 1.6;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  font-family: Inter, sans-serif;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+html {
+  display: block;
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+:root {
+  view-transition-name: root;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+:root {
+  --color-bg: #080a0f;
+  --color-primary: #4a6cf7;
+  --color-secondary: #a274ff;
+  --color-accent: #64dedf;
+  --color-text-light: #f2f4fa;
+  --color-text-muted: rgba(242, 244, 250, 0.85);
+  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --color-bg: #080a0f;
+  --color-primary: #4a6cf7;
+  --color-secondary: #a274ff;
+  --color-accent: #64dedf;
+  --color-text-light: #f2f4fa;
+  --color-text-muted: rgba(242, 244, 250, 0.85);
+  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/* Inherited from ancestor level 4 (regular) */
+:root, body.dark-theme {
+  --color-bg: #080a0f;
+  --color-primary: #4a6cf7;
+  --color-secondary: #a274ff;
+  --color-accent: #64dedf;
+  --color-text-light: #f2f4fa;
+  --color-text-muted: rgba(242, 244, 250, 0.85);
+  --gradient-primary: linear-gradient(90deg, #6e48aa 0%, #9d50bb 100%);
+  --gradient-cta: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --section-bg-alt: rgba(255, 255, 255, 0.02);
+  --color-bg: #080a0f;
+  --color-primary: #4a6cf7;
+  --color-secondary: #a274ff;
+  --color-accent: #64dedf;
+  --color-text-light: #f2f4fa;
+  --color-text-muted: rgba(242, 244, 250, 0.85);
+  --gradient-primary: linear-gradient(90deg, #6e48aa 0%, #9d50bb 100%);
+  --gradient-cta: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --section-bg-alt: rgba(255, 255, 255, 0.02);
+}
+
+/* Inherited from ancestor level 4 (regular) */
+:root, body.dark-theme {
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-bg-hover: rgba(30, 41, 59, 0.8);
+  --glass-bg-solid: rgba(15, 23, 42, 0.9);
+  --glass-border-top: rgba(255, 255, 255, 0.25);
+  --glass-border-left: rgba(255, 255, 255, 0.15);
+  --glass-border-bottom: rgba(0, 0, 0, 0.3);
+  --glass-border-right: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.25),
+    0 16px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.35),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(6px);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #a5b4fc;
+  --accent-secondary: #d4b483;
+  --accent-gradient: linear-gradient(135deg, #a5b4fc 0%, #d4b483 100%);
+  --success: #22c55e;
+  --error: #ef4444;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 50px;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Manrope', 'Inter', sans-serif;
+  --glass-bg: rgba(15, 23, 42, 0.7);
+  --glass-bg-hover: rgba(30, 41, 59, 0.8);
+  --glass-bg-solid: rgba(15, 23, 42, 0.9);
+  --glass-border-top: rgba(255, 255, 255, 0.25);
+  --glass-border-left: rgba(255, 255, 255, 0.15);
+  --glass-border-bottom: rgba(0, 0, 0, 0.3);
+  --glass-border-right: rgba(0, 0, 0, 0.2);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 2px 4px rgba(0, 0, 0, 0.3),
+    0 8px 16px rgba(0, 0, 0, 0.25),
+    0 16px 32px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --glass-shadow-hover: 0 4px 8px rgba(0, 0, 0, 0.35),
+    0 12px 24px rgba(0, 0, 0, 0.3),
+    0 20px 40px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  --glass-blur: blur(6px);
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent-primary: #a5b4fc;
+  --accent-secondary: #d4b483;
+  --accent-gradient: linear-gradient(135deg, #a5b4fc 0%, #d4b483 100%);
+  --success: #22c55e;
+  --error: #ef4444;
+  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --radius-pill: 50px;
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Manrope', 'Inter', sans-serif;
+}

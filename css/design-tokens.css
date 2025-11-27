@@ -1,0 +1,14 @@
+/* TECHGURU design tokens (lightweight placeholder)
+   These variables mirror values used in styles.css to avoid 404s and keep
+   tokens centralized if extended later. */
+:root {
+  --color-bg: #080a0f;
+  --color-primary: #4a6cf7;
+  --color-secondary: #a274ff;
+  --color-accent: #64dedf;
+  --color-text-light: #f2f4fa;
+  --color-text-muted: rgba(242, 244, 250, 0.85);
+  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg-light: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}

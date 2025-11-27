@@ -1,0 +1,11 @@
+/* TECHGURU components placeholder
+   This file exists to satisfy link references and provide a place for
+   small, component-level overrides when needed. */
+
+/* Alias legacy .icon sizing to new .tg-icon scale for safety */
+.icon--xs { width: 12px; height: 12px; }
+.icon--sm { width: 16px; height: 16px; }
+.icon--md { width: 20px; height: 20px; }
+.icon--lg { width: 28px; height: 28px; }
+.icon--xl { width: 40px; height: 40px; }
+.icon--xxl { width: 64px; height: 64px; }

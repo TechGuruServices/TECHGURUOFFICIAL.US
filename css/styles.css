@@ -924,7 +924,14 @@ video.hero-slide {
    Consistent SVG icon styling across the site
    ============================================ */
 
-/* Base icon styles */
+/*
+  Global icon system
+  - Introduces `.tg-icon` base and size modifiers
+  - Keeps backward compatibility by aliasing existing classes
+*/
+
+/* Base icon container */
+.tg-icon,
 .icon,
 .check-icon,
 .badge-icon,
@@ -941,22 +948,40 @@ video.hero-slide {
   justify-content: center;
   flex-shrink: 0;
   vertical-align: middle;
+  line-height: 0;
 }
 
+/* Ensure SVGs/images conform to container sizing */
+.tg-icon svg,
+.tg-icon img,
 .icon svg,
-.check-icon,
-.badge-icon,
-.metric-icon,
-.mockup-icon,
-.footer-icon,
-.section-icon,
-.response-icon,
-.modal-icon,
-.chip-icon,
-.urgency-icon {
+.icon img,
+.glass-icon svg,
+.glass-icon img {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   stroke: currentColor;
   fill: none;
 }
+
+/* Size scale */
+.tg-icon-xs { width: 12px; height: 12px; }
+.tg-icon-sm { width: 16px; height: 16px; }
+.tg-icon-md { width: 20px; height: 20px; }
+.tg-icon-lg { width: 28px; height: 28px; }
+.tg-icon-xl { width: 40px; height: 40px; }
+.tg-icon-xxl { width: 64px; height: 64px; }
+
+/* Back-compat for older `.icon--*` size modifiers */
+.icon--xs { width: 12px; height: 12px; }
+.icon--sm { width: 16px; height: 16px; }
+.icon--md { width: 20px; height: 20px; }
+.icon--lg { width: 28px; height: 28px; }
+.icon--xl { width: 40px; height: 40px; }
+.icon--xxl { width: 64px; height: 64px; }
 
 /* Check icon - used in lists */
 .check-icon {
@@ -1084,6 +1109,24 @@ video.hero-slide {
   fill: none;
 }
 
+/* Glass icon containers used in cards/headers */
+.glass-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  color: var(--color-primary);
+}
+.glass-icon.large { width: 72px; height: 72px; }
+.glass-icon.small { width: 44px; height: 44px; }
+.glass-icon.animated { transition: transform 0.3s ease; }
+.glass-icon.animated:hover { transform: translateY(-2px) scale(1.03); }
+
 .hero p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
@@ -1093,6 +1136,39 @@ video.hero-slide {
 .hero .cta-buttons {
   display: flex;
   gap: 1rem;
+}
+
+/* Decorative hero icons (non-interactive) */
+.hero .decor-icon {
+  position: absolute;
+  z-index: 1; /* below content (z=2), above bg (z=0) */
+  pointer-events: none;
+  opacity: 0.9;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.35));
+}
+.hero .decor-star {
+  top: clamp(64px, 8vh, 96px);
+  left: clamp(8px, 2vw, 24px);
+  width: clamp(100px, 12vw, 180px);
+  height: clamp(100px, 12vw, 180px);
+  color: rgba(255,255,255,0.9);
+}
+.hero .decor-triangle {
+  top: clamp(240px, 28vh, 320px);
+  left: clamp(24px, 3vw, 40px);
+  width: clamp(80px, 10vw, 140px);
+  height: clamp(80px, 10vw, 140px);
+  color: rgba(255,255,255,0.9);
+}
+
+@media (max-width: 768px) {
+  .hero .decor-star { width: 120px; height: 120px; opacity: 0.75; }
+  .hero .decor-triangle { width: 96px; height: 96px; opacity: 0.7; top: auto; bottom: 10%; }
+}
+
+@media (max-width: 480px) {
+  .hero .decor-star { width: 88px; height: 88px; opacity: 0.6; }
+  .hero .decor-triangle { width: 72px; height: 72px; opacity: 0.6; }
 }
 
 /* Section Subtitle Helper */
