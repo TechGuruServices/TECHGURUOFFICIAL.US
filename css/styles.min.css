@@ -4916,3 +4916,231 @@ footer {
   height: 18px;
   transform: translateX(1px);
 }
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   Full compatibility for iPhone and all devices
+   ============================================ */
+
+/* Tablet and below (768px) */
+@media screen and (max-width: 768px) {
+
+  /* Hero Section - Stack vertically */
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: 70px;
+    min-height: auto;
+    gap: 1.5rem;
+  }
+
+  .hero-content {
+    flex: 1 1 auto;
+    max-width: 100%;
+    order: 1;
+  }
+
+  .hero-image {
+    flex: 1 1 auto;
+    max-width: 280px;
+    order: 2;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+
+  .rotating-tagline {
+    font-size: 1.2rem;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-highlights {
+    text-align: left;
+    padding: 0 1rem;
+  }
+
+  .hero-highlights li {
+    font-size: 0.9rem;
+  }
+
+  /* Navbar Mobile */
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar .logo {
+    font-size: 1rem;
+  }
+
+  /* Hero Image Rotator */
+  .hero-image-rotator {
+    width: clamp(200px, 60vw, 280px);
+    height: clamp(200px, 60vw, 280px);
+  }
+
+  /* CTA Buttons */
+  .cta-group {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .cta-group .btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+
+  /* Section headings */
+  .section-heading {
+    font-size: 2rem;
+  }
+
+  /* Cards grid */
+  .services-grid,
+  .features-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media screen and (max-width: 480px) {
+  .hero {
+    padding: 1.5rem 0.75rem;
+    margin-top: 60px;
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .rotating-tagline {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .hero-image {
+    max-width: 220px;
+  }
+
+  .hero-image-rotator {
+    width: clamp(180px, 55vw, 220px);
+    height: clamp(180px, 55vw, 220px);
+  }
+
+  .hero-highlights li {
+    font-size: 0.85rem;
+    padding: 0.35rem 0;
+  }
+
+  /* Navbar */
+  .navbar {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .navbar .logo {
+    font-size: 0.9rem;
+  }
+
+  .nav-cta-btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Section headings */
+  .section-heading {
+    font-size: 1.75rem;
+  }
+
+  .section-subheading {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small phones like iPhone SE (375px and below) */
+@media screen and (max-width: 375px) {
+  .hero {
+    padding: 1rem 0.5rem;
+    margin-top: 55px;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .rotating-tagline {
+    font-size: 0.9rem;
+  }
+
+  .hero-image {
+    max-width: 180px;
+  }
+
+  .hero-image-rotator {
+    width: 180px;
+    height: 180px;
+  }
+
+  .navbar .logo {
+    font-size: 0.85rem;
+  }
+}
+
+/* Ensure touch targets are large enough */
+@media (hover: none) and (pointer: coarse) {
+
+  .btn,
+  .nav-link,
+  .nav-cta-btn,
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .hero-highlights li {
+    padding: 0.6rem 0;
+  }
+}
+
+/* Landscape orientation on phones */
+@media screen and (max-width: 896px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 1rem;
+    flex-direction: row;
+    margin-top: 50px;
+  }
+
+  .hero-content {
+    flex: 1 1 50%;
+    text-align: left;
+  }
+
+  .hero-image {
+    flex: 1 1 40%;
+    max-width: 200px;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .rotating-tagline {
+    font-size: 1rem;
+  }
+}
