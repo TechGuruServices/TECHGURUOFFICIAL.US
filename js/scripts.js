@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (heroSlides.length > 1) {
     let currentSlide = 0;
     const totalSlides = heroSlides.length;
-    const imageRotationInterval = 6000; // 6 seconds for images
+    const imageRotationInterval = 10000; // 10 seconds for premium, slower rotation
     let rotationTimer = null;
 
     const rotateHeroSlides = () => {
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Clean up fade-out class after transition completes
       setTimeout(() => {
         heroSlides[prevSlide].classList.remove('fade-out');
-      }, 2500);
+      }, 4000); // Match the longer transition duration
 
       // Schedule next rotation based on current slide type
       scheduleNextRotation();
@@ -458,6 +458,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
 
+    // Toggle glass effect
+    if (currentScrollY > 10) {
+      navbar.classList.add('navbar-scrolled');
+    } else {
+      navbar.classList.remove('navbar-scrolled');
+    }
+
+    // Toggle visibility (Smart Sticky)
     if (currentScrollY > lastScrollY && currentScrollY > 80) {
       navbar.classList.add('navbar-hidden');
     } else {
@@ -479,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // SMOOTH SCROLL FOR ANCHOR LINKS
   // ============================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
       if (target) {
@@ -495,7 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Cal.com embed when modal opens
   let calInitialized = false;
 
-  window.openBookingModal = function() {
+  window.openBookingModal = function () {
     const modal = document.getElementById('booking-modal');
     if (!modal) return;
 
@@ -518,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', handleModalEscape);
   };
 
-  window.closeBookingModal = function() {
+  window.closeBookingModal = function () {
     const modal = document.getElementById('booking-modal');
     if (!modal) return;
 
@@ -559,7 +567,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const script = document.createElement('script');
       script.src = 'https://app.cal.com/embed/embed.js';
       script.async = true;
-      script.onload = function() {
+      script.onload = function () {
         // Initialize Cal.com
         window.Cal('init', { origin: 'https://app.cal.com' });
 

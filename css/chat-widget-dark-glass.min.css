@@ -133,7 +133,7 @@ body.light-theme {
 }
 
 /* ============================================
-   Chat Toggle Button
+   Chat Toggle Button - PREMIUM ANIMATIONS
    ============================================ */
 .chat-toggle {
   position: relative;
@@ -144,15 +144,76 @@ body.light-theme {
   background: transparent;
   cursor: pointer;
   padding: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  /* Breathing/Float Animation - Slowed for Premium Feel */
+  animation: chat-float 6s ease-in-out infinite;
+  /* GPU acceleration */
+  will-change: transform;
 }
+
+/* Pulsing Glow Effect - Enhanced Neon */
+.chat-toggle::before {
+  content: '';
+  position: absolute;
+  inset: -16px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+      rgba(100, 222, 223, 0.8) 0%,
+      rgba(165, 180, 252, 0.7) 30%,
+      rgba(219, 112, 255, 0.6) 60%,
+      transparent 85%);
+  opacity: 0.8;
+  animation: pulse-glow 5s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(12px);
+}
+
+
+/* Breathing/Float Animation - Subtle & Smooth */
+@keyframes chat-float {
+
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-12px) scale(1.04);
+  }
+}
+
+/* Pulse Glow Animation - Gentle & Premium */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
 
 .chat-toggle:hover {
-  transform: scale(1.05);
+  transform: scale(1.12) translateY(-4px);
+  animation-play-state: paused;
 }
 
+/* 3D Depth Press on Click */
 .chat-toggle:active {
-  transform: scale(0.95);
+  transform: scale(0.92) translateY(2px);
+  transition: transform 0.1s ease;
+  filter: brightness(0.9);
+}
+
+.chat-toggle:active::before {
+  opacity: 0.4;
+  transform: scale(0.85);
 }
 
 .chat-avatar {
@@ -161,6 +222,11 @@ body.light-theme {
   object-fit: cover;
   border-radius: 50%;
   filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.3));
+  transition: filter 0.3s ease;
+}
+
+.chat-toggle:hover .chat-avatar {
+  filter: drop-shadow(0 12px 40px rgba(100, 222, 223, 0.7)) drop-shadow(0 0 30px rgba(219, 112, 255, 0.6));
 }
 
 /* ============================================
@@ -185,8 +251,8 @@ body.light-theme {
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 
   /* Backdrop filter with fallback */
-  backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
   border-radius: var(--radius-lg);
 
   /* 3D Raised Border */
@@ -219,12 +285,10 @@ body.light-theme {
   inset: -1px;
   border-radius: var(--radius-lg);
   padding: 1px;
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary) 0%,
-    var(--accent-secondary) 50%,
-    var(--accent-primary) 100%
-  );
+  background: linear-gradient(90deg,
+      var(--accent-primary) 0%,
+      var(--accent-secondary) 50%,
+      var(--accent-primary) 100%);
   background-size: 200% 100%;
   /* Slower animation = less CPU usage */
   animation: border-flow 20s linear infinite;
@@ -243,8 +307,13 @@ body.light-theme {
 }
 
 @keyframes border-flow {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 0%; }
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 200% 0%;
+  }
 }
 
 .chat-window.open {
@@ -309,8 +378,15 @@ body.light-theme {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .status-text {
@@ -447,8 +523,15 @@ body.light-theme {
 }
 
 @keyframes msg-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .chat-message.user {
@@ -544,8 +627,8 @@ body.light-theme {
 
 .reaction-btn,
 .copy-btn {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
@@ -555,6 +638,15 @@ body.light-theme {
   align-items: center;
   justify-content: center;
   opacity: 0;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.reaction-btn svg,
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--text-secondary);
   transition: all 0.15s ease;
 }
 
@@ -569,13 +661,35 @@ body.light-theme {
   border-color: var(--glass-border-hover);
 }
 
+.reaction-btn:hover svg,
+.copy-btn:hover svg {
+  stroke: var(--text-color);
+}
+
 .reaction-btn.active {
   background: var(--accent-gradient);
 }
 
+.reaction-btn.active svg {
+  stroke: white;
+}
+
 .copy-btn.copied {
   background: var(--success);
-  color: white;
+  border-color: var(--success);
+}
+
+.copy-btn.copied svg {
+  stroke: white;
+}
+
+/* File icon in chat */
+.file-icon {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary);
+  vertical-align: middle;
+  margin-right: 0.35rem;
 }
 
 /* ============================================
@@ -612,12 +726,24 @@ body.light-theme {
   animation: typing 1.4s infinite ease-in-out;
 }
 
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
 
 @keyframes typing {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* ============================================
@@ -693,8 +819,15 @@ body.light-theme {
 }
 
 @keyframes pulse-rec {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 /* Textarea */
@@ -753,6 +886,7 @@ body.light-theme {
   --highlight-color-hue: 220deg;
 
   position: relative;
+  -webkit-user-select: none;
   user-select: none;
   display: flex;
   align-items: center;
@@ -822,14 +956,12 @@ body.light-theme {
   height: 100%;
   border-radius: inherit;
   pointer-events: none;
-  background-image: linear-gradient(
-    0deg,
-    #fff,
-    hsl(var(--highlight-color-hue), 100%, 70%),
-    hsla(var(--highlight-color-hue), 100%, 70%, 50%),
-    8%,
-    transparent
-  );
+  background-image: linear-gradient(0deg,
+      #fff,
+      hsl(var(--highlight-color-hue), 100%, 70%),
+      hsla(var(--highlight-color-hue), 100%, 70%, 50%),
+      8%,
+      transparent);
   background-position: 0 0;
   opacity: 0;
   transition:
@@ -853,8 +985,15 @@ body.light-theme {
 }
 
 @keyframes send-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* Text wrapper for "Send" / "Sending" */
@@ -893,7 +1032,12 @@ body.light-theme {
 }
 
 @keyframes send-letter-anim {
-  0%, 100% { color: rgba(255, 255, 255, 0.5); }
+
+  0%,
+  100% {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
   50% {
     text-shadow: 0 0 3px rgba(255, 255, 255, 0.5);
     color: #fff;
@@ -901,13 +1045,33 @@ body.light-theme {
 }
 
 /* Letter animation delays */
-.send-letter:nth-child(1) { animation-delay: 0s; }
-.send-letter:nth-child(2) { animation-delay: 0.08s; }
-.send-letter:nth-child(3) { animation-delay: 0.16s; }
-.send-letter:nth-child(4) { animation-delay: 0.24s; }
-.send-letter:nth-child(5) { animation-delay: 0.32s; }
-.send-letter:nth-child(6) { animation-delay: 0.4s; }
-.send-letter:nth-child(7) { animation-delay: 0.48s; }
+.send-letter:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.send-letter:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.send-letter:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.send-letter:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.send-letter:nth-child(5) {
+  animation-delay: 0.32s;
+}
+
+.send-letter:nth-child(6) {
+  animation-delay: 0.4s;
+}
+
+.send-letter:nth-child(7) {
+  animation-delay: 0.48s;
+}
 
 /* Hover state */
 .chat-send:hover {
@@ -926,13 +1090,13 @@ body.light-theme {
 
 .chat-send:hover::after {
   opacity: 0.8;
+  -webkit-mask-image: linear-gradient(0deg, #fff, transparent);
   mask-image: linear-gradient(0deg, #fff, transparent);
 }
 
 .chat-send:hover .send-icon {
   stroke: #fff;
-  filter: drop-shadow(0 0 4px hsl(var(--highlight-color-hue), 100%, 70%))
-    drop-shadow(0 -4px 6px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 4px hsl(var(--highlight-color-hue), 100%, 70%)) drop-shadow(0 -4px 6px rgba(0, 0, 0, 0.5));
   animation: none;
 }
 
@@ -960,6 +1124,7 @@ body.light-theme {
 
 .chat-send:active::after {
   opacity: 1;
+  -webkit-mask-image: linear-gradient(0deg, #fff, transparent);
   mask-image: linear-gradient(0deg, #fff, transparent);
   filter: brightness(200%);
 }
@@ -984,8 +1149,17 @@ body.light-theme {
 }
 
 @keyframes send-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.15); opacity: 0.7; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 0.7;
+  }
 }
 
 /* Disabled state */
@@ -1079,8 +1253,8 @@ body.light-theme {
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   background: var(--glass-bg-solid);
-  backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-pill);
   text-decoration: none;
@@ -1109,14 +1283,69 @@ body.light-theme {
   z-index: 10001;
 }
 
-.resize-handle-nw { top: 0; left: 0; width: 14px; height: 14px; cursor: nw-resize; }
-.resize-handle-ne { top: 0; right: 0; width: 14px; height: 14px; cursor: ne-resize; }
-.resize-handle-sw { bottom: 0; left: 0; width: 14px; height: 14px; cursor: sw-resize; }
-.resize-handle-se { bottom: 0; right: 0; width: 14px; height: 14px; cursor: se-resize; }
-.resize-handle-n { top: 0; left: 14px; right: 14px; height: 4px; cursor: n-resize; }
-.resize-handle-s { bottom: 0; left: 14px; right: 14px; height: 4px; cursor: s-resize; }
-.resize-handle-e { top: 14px; right: 0; bottom: 14px; width: 4px; cursor: e-resize; }
-.resize-handle-w { top: 14px; left: 0; bottom: 14px; width: 4px; cursor: w-resize; }
+.resize-handle-nw {
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  cursor: nw-resize;
+}
+
+.resize-handle-ne {
+  top: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  cursor: ne-resize;
+}
+
+.resize-handle-sw {
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  cursor: sw-resize;
+}
+
+.resize-handle-se {
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  height: 14px;
+  cursor: se-resize;
+}
+
+.resize-handle-n {
+  top: 0;
+  left: 14px;
+  right: 14px;
+  height: 4px;
+  cursor: n-resize;
+}
+
+.resize-handle-s {
+  bottom: 0;
+  left: 14px;
+  right: 14px;
+  height: 4px;
+  cursor: s-resize;
+}
+
+.resize-handle-e {
+  top: 14px;
+  right: 0;
+  bottom: 14px;
+  width: 4px;
+  cursor: e-resize;
+}
+
+.resize-handle-w {
+  top: 14px;
+  left: 0;
+  bottom: 14px;
+  width: 4px;
+  cursor: w-resize;
+}
 
 /* ============================================
    Mobile Responsive - Improved Breakpoints
@@ -1159,7 +1388,8 @@ body.light-theme {
     width: 100%;
     /* Account for mobile browser chrome */
     height: calc(100vh - 60px);
-    height: calc(100dvh - 60px); /* Dynamic viewport height for mobile */
+    height: calc(100dvh - 60px);
+    /* Dynamic viewport height for mobile */
     max-width: 100%;
     max-height: calc(100vh - 60px);
     max-height: calc(100dvh - 60px);
@@ -1178,7 +1408,6 @@ body.light-theme {
   .chat-suggestions {
     flex-wrap: nowrap;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     padding: 0.5rem 1rem;
   }
@@ -1237,6 +1466,7 @@ body.light-theme {
    Reduced Motion - Enhanced accessibility
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -1289,6 +1519,7 @@ body.light-theme {
 
 /* High contrast mode support */
 @media (forced-colors: active) {
+
   .chat-toggle:focus-visible,
   .chat-send:focus-visible,
   .chat-input-btn:focus-visible,
@@ -1337,6 +1568,7 @@ body.light-theme {
 
 /* Ensure minimum touch target size (44x44px) */
 @supports (min-height: 44px) {
+
   .chat-action-btn,
   .chat-close,
   .chat-input-btn,
