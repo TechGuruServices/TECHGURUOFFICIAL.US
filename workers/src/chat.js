@@ -158,7 +158,7 @@ const callClaudeAPI = async (message, apiKey) => {
   const url = 'https://api.anthropic.com/v1/messages';
 
   const payload = {
-    model: 'claude-opus-4-1',
+    model: 'claude-sonnet-4-20250514',
     max_tokens: 1024,
     system: SYSTEM_PROMPT,
     messages: [
@@ -206,10 +206,10 @@ const callClaudeAPI = async (message, apiKey) => {
 
       // Handle different error formats
       const errorMessage = errorData.error?.message ||
-                          errorData.message ||
-                          JSON.stringify(errorData.error) ||
-                          JSON.stringify(errorData) ||
-                          'Failed to get response from AI service';
+        errorData.message ||
+        JSON.stringify(errorData.error) ||
+        JSON.stringify(errorData) ||
+        'Failed to get response from AI service';
 
       return { error: String(errorMessage) };
     }

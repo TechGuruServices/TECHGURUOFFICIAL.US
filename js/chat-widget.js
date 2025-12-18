@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const chatSuggestions = document.getElementById('chat-suggestions');
   const chatTypingIndicator = document.getElementById('chat-typing');
 
-  // API Base URL - Use relative path to route through Cloudflare Pages/Workers
-  const API_BASE = '';
-  const API_ENDPOINT = '/api/chat';
+  // API Base URL - Cloudflare Worker (direct URL since domain is on GitHub Pages)
+  const API_BASE = 'https://techguru-api.lucas-a13.workers.dev';
+  const API_ENDPOINT = API_BASE + '/api/chat';
   const MAX_CHARS = 500;
   let isOpen = false;
   let isLoading = false;
@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     chatWindow.style.width = `${constrainedWidth}px`;
     chatWindow.style.height = `${constrainedHeight}px`;
-  };  const stopResize = () => {
+  }; const stopResize = () => {
     if (isResizing) {
       isResizing = false;
       resizeDirection = null;
