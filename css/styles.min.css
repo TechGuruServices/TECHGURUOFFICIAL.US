@@ -4931,7 +4931,7 @@ footer {
     text-align: center;
     padding: 2rem 1rem;
     margin-top: 70px;
-    min-height: auto;
+    min-height: 0;
     gap: 1.5rem;
   }
 
@@ -5120,7 +5120,7 @@ footer {
 /* Landscape orientation on phones */
 @media screen and (max-width: 896px) and (orientation: landscape) {
   .hero {
-    min-height: auto;
+    min-height: 0;
     padding: 1rem;
     flex-direction: row;
     margin-top: 50px;

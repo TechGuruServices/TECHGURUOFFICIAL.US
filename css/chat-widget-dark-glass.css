@@ -746,6 +746,11 @@ body.light-theme {
   }
 }
 
+/* Hidden state for typing indicator */
+.chat-typing-hidden {
+  display: none !important;
+}
+
 /* ============================================
    Chat Input Form
    ============================================ */
