@@ -961,6 +961,19 @@ video.hero-slide {
   z-index: 0;
 }
 
+/* Hero Connector Image - Zoom in more to fill properly */
+.hero-slide[src*="hero-connector"] {
+  transform: translate(-50%, -50%) scale(1.4) rotate(2deg);
+}
+
+.hero-slide[src*="hero-connector"].active {
+  transform: translate(-50%, -50%) scale(1.3) rotate(0deg);
+}
+
+.hero-slide[src*="hero-connector"].fade-out {
+  transform: translate(-50%, -50%) scale(1.25) rotate(-2deg);
+}
+
 .hero-image img:not(.hero-slide) {
   width: 100%;
   max-width: 500px;
