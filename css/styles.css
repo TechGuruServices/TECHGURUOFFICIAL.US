@@ -196,14 +196,29 @@ select {
   box-sizing: border-box;
 }
 
+/* Critical Mobile Fix: Prevent horizontal overflow at root level */
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* Prevent iOS bounce/overscroll */
+  overscroll-behavior-x: none;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background: var(--color-bg);
   color: var(--color-text-light);
   line-height: 1.6;
-  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* Mobile optimizations */
+  max-width: 100vw;
+  position: relative;
+
+  /* Prevent text size adjustment on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+
 }
 
 /* Navigation */

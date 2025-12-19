@@ -47,7 +47,11 @@
     <!-- Web App Manifest (contains all icon definitions) -->
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- Theme color is set via manifest for broader compatibility -->
+    <!-- PWA Theme Customization -->
+    <meta name="theme-color" content="#4a6cf7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TECHGURU">
 
     <!-- Additional Sizes (for completeness) -->
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
@@ -62,8 +66,8 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/design-tokens.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/styles.min.css?v=20251125">
-    <script src="js/scripts.min.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css?v=20251125">
+    <script src="js/scripts.js" defer></script>
 
     <!-- FAQ Schema Markup -->
     <script type="application/ld+json">
@@ -243,14 +247,13 @@
             </div>
             <div class="hero-image">
                 <div class="hero-image-rotator">
-                    <img src="images/hero-3.webp" alt="Automation Gear" aria-hidden="true" loading="eager"
-                        class="hero-slide active">
-                    <img src="images/hero-automation.png" alt="AI Network" aria-hidden="true" loading="eager"
-                        class="hero-slide">
-                    <img src="images/hero-ai-brain.png" alt="Neural Network" aria-hidden="true" loading="eager"
-                        class="hero-slide">
-                    <img src="images/hero-connector.png" alt="Connected Systems" aria-hidden="true" loading="eager"
-                        class="hero-slide">
+                    <img src="images/hero-1.webp" alt="TechGuru Automation" class="hero-slide active">
+                    <img src="images/hero-3.webp" alt="AI Efficiency" class="hero-slide">
+                    <img src="images/hero-4.webp" alt="Advanced Workflows" class="hero-slide">
+                    <video class="hero-slide" autoplay muted loop playsinline poster="images/video-poster.webp"
+                        id="hero-video" aria-hidden="true">
+                        <source src="assets/herovideo.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </section>
@@ -1508,6 +1511,38 @@
 
         <link rel="stylesheet" href="css/chat-widget-dark-glass.min.css">
         <script src="js/chat-widget.min.js" defer></script>
+
+        <!-- PWA Service Worker Registration -->
+        <script>
+            // Register service worker for PWA functionality
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js')
+                        .then((registration) => {
+                            console.log('[PWA] Service Worker registered successfully:', registration.scope);
+
+                            // Check for updates periodically
+                            setInterval(() => {
+                                registration.update();
+                            }, 60000); // Check every minute
+
+                            // Handle service worker updates
+                            registration.addEventListener('updatefound', () => {
+                                const newWorker = registration.installing;
+                                newWorker.addEventListener('statechange', () => {
+                                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                        console.log('[PWA] New version available. Refresh to update.');
+                                        // Optionally show update notification to user
+                                    }
+                                });
+                            });
+                        })
+                        .catch((error) => {
+                            console.error('[PWA] Service Worker registration failed:', error);
+                        });
+                });
+            }
+        </script>
 
         <!-- Tubes Cursor Effect - ALWAYS VISIBLE -->
         <script type="module">
