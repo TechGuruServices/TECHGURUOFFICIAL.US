@@ -4005,11 +4005,17 @@ video.hero-slide {
   font-size: 1.3rem;
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(90deg,
+      var(--color-primary),
+      var(--color-secondary),
+      var(--color-accent),
+      var(--color-secondary),
+      var(--color-primary));
+  background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-fill-color: transparent;
+  animation: logo-shimmer 6s ease-in-out infinite;
   margin-bottom: 1rem;
 }
 
