@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Play video if it's the current slide
       if (heroSlides[currentSlide].tagName === 'VIDEO') {
         heroSlides[currentSlide].currentTime = 0;
-        heroSlides[currentSlide].play();
+        heroSlides[currentSlide].play().catch(e => console.debug('Video autoplay interrupted', e));
       }
 
       // Clean up fade-out class after transition completes
@@ -407,13 +407,19 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
         });
-        if (!res.ok) throw new Error('Network response was not ok');
+        if (!res.ok) {
+          const errorData = await res.json().catch(() => ({}));
+          const errorMessage = errorData.details
+            ? errorData.details.join('\n')
+            : (errorData.error || 'Network response was not ok');
+          throw new Error(errorMessage);
+        }
 
         showFormMessage(contactForm, '✓ Message sent! We\'ll respond within 24 hours.', 'success');
         contactForm.reset();
       } catch (err) {
         console.error(err);
-        showFormMessage(contactForm, 'Something went wrong. Please try again or contact us directly.', 'error');
+        showFormMessage(contactForm, err.message || 'Something went wrong. Please try again or contact us directly.', 'error');
       } finally {
         button.textContent = originalText;
         button.disabled = false;
@@ -436,6 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
       padding: 0.8rem 1rem;
       border-radius: 8px;
       text-align: center;
+      white-space: pre-line;
       ${type === 'success'
         ? 'background: rgba(100, 222, 223, 0.1); color: #64dedf; border: 1px solid rgba(100, 222, 223, 0.3);'
         : 'background: rgba(255, 107, 107, 0.1); color: #ff6b6b; border: 1px solid rgba(255, 107, 107, 0.3);'

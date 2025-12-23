@@ -18,6 +18,12 @@ const getCorsHeaders = (origin) => {
     'http://localhost:8000', // for local dev
     'http://127.0.0.1:8000', // for local dev
     'http://localhost:3000', // for local dev
+    'http://localhost:5500', // VS Code Live Server
+    'http://127.0.0.1:5500', // VS Code Live Server
+    'http://localhost:5501', // VS Code Live Server alt
+    'http://127.0.0.1:5501', // VS Code Live Server alt
+    'http://localhost:5173', // Vite
+    'http://localhost:4173', // Vite preview
   ];
 
   const isAllowed = allowedOrigins.includes(origin);

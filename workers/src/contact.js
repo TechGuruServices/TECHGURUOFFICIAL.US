@@ -62,6 +62,21 @@ const validateContactRequest = (body) => {
     }
   }
 
+  // Company validation (optional)
+  if (body?.company && typeof body.company !== 'string') {
+    errors.push('Company name must be a string');
+  }
+
+  // Phone validation (optional)
+  if (body?.phone && typeof body.phone !== 'string') {
+    errors.push('Phone number must be a string');
+  }
+
+  // Service validation (optional but recommended)
+  if (body?.service && typeof body.service !== 'string') {
+    errors.push('Service selection must be a string');
+  }
+
   if (errors.length > 0) {
     return { valid: false, errors };
   }
@@ -73,6 +88,9 @@ const validateContactRequest = (body) => {
       email: body.email.toLowerCase().trim(),
       message: sanitizeText(body.message, 5000),
       subject: body.subject ? sanitizeText(body.subject, 200) : 'New TechGuru Contact Form Submission',
+      company: body.company ? sanitizeText(body.company, 100) : 'Not provided',
+      phone: body.phone ? sanitizeText(body.phone, 20) : 'Not provided',
+      service: body.service ? sanitizeText(body.service, 50) : 'General Inquiry',
     },
   };
 };
@@ -158,6 +176,9 @@ const sendEmailViaSendGrid = async (data, sendGridKey, notificationEmail, replyT
         value: `<h2>New Contact Form Submission</h2>
 <p><strong>Name:</strong> ${data.name}</p>
 <p><strong>Email:</strong> ${data.email}</p>
+<p><strong>Company:</strong> ${data.company}</p>
+<p><strong>Phone:</strong> ${data.phone}</p>
+<p><strong>Service Interest:</strong> ${data.service}</p>
 <p><strong>Subject:</strong> ${data.subject}</p>
 <p><strong>Message:</strong></p>
 <p>${data.message.replace(/\n/g, '<br>')}</p>

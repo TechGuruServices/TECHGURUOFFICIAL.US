@@ -3,7 +3,7 @@
  * Provides offline functionality, caching strategies, and PWA capabilities
  */
 
-const CACHE_VERSION = 'techguru-v1.0.0';
+const CACHE_VERSION = 'techguru-v1.0.1';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
@@ -29,7 +29,7 @@ const STATIC_ASSETS = [
 // Install event - cache static assets
 self.addEventListener('install', (event) => {
   console.log('[Service Worker] Installing...');
-  
+
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => {
@@ -49,7 +49,7 @@ self.addEventListener('install', (event) => {
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   console.log('[Service Worker] Activating...');
-  
+
   event.waitUntil(
     caches.keys()
       .then((cacheNames) => {
@@ -57,8 +57,8 @@ self.addEventListener('activate', (event) => {
           cacheNames
             .filter((cacheName) => {
               // Remove caches that don't match current version
-              return cacheName.startsWith('techguru-') && 
-                     !cacheName.startsWith(CACHE_VERSION);
+              return cacheName.startsWith('techguru-') &&
+                !cacheName.startsWith(CACHE_VERSION);
             })
             .map((cacheName) => {
               console.log('[Service Worker] Deleting old cache:', cacheName);
@@ -113,17 +113,17 @@ async function cacheFirstStrategy(request, cacheName = STATIC_CACHE) {
 
     // Fetch from network
     const networkResponse = await fetch(request);
-    
+
     // Cache successful responses
     if (networkResponse && networkResponse.status === 200) {
       const cache = await caches.open(cacheName);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.error('[Service Worker] Fetch failed:', error);
-    
+
     // If HTML request fails, return offline page
     if (request.destination === 'document') {
       const offlineCache = await caches.match('/index.html');
@@ -131,7 +131,7 @@ async function cacheFirstStrategy(request, cacheName = STATIC_CACHE) {
         return offlineCache;
       }
     }
-    
+
     throw error;
   }
 }
@@ -143,23 +143,23 @@ async function cacheFirstStrategy(request, cacheName = STATIC_CACHE) {
 async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
-    
+
     // Cache successful responses
     if (networkResponse && networkResponse.status === 200) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
     }
-    
+
     return networkResponse;
   } catch (error) {
     console.error('[Service Worker] Network request failed:', error);
-    
+
     // Try cache as fallback
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
     }
-    
+
     throw error;
   }
 }
@@ -169,7 +169,7 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-  
+
   if (event.data && event.data.type === 'CACHE_URLS') {
     event.waitUntil(
       caches.open(DYNAMIC_CACHE)
@@ -182,7 +182,7 @@ self.addEventListener('message', (event) => {
 if ('sync' in self.registration) {
   self.addEventListener('sync', (event) => {
     console.log('[Service Worker] Background sync:', event.tag);
-    
+
     if (event.tag === 'sync-contact-forms') {
       event.waitUntil(syncContactForms());
     }
