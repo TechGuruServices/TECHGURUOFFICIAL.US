@@ -202,6 +202,7 @@ html {
   scroll-behavior: smooth;
   /* Prevent iOS bounce/overscroll */
   overscroll-behavior-x: none;
+  scroll-snap-type: y mandatory;
 }
 
 body {
@@ -219,6 +220,65 @@ body {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 
+}
+
+section {
+  scroll-snap-align: start;
+  scroll-margin-top: 80px;
+  /* Offset for sticky header */
+}
+
+/* Service Tabs */
+.services-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.service-tab-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.service-tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-light);
+}
+
+.service-tab-btn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 15px rgba(59, 91, 219, 0.3);
+}
+
+.horizontal-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0 2rem;
+  cursor: grab;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+  /* Chrome/Safari */
+}
+
+.horizontal-scroll-container.active {
+  cursor: grabbing;
+  scroll-behavior: auto;
 }
 
 /* Navigation */
@@ -5815,4 +5875,42 @@ footer {
   .rotating-tagline {
     font-size: 1rem;
   }
+}
+
+/* Process Timeline - Horizontal Scroll */
+.process-timeline-premium {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Hide scrollbar Firefox */
+  cursor: grab;
+  /* Ensure it takes full width/safe width */
+  width: 100%;
+}
+
+.process-timeline-premium::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar Chrome */
+}
+
+.process-timeline-premium:active {
+  cursor: grabbing;
+}
+
+.process-step-premium {
+  flex: 0 0 350px;
+  /* Fixed width for cards */
+  scroll-snap-align: center;
+  position: relative;
+  margin-bottom: 0 !important;
+  /* Override vertical spacing */
+}
+
+/* Adjust step card for card-like appearance in slider */
+.process-step-premium .step-card {
+  height: 100%;
 }

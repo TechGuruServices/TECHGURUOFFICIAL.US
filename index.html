@@ -337,7 +337,7 @@
                         exceptional results</p>
                 </div>
 
-                <div class="process-timeline-premium">
+                <div class="process-timeline-premium horizontal-scroll-container">
                     <!-- Step 1 -->
                     <div class="process-step-premium" data-step="1">
                         <div class="step-indicator">
@@ -536,10 +536,18 @@
                     </p>
                 </div>
 
-                <!-- Featured Services Row -->
-                <div class="services-featured-row">
+                <!-- Tab Navigation -->
+                <div class="services-tabs">
+                    <button class="service-tab-btn active" data-filter="all">All Services</button>
+                    <button class="service-tab-btn" data-filter="automation">Automation</button>
+                    <button class="service-tab-btn" data-filter="ai">AI Solutions</button>
+                    <button class="service-tab-btn" data-filter="web">Web & Design</button>
+                </div>
+
+                <!-- Services Grid (Tab Content) -->
+                <div class="services-grid-premium tab-content">
                     <!-- Service 1: Automation - FEATURED -->
-                    <div class="service-card-premium featured" data-service="automation">
+                    <div class="service-card-premium featured" data-service="automation" data-category="automation">
                         <div class="featured-badge"><svg class="tg-icon tg-icon-sm badge-icon" viewBox="0 0 24 24"
                                 fill="currentColor" aria-hidden="true" focusable="false">
                                 <polygon
@@ -627,7 +635,7 @@
                     </div>
 
                     <!-- Service 2: AI Integration - FEATURED -->
-                    <div class="service-card-premium featured" data-service="ai">
+                    <div class="service-card-premium featured" data-service="ai" data-category="ai">
                         <div class="featured-badge hot"><svg class="tg-icon tg-icon-sm badge-icon" viewBox="0 0 24 24"
                                 fill="currentColor" aria-hidden="true" focusable="false">
                                 <path
@@ -715,197 +723,197 @@
                 </div>
 
                 <!-- Standard Services Grid -->
-                <div class="services-grid-premium">
-                    <!-- Service 3: Static Sites -->
-                    <div class="service-card-premium" data-service="web">
-                        <div class="service-header">
-                            <div class="glass-icon large">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <rect x="2" y="3" width="20" height="14" rx="2" />
-                                    <path d="M8 21h8M12 17v4" stroke-linecap="round" />
-                                    <path d="M6 8h.01M9 8h.01" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <div class="service-title-wrap">
-                                <h3>Static Sites & Performance</h3>
-                                <div class="service-meta">
-                                    <span class="service-metric"><svg class="tg-icon tg-icon-sm metric-icon"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            aria-hidden="true">
-                                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                                        </svg> Sub-second loads</span>
-                                    <span class="service-starting">From $2,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="service-desc">Lightning-fast websites built for performance, SEO, and conversions.
-                            Modern frameworks, CDN deployment, and Core Web Vitals optimized.</p>
-                        <ul class="service-features">
-                            <li><span class="check-icon"></span>Sub-second load times</li>
-                            <li><span class="check-icon"></span>SEO & Core Web Vitals optimized</li>
-                            <li><span class="check-icon"></span>Mobile-first responsive design</li>
-                            <li><span class="check-icon"></span>Global CDN deployment</li>
-                        </ul>
-                        <button class="pricing-toggle" aria-expanded="false">
-                            <span>View Pricing Tiers</span>
-                            <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                <!-- Standard Services Grid -->
+                <!-- Service 3: Static Sites -->
+                <div class="service-card-premium" data-service="web" data-category="web">
+                    <div class="service-header">
+                        <div class="glass-icon large">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" stroke-linecap="round" />
+                                <path d="M6 8h.01M9 8h.01" stroke-linecap="round" />
                             </svg>
-                        </button>
-                        <div class="pricing-dropdown">
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">Landing Page</span>
-                                    <span class="tier-price">$2,000<small>+</small></span>
-                                </div>
-                                <p>Single-page site with premium design, contact form, and analytics setup.</p>
-                            </div>
-                            <div class="pricing-tier featured">
-                                <div class="tier-header">
-                                    <span class="tier-name">Business Site</span>
-                                    <span class="tier-price">$5,000<small>+</small></span>
-                                </div>
-                                <p>Multi-page website with CMS, blog, lead capture, and advanced SEO.</p>
-                            </div>
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">E-commerce</span>
-                                    <span class="tier-price">$10,000<small>+</small></span>
-                                </div>
-                                <p>Full e-commerce with payment processing, inventory management, and marketing
-                                    integrations.</p>
+                        </div>
+                        <div class="service-title-wrap">
+                            <h3>Static Sites & Performance</h3>
+                            <div class="service-meta">
+                                <span class="service-metric"><svg class="tg-icon tg-icon-sm metric-icon"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        aria-hidden="true">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                                    </svg> Sub-second loads</span>
+                                <span class="service-starting">From $2,000</span>
                             </div>
                         </div>
-                        <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
                     </div>
-
-                    <!-- Service 4: Brand & UI/UX -->
-                    <div class="service-card-premium" data-service="design">
-                        <div class="service-header">
-                            <div class="glass-icon large">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 17l-6.3 4 2.3-7-6-4.6h7.6L12 2z"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                    <p class="service-desc">Lightning-fast websites built for performance, SEO, and conversions.
+                        Modern frameworks, CDN deployment, and Core Web Vitals optimized.</p>
+                    <ul class="service-features">
+                        <li><span class="check-icon"></span>Sub-second load times</li>
+                        <li><span class="check-icon"></span>SEO & Core Web Vitals optimized</li>
+                        <li><span class="check-icon"></span>Mobile-first responsive design</li>
+                        <li><span class="check-icon"></span>Global CDN deployment</li>
+                    </ul>
+                    <button class="pricing-toggle" aria-expanded="false">
+                        <span>View Pricing Tiers</span>
+                        <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="pricing-dropdown">
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">Landing Page</span>
+                                <span class="tier-price">$2,000<small>+</small></span>
                             </div>
-                            <div class="service-title-wrap">
-                                <h3>Brand & UI/UX Design</h3>
-                                <div class="service-meta">
-                                    <span class="service-metric">🎨 Premium aesthetics</span>
-                                    <span class="service-starting">From $3,000</span>
-                                </div>
-                            </div>
+                            <p>Single-page site with premium design, contact form, and analytics setup.</p>
                         </div>
-                        <p class="service-desc">Cohesive brand identities and intuitive interfaces that convert. From
-                            typography to micro-interactions—every detail reflects your brand.</p>
-                        <ul class="service-features">
-                            <li><span class="check-icon"></span>Brand strategy & identity</li>
-                            <li><span class="check-icon"></span>UI/UX research & design</li>
-                            <li><span class="check-icon"></span>Design system creation</li>
-                            <li><span class="check-icon"></span>Prototyping & user testing</li>
-                        </ul>
-                        <button class="pricing-toggle" aria-expanded="false">
-                            <span>View Pricing Tiers</span>
-                            <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div class="pricing-dropdown">
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">Brand Refresh</span>
-                                    <span class="tier-price">$3,000<small>+</small></span>
-                                </div>
-                                <p>Logo refinement, color palette, typography, and basic brand guidelines.</p>
+                        <div class="pricing-tier featured">
+                            <div class="tier-header">
+                                <span class="tier-name">Business Site</span>
+                                <span class="tier-price">$5,000<small>+</small></span>
                             </div>
-                            <div class="pricing-tier featured">
-                                <div class="tier-header">
-                                    <span class="tier-name">Full Identity</span>
-                                    <span class="tier-price">$8,000<small>+</small></span>
-                                </div>
-                                <p>Complete brand identity with logo, guidelines, collateral templates, and UI kit.</p>
-                            </div>
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">Premium Experience</span>
-                                    <span class="tier-price">$15,000<small>+</small></span>
-                                </div>
-                                <p>End-to-end brand + product design with UX research, prototyping, and design system.
-                                </p>
-                            </div>
+                            <p>Multi-page website with CMS, blog, lead capture, and advanced SEO.</p>
                         </div>
-                        <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">E-commerce</span>
+                                <span class="tier-price">$10,000<small>+</small></span>
+                            </div>
+                            <p>Full e-commerce with payment processing, inventory management, and marketing
+                                integrations.</p>
+                        </div>
                     </div>
-
-                    <!-- Service 5: Consulting -->
-                    <div class="service-card-premium" data-service="consulting">
-                        <div class="service-header">
-                            <div class="glass-icon large">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                    <circle cx="12" cy="12" r="10" />
-                                    <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="service-title-wrap">
-                                <h3>Technical Consulting</h3>
-                                <div class="service-meta">
-                                    <span class="service-metric">🧠 Expert guidance</span>
-                                    <span class="service-starting">From $500/hr</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="service-desc">Strategic guidance on digital transformation, architecture decisions,
-                            and technology roadmaps. Get expert advice without long-term commitments.</p>
-                        <ul class="service-features">
-                            <li><span class="check-icon"></span>Architecture review & planning</li>
-                            <li><span class="check-icon"></span>Technology stack guidance</li>
-                            <li><span class="check-icon"></span>DevOps & cloud strategy</li>
-                            <li><span class="check-icon"></span>Team training & workshops</li>
-                        </ul>
-                        <button class="pricing-toggle" aria-expanded="false">
-                            <span>View Pricing Tiers</span>
-                            <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2">
-                                <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </button>
-                        <div class="pricing-dropdown">
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">Strategy Session</span>
-                                    <span class="tier-price">$500<small>/hr</small></span>
-                                </div>
-                                <p>One-on-one consulting sessions for specific technical challenges or decisions.</p>
-                            </div>
-                            <div class="pricing-tier featured">
-                                <div class="tier-header">
-                                    <span class="tier-name">Audit Package</span>
-                                    <span class="tier-price">$5,000<small>+</small></span>
-                                </div>
-                                <p>Comprehensive technical audit with detailed recommendations and implementation
-                                    roadmap.</p>
-                            </div>
-                            <div class="pricing-tier">
-                                <div class="tier-header">
-                                    <span class="tier-name">Retainer</span>
-                                    <span class="tier-price">$3,000<small>/mo</small></span>
-                                </div>
-                                <p>Ongoing advisory with monthly strategy calls, priority support, and unlimited async
-                                    communication.</p>
-                            </div>
-                        </div>
-                        <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
-                    </div>
+                    <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
                 </div>
 
-                <!-- Services CTA -->
-                <div class="services-bottom-cta">
-                    <p>Not sure which service is right for you?</p>
-                    <a href="#contact" class="btn btn-primary btn-lg">Book a Free Strategy Call →</a>
-                    <span class="cta-subtext">No commitment • 30-minute consultation • Custom recommendations</span>
+                <!-- Service 4: Brand & UI/UX -->
+                <div class="service-card-premium" data-service="design" data-category="web">
+                    <div class="service-header">
+                        <div class="glass-icon large">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 17l-6.3 4 2.3-7-6-4.6h7.6L12 2z"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="service-title-wrap">
+                            <h3>Brand & UI/UX Design</h3>
+                            <div class="service-meta">
+                                <span class="service-metric">🎨 Premium aesthetics</span>
+                                <span class="service-starting">From $3,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="service-desc">Cohesive brand identities and intuitive interfaces that convert. From
+                        typography to micro-interactions—every detail reflects your brand.</p>
+                    <ul class="service-features">
+                        <li><span class="check-icon"></span>Brand strategy & identity</li>
+                        <li><span class="check-icon"></span>UI/UX research & design</li>
+                        <li><span class="check-icon"></span>Design system creation</li>
+                        <li><span class="check-icon"></span>Prototyping & user testing</li>
+                    </ul>
+                    <button class="pricing-toggle" aria-expanded="false">
+                        <span>View Pricing Tiers</span>
+                        <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="pricing-dropdown">
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">Brand Refresh</span>
+                                <span class="tier-price">$3,000<small>+</small></span>
+                            </div>
+                            <p>Logo refinement, color palette, typography, and basic brand guidelines.</p>
+                        </div>
+                        <div class="pricing-tier featured">
+                            <div class="tier-header">
+                                <span class="tier-name">Full Identity</span>
+                                <span class="tier-price">$8,000<small>+</small></span>
+                            </div>
+                            <p>Complete brand identity with logo, guidelines, collateral templates, and UI kit.</p>
+                        </div>
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">Premium Experience</span>
+                                <span class="tier-price">$15,000<small>+</small></span>
+                            </div>
+                            <p>End-to-end brand + product design with UX research, prototyping, and design system.
+                            </p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
                 </div>
+
+                <!-- Service 5: Consulting -->
+                <div class="service-card-premium" data-service="consulting">
+                    <div class="service-header">
+                        <div class="glass-icon large">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="service-title-wrap">
+                            <h3>Technical Consulting</h3>
+                            <div class="service-meta">
+                                <span class="service-metric">🧠 Expert guidance</span>
+                                <span class="service-starting">From $500/hr</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="service-desc">Strategic guidance on digital transformation, architecture decisions,
+                        and technology roadmaps. Get expert advice without long-term commitments.</p>
+                    <ul class="service-features">
+                        <li><span class="check-icon"></span>Architecture review & planning</li>
+                        <li><span class="check-icon"></span>Technology stack guidance</li>
+                        <li><span class="check-icon"></span>DevOps & cloud strategy</li>
+                        <li><span class="check-icon"></span>Team training & workshops</li>
+                    </ul>
+                    <button class="pricing-toggle" aria-expanded="false">
+                        <span>View Pricing Tiers</span>
+                        <svg class="toggle-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <div class="pricing-dropdown">
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">Strategy Session</span>
+                                <span class="tier-price">$500<small>/hr</small></span>
+                            </div>
+                            <p>One-on-one consulting sessions for specific technical challenges or decisions.</p>
+                        </div>
+                        <div class="pricing-tier featured">
+                            <div class="tier-header">
+                                <span class="tier-name">Audit Package</span>
+                                <span class="tier-price">$5,000<small>+</small></span>
+                            </div>
+                            <p>Comprehensive technical audit with detailed recommendations and implementation
+                                roadmap.</p>
+                        </div>
+                        <div class="pricing-tier">
+                            <div class="tier-header">
+                                <span class="tier-name">Retainer</span>
+                                <span class="tier-price">$3,000<small>/mo</small></span>
+                            </div>
+                            <p>Ongoing advisory with monthly strategy calls, priority support, and unlimited async
+                                communication.</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-secondary service-cta">Request Proposal →</a>
+                </div>
+            </div>
+
+            <!-- Services CTA -->
+            <div class="services-bottom-cta">
+                <p>Not sure which service is right for you?</p>
+                <a href="#contact" class="btn btn-primary btn-lg">Book a Free Strategy Call →</a>
+                <span class="cta-subtext">No commitment • 30-minute consultation • Custom recommendations</span>
+            </div>
             </div>
         </section>
 
