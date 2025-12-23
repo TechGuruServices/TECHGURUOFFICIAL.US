@@ -4946,9 +4946,166 @@ footer {
 }
 
 /* ============================================
-   MOBILE RESPONSIVE STYLES
-   Full compatibility for iPhone and all devices
+   RESPONSIVE STYLES
+   Full compatibility for all devices
    ============================================ */
+
+/* Small Laptops / ASUS Tablet Laptops (1366px and below) */
+@media screen and (max-width: 1366px) {
+  .hero {
+    gap: clamp(1.5rem, 4vw, 3rem);
+    padding: clamp(2.5rem, 4vh, 3.5rem) clamp(1rem, 4vw, 1.5rem) clamp(2rem, 4vh, 3rem);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero-content {
+    flex: 1 1 400px;
+    min-width: 0;
+  }
+
+  .hero-image {
+    flex: 1 1 350px;
+    max-width: 450px;
+  }
+
+  .hero-image-rotator {
+    max-width: 380px;
+  }
+
+  .rotating-tagline {
+    font-size: 1.4rem;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+  }
+
+  .navbar {
+    padding: 0.875rem 1.5rem;
+  }
+
+  .nav-cta-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  /* Service cards - ensure 2 columns */
+  .services-grid-premium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets and 2-in-1 Devices (1024px and below) */
+@media screen and (max-width: 1024px) {
+  .hero {
+    gap: 1.5rem;
+    padding: 2.5rem 1.25rem 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.75rem;
+    line-height: 1.25;
+  }
+
+  .hero-content {
+    flex: 1 1 320px;
+  }
+
+  .hero-image {
+    flex: 1 1 280px;
+    max-width: 350px;
+  }
+
+  .hero-image-rotator {
+    max-width: 320px;
+  }
+
+  .rotating-tagline {
+    font-size: 1.3rem;
+  }
+
+  .hero-description {
+    font-size: 1.05rem;
+  }
+
+  .hero-highlights li {
+    font-size: 0.95rem;
+  }
+
+  /* Navbar adjustments */
+  .navbar {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .navbar ul {
+    gap: 1.5rem;
+  }
+
+  .nav-cta-btn span {
+    display: none;
+  }
+
+  .nav-cta-btn svg {
+    margin: 0;
+  }
+
+  /* Grid adjustments - 2 columns for tablets */
+  .services-featured-row {
+    grid-template-columns: 1fr;
+  }
+
+  .services-grid-premium {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process-step-premium {
+    grid-template-columns: 60px 1fr;
+    gap: 1.25rem;
+  }
+
+  .step-card {
+    grid-template-columns: auto 1fr auto;
+    padding: 1.75rem;
+  }
+
+  /* About section */
+  .about-main {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .approach-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Contact adjustments */
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Footer grid */
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  /* Section padding */
+  section {
+    padding: 50px 16px;
+  }
+}
 
 /* Tablet and below (768px) */
 @media screen and (max-width: 768px) {

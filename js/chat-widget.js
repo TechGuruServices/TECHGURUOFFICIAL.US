@@ -418,6 +418,18 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /**
+   * Helper to get clientX/clientY from mouse or touch event
+   */
+  const getEventCoords = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      return { clientX: e.touches[0].clientX, clientY: e.touches[0].clientY };
+    } else if (e.changedTouches && e.changedTouches.length > 0) {
+      return { clientX: e.changedTouches[0].clientX, clientY: e.changedTouches[0].clientY };
+    }
+    return { clientX: e.clientX, clientY: e.clientY };
+  };
+
+  /**
    * Drag functionality for chat widget container
    */
   const startDrag = (e) => {
@@ -425,14 +437,15 @@ document.addEventListener('DOMContentLoaded', () => {
       return; // Don't drag when clicking close button, input, or resize handles
     }
 
+    const coords = getEventCoords(e);
     isDragging = true;
     hasMoved = false;
-    dragStartX = e.clientX;
-    dragStartY = e.clientY;
+    dragStartX = coords.clientX;
+    dragStartY = coords.clientY;
 
     const rect = chatContainer.getBoundingClientRect();
-    dragOffsetX = e.clientX - rect.left;
-    dragOffsetY = e.clientY - rect.top;
+    dragOffsetX = coords.clientX - rect.left;
+    dragOffsetY = coords.clientY - rect.top;
 
     if (chatHeader.style) chatHeader.style.cursor = 'grabbing';
     e.preventDefault();
@@ -441,15 +454,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const drag = (e) => {
     if (!isDragging) return;
 
-    const moveDistance = Math.abs(e.clientX - dragStartX) + Math.abs(e.clientY - dragStartY);
+    const coords = getEventCoords(e);
+    const moveDistance = Math.abs(coords.clientX - dragStartX) + Math.abs(coords.clientY - dragStartY);
     if (moveDistance > 5) {
       hasMoved = true;
     }
 
     e.preventDefault();
 
-    const newLeft = e.clientX - dragOffsetX;
-    const newTop = e.clientY - dragOffsetY;
+    const newLeft = coords.clientX - dragOffsetX;
+    const newTop = coords.clientY - dragOffsetY;
 
     // Update container position
     chatContainer.style.position = 'fixed';
@@ -470,10 +484,11 @@ document.addEventListener('DOMContentLoaded', () => {
    * Resize functionality for chat window
    */
   const startResize = (e, direction) => {
+    const coords = getEventCoords(e);
     isResizing = true;
     resizeDirection = direction;
-    resizeStartX = e.clientX;
-    resizeStartY = e.clientY;
+    resizeStartX = coords.clientX;
+    resizeStartY = coords.clientY;
 
     const rect = chatWindow.getBoundingClientRect();
     const currentStyle = window.getComputedStyle(chatWindow);
@@ -504,8 +519,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     e.preventDefault();
 
-    const deltaX = e.clientX - resizeStartX;
-    const deltaY = e.clientY - resizeStartY;
+    const coords = getEventCoords(e);
+    const deltaX = coords.clientX - resizeStartX;
+    const deltaY = coords.clientY - resizeStartY;
 
     let newWidth = resizeStartWidth;
     let newHeight = resizeStartHeight;
@@ -922,23 +938,42 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Drag event listeners - works on both avatar and header
+  // Drag event listeners - works on both avatar and header (mouse + touch/stylus)
   chatToggle.addEventListener('mousedown', startDrag);
   chatHeader.addEventListener('mousedown', startDrag);
+  chatToggle.addEventListener('touchstart', startDrag, { passive: false });
+  chatHeader.addEventListener('touchstart', startDrag, { passive: false });
+
   document.addEventListener('mousemove', (e) => {
     drag(e);
     resize(e);
   });
+  document.addEventListener('touchmove', (e) => {
+    if (isDragging || isResizing) {
+      drag(e);
+      resize(e);
+    }
+  }, { passive: false });
+
   document.addEventListener('mouseup', (e) => {
     stopDrag(e);
     stopResize();
   });
+  document.addEventListener('touchend', (e) => {
+    stopDrag(e);
+    stopResize();
+  });
+  document.addEventListener('touchcancel', (e) => {
+    stopDrag(e);
+    stopResize();
+  });
 
-  // Resize handle event listeners
+  // Resize handle event listeners (mouse + touch/stylus)
   const resizeHandles = document.querySelectorAll('.resize-handle');
   resizeHandles.forEach(handle => {
     const direction = handle.className.split(' ')[1].replace('resize-handle-', '');
     handle.addEventListener('mousedown', (e) => startResize(e, direction));
+    handle.addEventListener('touchstart', (e) => startResize(e, direction), { passive: false });
   });
 
   // Close on Escape key

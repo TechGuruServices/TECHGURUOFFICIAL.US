@@ -1402,27 +1402,41 @@ body.light-theme {
   }
 
   .chat-window {
+    /* Fixed positioning relative to viewport */
     position: fixed;
     bottom: 0;
     right: 0;
     left: 0;
-    width: 100vw;
-    width: 100dvw;
-    /* Account for mobile browser chrome */
-    height: calc(100vh - 70px);
-    height: calc(100dvh - 70px);
-    /* Dynamic viewport height for mobile */
-    max-width: 100vw;
-    max-width: 100dvw;
-    min-width: unset;
-    max-height: calc(100vh - 70px);
-    max-height: calc(100dvh - 70px);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    /* Disable animations on mobile for performance */
-    animation: none;
-    /* Prevent horizontal overflow */
-    overflow-x: hidden;
-    box-sizing: border-box;
+    top: 0;
+    /* Full screen on mobile */
+
+    /* Height and Width */
+    width: 100%;
+    height: 100%;
+    /* Fallback */
+    height: 100dvh;
+    /* Dynamic viewport height */
+
+    /* Remove max-height/width constraints */
+    max-width: none;
+    max-height: none;
+    min-width: 0;
+
+    /* Styling */
+    border-radius: 0;
+    margin: 0;
+    background: var(--glass-bg-solid);
+    /* Solid background for legibility */
+
+    /* Flex layout */
+    display: flex;
+    flex-direction: column;
+
+    /* Ensure it sits above everything */
+    z-index: 10000;
+
+    /* Prevent body scroll when chat is open (handled by JS usually, but this helps) */
+    overscroll-behavior: contain;
   }
 
   .chat-window::before {
