@@ -485,8 +485,8 @@ body.light-theme {
    Chat Messages
    ============================================ */
 .chat-messages {
-  flex: 1 1 auto;
-  min-height: 200px;
+  flex: 1 1 0;
+  min-height: 100px;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 1rem;
@@ -494,6 +494,8 @@ body.light-theme {
   flex-direction: column;
   gap: 0.75rem;
   scroll-behavior: smooth;
+  /* Allow messages area to shrink to make room for form */
+  overflow: auto;
 }
 
 /* Scrollbar */
@@ -761,15 +763,21 @@ body.light-theme {
   align-items: flex-end;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
   /* Solid fallback */
   background: #141e32;
-  background: rgba(20, 30, 50, 0.85);
+  background: rgba(20, 30, 50, 0.95);
   border-top: 1px solid var(--glass-border);
   /* Mobile fix: prevent overflow */
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: visible;
+  /* CRITICAL: Prevent form from shrinking or being cut off */
+  flex-shrink: 0;
+  min-height: 60px;
+  position: relative;
+  z-index: 10;
 }
 
 .chat-input-wrapper {
@@ -875,7 +883,8 @@ body.light-theme {
 .chat-input-footer {
   display: flex;
   justify-content: space-between;
-  padding: 0 0.5rem;
+  padding: 0.25rem 0.5rem;
+  flex-shrink: 0;
 }
 
 .char-count,
@@ -1205,6 +1214,8 @@ body.light-theme {
   flex-wrap: wrap;
   gap: 0.5rem;
   padding: 0 1rem 0.5rem;
+  flex-shrink: 0;
+  background: rgba(20, 30, 50, 0.95);
 }
 
 .chat-file-preview:empty {
