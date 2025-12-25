@@ -1561,69 +1561,174 @@ video.hero-slide {
   -webkit-text-fill-color: transparent;
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
+/* ============================================
+   Services Section - Clean & Simple
+   ============================================ */
+.services {
+  padding: 6rem 2rem;
+  background: var(--color-bg);
+}
+
+.services .container {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-.service-card {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 24px;
-  padding: 2.5rem;
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
+.services .section-header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+.services .section-label {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(74, 108, 247, 0.1);
+  border: 1px solid rgba(74, 108, 247, 0.2);
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.services .section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  margin-bottom: 1rem;
+}
+
+.services .section-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Service Card - Clean Design */
+.service-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.05);
   border-color: rgba(74, 108, 247, 0.3);
+  transform: translateY(-4px);
 }
 
+/* Service Icon */
 .service-icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: 1.25rem;
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(74, 108, 247, 0.15), rgba(162, 116, 255, 0.1));
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--color-primary);
+}
+
+/* Service Title */
 .service-card h3 {
-  font-size: 1.35rem;
-  margin-bottom: 1rem;
-  background: linear-gradient(45deg, var(--color-primary), var(--color-secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-light);
+  margin-bottom: 0.75rem;
 }
 
+/* Service Description */
 .service-card p {
   color: var(--color-text-muted);
   font-size: 0.95rem;
-  line-height: 1.7;
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+/* Service List */
+.service-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.service-list li {
+  padding: 0.4rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.service-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Service Price */
+.service-price {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(74, 108, 247, 0.1);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+/* Services CTA */
+.services-cta {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.services-cta p {
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services {
+    padding: 4rem 1.5rem;
+  }
+  
+  .services .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================
-   Premium Services Section - Enhanced
+   Premium Services Section - Enhanced (Legacy)
    ============================================ */
 .services-premium {
   padding: 6rem 2rem;
