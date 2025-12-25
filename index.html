@@ -66,7 +66,7 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/design-tokens.css">
     <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/styles.css?v=20251125">
+    <link rel="stylesheet" href="css/styles.css?v=20251224e">
     <script src="js/scripts.js" defer></script>
 
     <!-- FAQ Schema Markup -->
@@ -156,6 +156,29 @@
 <body>
     <!-- Skip to Content Link for Accessibility -->
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
+
+    <!-- Global SVG Gradient Definitions -->
+    <svg aria-hidden="true" class="svg-defs-container" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <linearGradient id="gradient-primary" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4a6cf7" />
+                <stop offset="100%" stop-color="#a274ff" />
+            </linearGradient>
+            <linearGradient id="gradient-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#64dedf" />
+                <stop offset="100%" stop-color="#4a6cf7" />
+            </linearGradient>
+            <linearGradient id="gradient-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fbbf24" />
+                <stop offset="100%" stop-color="#d97706" />
+            </linearGradient>
+            <linearGradient id="gradient-success" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#34d399" />
+                <stop offset="100%" stop-color="#059669" />
+            </linearGradient>
+        </defs>
+    </svg>
 
     <!-- Navigation Bar -->
     <header class="navbar" role="banner">
@@ -250,7 +273,7 @@
                     <img src="images/hero-1.webp" alt="TechGuru Automation" class="hero-slide active">
                     <img src="images/hero-3.webp" alt="AI Efficiency" class="hero-slide">
                     <img src="images/hero-4.webp" alt="Advanced Workflows" class="hero-slide">
-                    <video class="hero-slide" autoplay muted loop playsinline poster="images/video-poster.webp"
+                    <video class="hero-slide" autoplay muted loop playsinline webkit-playsinline poster="images/video-poster.webp"
                         id="hero-video" aria-hidden="true">
                         <source src="assets/herovideo.mp4" type="video/mp4">
                     </video>
@@ -548,14 +571,10 @@
                 <div class="services-grid-premium tab-content">
                     <!-- Service 1: Automation - FEATURED -->
                     <div class="service-card-premium featured" data-service="automation" data-category="automation">
-                        <div class="featured-badge"><svg class="tg-icon tg-icon-sm badge-icon" viewBox="0 0 24 24"
-                                fill="currentColor" aria-hidden="true" focusable="false">
-                                <polygon
-                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                            </svg> Most Popular</div>
+
                         <div class="service-header">
                             <div class="glass-icon large animated">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient-primary)" stroke-width="1.5">
                                     <path
                                         d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"
                                         stroke-linecap="round" />
@@ -631,19 +650,14 @@
                                     guarantees.</p>
                             </div>
                         </div>
-                        <a href="#contact" class="btn btn-primary service-cta btn-pulse">Get Custom Quote →</a>
                     </div>
 
                     <!-- Service 2: AI Integration - FEATURED -->
                     <div class="service-card-premium featured" data-service="ai" data-category="ai">
-                        <div class="featured-badge hot"><svg class="tg-icon tg-icon-sm badge-icon" viewBox="0 0 24 24"
-                                fill="currentColor" aria-hidden="true" focusable="false">
-                                <path
-                                    d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z" />
-                            </svg> High Demand</div>
+
                         <div class="service-header">
                             <div class="glass-icon large animated">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient-accent)" stroke-width="1.5">
                                     <rect x="3" y="11" width="18" height="10" rx="2" />
                                     <circle cx="12" cy="5" r="3" />
                                     <path d="M12 8v3M8 15h.01M12 15h.01M16 15h.01" stroke-linecap="round" />
@@ -718,7 +732,6 @@
                                     dedicated support.</p>
                             </div>
                         </div>
-                        <a href="#contact" class="btn btn-primary service-cta btn-pulse">Get Custom Quote →</a>
                     </div>
                 </div>
 
@@ -728,7 +741,7 @@
                 <div class="service-card-premium" data-service="web" data-category="web">
                     <div class="service-header">
                         <div class="glass-icon large">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient-primary)" stroke-width="1.5">
                                 <rect x="2" y="3" width="20" height="14" rx="2" />
                                 <path d="M8 21h8M12 17v4" stroke-linecap="round" />
                                 <path d="M6 8h.01M9 8h.01" stroke-linecap="round" />
@@ -792,7 +805,7 @@
                 <div class="service-card-premium" data-service="design" data-category="web">
                     <div class="service-header">
                         <div class="glass-icon large">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient-primary)" stroke-width="1.5">
                                 <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 17l-6.3 4 2.3-7-6-4.6h7.6L12 2z"
                                     stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -851,7 +864,7 @@
                 <div class="service-card-premium" data-service="consulting">
                     <div class="service-header">
                         <div class="glass-icon large">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="url(#gradient-primary)" stroke-width="1.5">
                                 <circle cx="12" cy="12" r="10" />
                                 <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -1575,17 +1588,7 @@
                                 "#a274ff",  // Secondary purple
                                 "#64dedf",  // Accent cyan/teal
                                 "#8b5cf6"   // Deep violet
-                            ],
-                            lights: {
-                                intensity: 180,
-                                colors: [
-                                    "#4a6cf7",  // Primary blue
-                                    "#a274ff",  // Secondary purple
-                                    "#64dedf",  // Accent cyan
-                                    "#7c3aed",  // Violet
-                                    "#38bdf8"   // Sky blue
-                                ]
-                            }
+                            ]
                         }
                     });
 

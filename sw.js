@@ -3,7 +3,7 @@
  * Provides offline functionality, caching strategies, and PWA capabilities
  */
 
-const CACHE_VERSION = 'techguru-v1.0.1';
+const CACHE_VERSION = 'techguru-v1.0.6-20251224';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
@@ -14,9 +14,9 @@ const STATIC_ASSETS = [
   '/index.html',
   '/css/design-tokens.css',
   '/css/components.css',
-  '/css/styles.min.css',
+  '/css/styles.css',
   '/css/chat-widget-dark-glass.min.css',
-  '/js/scripts.min.js',
+  '/js/scripts.js',
   '/js/chat-widget.min.js',
   '/images/icons/nav-icon-new.webp',
   '/images/chat-avatar.webp',

@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Min and max dimensions
   const MIN_WIDTH = 280;
   const MIN_HEIGHT = 400;
-  const MAX_WIDTH = 600;
+  const MAX_WIDTH = 800;
 
   // Calculate max height dynamically to prevent overflow (viewport height - avatar height - padding)
   const getMaxHeight = () => Math.min(800, window.innerHeight - 140);
@@ -302,10 +302,11 @@ document.addEventListener('DOMContentLoaded', () => {
       right: 0;
       background: linear-gradient(135deg, rgba(74, 108, 247, 0.95), rgba(162, 116, 255, 0.95));
       color: white;
-      padding: 1rem 1.25rem;
-      border-radius: 12px 12px 0 12px;
+      padding: 1rem 1.5rem;
+      border-radius: 16px 16px 0 16px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      max-width: 220px;
+      min-width: 280px;
+      max-width: 340px;
       animation: promptSlideIn 0.4s ease;
       cursor: pointer;
       z-index: 1000;

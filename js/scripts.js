@@ -244,6 +244,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================
+  // PRICING TIER SELECTION - Enhanced UX
+  // ============================================
+  const pricingTiers = document.querySelectorAll('.pricing-tier');
+
+  pricingTiers.forEach(tier => {
+    tier.addEventListener('click', (e) => {
+      // Get parent card to scope selection
+      const parentCard = tier.closest('.service-card-premium');
+      const siblingsInCard = parentCard.querySelectorAll('.pricing-tier');
+      
+      // Remove selected from siblings within same card
+      siblingsInCard.forEach(sibling => {
+        sibling.classList.remove('selected');
+      });
+      
+      // Add selected to clicked tier
+      tier.classList.add('selected');
+      
+      // Optional: Update CTA button text to reflect selection
+      const ctaBtn = parentCard.querySelector('.service-cta');
+      const tierName = tier.querySelector('.tier-name').textContent;
+      if (ctaBtn && tierName) {
+        ctaBtn.textContent = `Get ${tierName} Quote →`;
+      }
+    });
+  });
+
+  // ============================================
   // EXIT INTENT POPUP - Only on Contact Form Abandonment
   // ============================================
   const exitPopup = document.getElementById('exit-popup');
@@ -615,4 +643,100 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // ============================================
+  // COUNTER ANIMATION ON RESULTS - Premium Stats
+  // ============================================
+  const resultNumbers = document.querySelectorAll('.result-number');
+  
+  // Parse value and suffix from text (e.g., "40+" -> {value: 40, suffix: "+"})
+  function parseResultValue(text) {
+    const cleaned = text.trim();
+    // Match patterns like "40+", "95%", "2-4x", "24/7", "80%", "3x"
+    const numMatch = cleaned.match(/^([\d.]+)/);
+    if (numMatch) {
+      const value = parseFloat(numMatch[1]);
+      const suffix = cleaned.replace(numMatch[1], '');
+      return { value, suffix, hasNumber: true };
+    }
+    // For patterns like "24/7" - don't animate, just return as-is
+    return { value: 0, suffix: cleaned, hasNumber: false };
+  }
+
+  // Animate counter from 0 to target value
+  function animateCounter(element, targetValue, suffix, duration = 1500) {
+    const startTime = performance.now();
+    const startValue = 0;
+    
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function for smooth deceleration
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+      
+      // Format display value
+      let displayValue;
+      if (targetValue % 1 !== 0) {
+        // Has decimal, show one decimal place during animation
+        displayValue = currentValue.toFixed(1);
+      } else {
+        displayValue = Math.round(currentValue);
+      }
+      
+      element.textContent = displayValue + suffix;
+      
+      // Add pulse effect periodically
+      if (progress < 1) {
+        if (elapsed % 100 < 20) {
+          element.classList.add('counting');
+          setTimeout(() => element.classList.remove('counting'), 150);
+        }
+        requestAnimationFrame(updateCounter);
+      } else {
+        // Animation complete
+        element.textContent = targetValue + suffix;
+        element.classList.add('count-complete');
+        element.dataset.counted = 'true';
+        setTimeout(() => element.classList.remove('count-complete'), 500);
+      }
+    }
+    
+    requestAnimationFrame(updateCounter);
+  }
+
+  // Intersection Observer for triggering counter animation
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const element = entry.target;
+        
+        // Only animate once
+        if (element.dataset.counted === 'true') return;
+        
+        const originalText = element.dataset.originalValue || element.textContent;
+        element.dataset.originalValue = originalText;
+        
+        const parsed = parseResultValue(originalText);
+        
+        if (parsed.hasNumber && parsed.value > 0) {
+          // Start with 0
+          element.textContent = '0' + parsed.suffix;
+          // Animate to target
+          setTimeout(() => {
+            animateCounter(element, parsed.value, parsed.suffix, 1200);
+          }, 200);
+        }
+      }
+    });
+  }, {
+    threshold: 0.5,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  // Observe all result numbers
+  resultNumbers.forEach(num => {
+    counterObserver.observe(num);
+  });
 });

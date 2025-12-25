@@ -236,11 +236,11 @@ body.light-theme {
   position: fixed;
   bottom: calc(1.5rem + 90px);
   right: 1rem;
-  width: min(400px, calc(100vw - 1.5rem));
-  height: min(600px, calc(100vh - 140px));
-  min-width: 320px;
-  min-height: 450px;
-  max-width: min(420px, calc(100vw - 1.5rem));
+  width: min(600px, calc(100vw - 1.5rem));
+  height: min(550px, calc(100vh - 140px));
+  min-width: 400px;
+  min-height: 400px;
+  max-width: min(800px, calc(100vw - 1.5rem));
   max-height: min(700px, calc(100vh - 140px));
 
   /* Solid fallback for browsers without backdrop-filter support */
@@ -1449,6 +1449,7 @@ body.light-theme {
   .chat-suggestions {
     flex-wrap: nowrap;
     overflow-x: auto;
+    /* Firefox */
     scrollbar-width: none;
     padding: 0.5rem 0.75rem;
     box-sizing: border-box;
