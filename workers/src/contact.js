@@ -177,6 +177,8 @@ const getClientIp = (request) => {
   );
 };
 
+import { sendTelegramMessage } from './notifications';
+
 /**
  * Main contact handler
  */
@@ -243,6 +245,19 @@ export const handleContact = async (request, env, ctx, origin) => {
         { status: 500, headers: corsHeaders }
       );
     }
+
+    // Send Telegram Notification
+    ctx.waitUntil((async () => {
+      const tgMessage = `🚀 <b>New TechGuru Lead!</b>\n\n` +
+        `👤 <b>Name:</b> ${validation.data.name}\n` +
+        `📧 <b>Email:</b> ${validation.data.email}\n` +
+        `💼 <b>Service:</b> ${validation.data.service}\n` +
+        `📞 <b>Phone:</b> ${validation.data.phone}\n` +
+        `🏢 <b>Company:</b> ${validation.data.company}\n\n` +
+        `💬 <b>Message:</b>\n<i>${validation.data.message}</i>`;
+      
+      await sendTelegramMessage(env, tgMessage);
+    })());
 
     // Success response
     return new Response(

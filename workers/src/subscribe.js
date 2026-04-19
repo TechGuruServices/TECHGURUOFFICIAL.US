@@ -115,6 +115,8 @@ const getClientIp = (request) => {
   );
 };
 
+import { sendTelegramMessage } from './notifications';
+
 /**
  * Main subscribe handler
  */
@@ -182,6 +184,15 @@ export const handleSubscribe = async (request, env, ctx, origin) => {
         { status: 500, headers: corsHeaders }
       );
     }
+
+    // Send Telegram Notification
+    ctx.waitUntil((async () => {
+      const tgMessage = `📬 <b>New Newsletter Signup!</b>\n\n` +
+        `📮 <b>Email:</b> ${validation.data.email}\n` +
+        `📱 <b>Source:</b> ${validation.data.source}`;
+      
+      await sendTelegramMessage(env, tgMessage);
+    })());
 
     // Success response
     return new Response(

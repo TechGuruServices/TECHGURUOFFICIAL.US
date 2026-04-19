@@ -19,11 +19,11 @@ body.dark-theme {
   --gradient-cta: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
 
   /* Glass effects - Dark */
-  --glass-bg: rgba(8, 10, 15, 0.95);
+  --glass-bg: rgba(13, 17, 26, 0.7);
   --glass-bg-light: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 255, 255, 0.12);
-  --card-bg: rgba(255, 255, 255, 0.03);
-  --card-border: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --card-bg: rgba(255, 255, 255, 0.02);
+  --card-border: rgba(255, 255, 255, 0.06);
   --input-bg: rgba(255, 255, 255, 0.05);
   --input-border: rgba(255, 255, 255, 0.15);
   --section-bg-alt: rgba(255, 255, 255, 0.02);
@@ -206,11 +206,12 @@ html {
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   background: var(--color-bg);
   color: var(--color-text-light);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
   overflow-x: hidden;
   /* Mobile optimizations */
   max-width: 100vw;
@@ -283,45 +284,38 @@ section {
   opacity: 0;
 }
 
-/* Navbar Base Styles */
+/* Navbar Base Styles - Refactored to Floating Island */
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 95%;
+  max-width: 1200px;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background: transparent;
-  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  padding: 0.7rem 1.5rem;
+  background: rgba(13, 17, 26, 0.6);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar.navbar-scrolled {
-  background: rgba(8, 10, 15, 0.85);
-  /* Slightly more transparent than default */
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  top: 1rem;
+  width: 90%;
+  background: rgba(13, 17, 26, 0.8);
+  padding: 0.6rem 1.2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Animated gradient line at bottom of navbar */
+/* Remove the full-width animated line as it breaks the island look */
 .navbar::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg,
-      var(--color-primary),
-      var(--color-secondary),
-      var(--color-accent),
-      var(--color-secondary),
-      var(--color-primary));
-  background-size: 200% 100%;
-  animation: gradient-surge 8s ease-in-out infinite;
+  display: none;
 }
 
 @keyframes gradient-surge {
@@ -380,17 +374,16 @@ section {
   object-fit: contain;
 }
 
-/* Nav Menu - Centered */
+/* Nav Menu - Refined for Floating Navbar */
 .nav-menu {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
 }
 
 .navbar ul {
   list-style: none;
   display: flex;
-  gap: 2.5rem;
+  gap: 2rem;
   justify-content: center;
 }
 
@@ -406,6 +399,28 @@ section {
   position: relative;
   font-size: 0.95rem;
   letter-spacing: 0.02em;
+}
+
+/* Hide mobile-only phone link on desktop */
+.mobile-only-phone {
+  display: none !important;
+}
+
+.nav-phone-link {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Hide phone number text on tablet/narrower desktop to prevent navbar overlap */
+@media (max-width: 1100px) {
+  .nav-phone-text {
+    display: none;
+  }
+  .nav-phone-link {
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+  }
 }
 
 .navbar a:not(.nav-cta)::after {
@@ -1483,27 +1498,58 @@ video.hero-slide {
 
 .why-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(280px, auto);
   gap: clamp(1rem, 2vw, 1.5rem);
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .why-card {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 20px;
-  padding: clamp(1.25rem, 3vw, 1.75rem);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 32px;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--card-border);
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  text-align: center;
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+/* Bento Spans */
+.bento-span-large {
+  grid-column: span 2;
+  grid-row: span 2;
+  background: linear-gradient(135deg, rgba(74, 108, 247, 0.05), rgba(162, 116, 255, 0.05));
+}
+
+.bento-span-medium {
+  grid-column: span 2;
+}
+
+@media (max-width: 992px) {
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .bento-span-large, .bento-span-medium {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
 
 .why-card::before {
@@ -1517,10 +1563,12 @@ video.hero-slide {
 }
 
 .why-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(138, 107, 255, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-color: rgba(74, 108, 247, 0.3);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(74, 108, 247, 0.2);
+  border-color: rgba(74, 108, 247, 0.5);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .why-icon {
@@ -1609,20 +1657,36 @@ video.hero-slide {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
 /* Service Card - Clean Design */
 .service-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 2rem;
-  transition: all 0.3s ease;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 28px;
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .service-card:hover {
@@ -4554,6 +4618,14 @@ video.hero-slide {
 
   .navbar-actions .nav-cta {
     display: none;
+  }
+
+  .mobile-only-phone {
+    display: block !important;
+  }
+
+  .nav-phone-link {
+    font-size: 0.85rem !important;
   }
 
   .nav-menu {
