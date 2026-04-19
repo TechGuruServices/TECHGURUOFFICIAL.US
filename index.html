@@ -198,10 +198,16 @@
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li class="mobile-only-phone" style="margin-top: 10px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;">
+                    <a href="tel:+17866369964" style="color: #64dedf; font-weight: 600;">📞 Call Now: +1 786-636-9964</a>
+                </li>
             </ul>
         </nav>
 
-        <div class="navbar-actions">
+        <div class="navbar-actions" style="display: flex; align-items: center; gap: 15px;">
+            <a href="tel:+17866369964" class="nav-phone-link" style="text-decoration: none; font-weight: 600; color: #f2f4fa; font-size: 0.95rem; white-space: nowrap;">
+                📞 +1 786-636-9964
+            </a>
             <a href="#contact" class="btn btn-primary nav-cta-btn" title="Book a Free Strategy Call">
                 <svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                     aria-hidden="true" focusable="false">
@@ -1261,7 +1267,7 @@
         <!-- PWA Service Worker Registration -->
         <script>
             // Register service worker for PWA functionality
-            if ('serviceWorker' in navigator) {
+            if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
                 window.addEventListener('load', () => {
                     navigator.serviceWorker.register('/sw.js')
                         .then((registration) => {

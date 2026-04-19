@@ -356,10 +356,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!email) return;
 
       try {
-        const res = await fetch(API_BASE + '/api/subscribe', {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, source: 'exit-popup' })
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ 
+            access_key: '79ea5629-dbba-4cfe-95e6-930e25f542e5',
+            email, 
+            source: 'exit-popup',
+            subject: 'New Exit Popup Submission',
+            from_name: 'Contact Us (Exit Popup)'
+          })
         });
 
         if (res.ok) {
@@ -396,10 +405,18 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
 
       try {
-        const res = await fetch(API_BASE + '/api/subscribe', {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email })
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ 
+            access_key: '79ea5629-dbba-4cfe-95e6-930e25f542e5',
+            email,
+            subject: 'New Newsletter Subscription',
+            from_name: 'Contact Us (Newsletter)'
+          })
         });
         if (!res.ok) throw new Error('Network response was not ok');
 
@@ -423,6 +440,12 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const formData = new FormData(contactForm);
       const payload = Object.fromEntries(formData.entries());
+      
+      // Add Web3Forms Access Key to payload
+      payload.access_key = '79ea5629-dbba-4cfe-95e6-930e25f542e5';
+      payload.subject = 'New Contact Form Submission';
+      payload.from_name = 'Contact Us (Main Form)';
+      
       const button = contactForm.querySelector('button');
       const originalText = button.textContent;
 
@@ -430,9 +453,12 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
 
       try {
-        const res = await fetch(API_BASE + '/api/contact', {
+        const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
           body: JSON.stringify(payload)
         });
         if (!res.ok) {
