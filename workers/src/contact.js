@@ -124,105 +124,44 @@ const checkRateLimit = async (kv, clientIp) => {
 };
 
 /**
- * Send emails via SendGrid (recommended for reliability)
+ * Send emails via Web3Forms
  */
-const sendEmailViaSendGrid = async (data, sendGridKey, notificationEmail, replyToEmail) => {
-  const url = 'https://api.sendgrid.com/v3/mail/send';
+const sendViaWeb3Forms = async (data, web3FormsKey) => {
+  const url = 'https://api.web3forms.com/submit';
 
-  // Email to client (confirmation)
-  const clientEmail = {
-    personalizations: [
-      {
-        to: [{ email: data.email, name: data.name }],
-        subject: 'We received your inquiry - TechGuru',
-      },
-    ],
-    from: {
-      email: replyToEmail,
-      name: 'TECHGURU',
-    },
-    content: [
-      {
-        type: 'text/html',
-        value: `<h2>Thank you for contacting TechGuru!</h2>
-<p>Hi ${data.name},</p>
-<p>We received your message and will get back to you within 24 hours.</p>
-<p><strong>Your Message:</strong></p>
-<p>${data.message.replace(/\n/g, '<br>')}</p>
-<p>Best regards,<br>TechGuru Team</p>`,
-      },
-    ],
-  };
-
-  // Email to admin (notification)
-  const adminEmail = {
-    personalizations: [
-      {
-        to: [{ email: notificationEmail, name: 'TechGuru Admin' }],
-        subject: `New Contact Form Submission: ${data.subject}`,
-      },
-    ],
-    from: {
-      email: replyToEmail,
-      name: 'TECHGURU',
-    },
-    replyTo: {
-      email: data.email,
-      name: data.name,
-    },
-    content: [
-      {
-        type: 'text/html',
-        value: `<h2>New Contact Form Submission</h2>
-<p><strong>Name:</strong> ${data.name}</p>
-<p><strong>Email:</strong> ${data.email}</p>
-<p><strong>Company:</strong> ${data.company}</p>
-<p><strong>Phone:</strong> ${data.phone}</p>
-<p><strong>Service Interest:</strong> ${data.service}</p>
-<p><strong>Subject:</strong> ${data.subject}</p>
-<p><strong>Message:</strong></p>
-<p>${data.message.replace(/\n/g, '<br>')}</p>
-<p><em>Sent at: ${new Date().toISOString()}</em></p>`,
-      },
-    ],
+  // Map our data to match Web3Forms expected format structure
+  const payload = {
+    access_key: web3FormsKey,
+    subject: data.subject || 'New Contact Form Submission',
+    from_name: 'TechGuru Automated System',
+    name: data.name,
+    email: data.email,
+    message: data.message,
+    // Using string interpolation for Web3Forms so it formats nicely in their default template
+    'Company': data.company,
+    'Phone': data.phone,
+    'Service Interest': data.service
   };
 
   try {
-    // Send confirmation to client
-    const clientResponse = await fetch(url, {
+    const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${sendGridKey}`,
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
-      body: JSON.stringify(clientEmail),
+      body: JSON.stringify(payload),
     });
 
-    if (!clientResponse.ok) {
-      const errorText = await clientResponse.text();
-      console.error(`SendGrid client email failed (${clientResponse.status}):`, errorText);
-      throw new Error(`SendGrid client email failed: ${clientResponse.status} - ${errorText}`);
-    }
-
-    // Send notification to admin
-    const adminResponse = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${sendGridKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(adminEmail),
-    });
-
-    if (!adminResponse.ok) {
-      const errorText = await adminResponse.text();
-      console.error(`SendGrid admin email failed (${adminResponse.status}):`, errorText);
-      throw new Error(`SendGrid admin email failed: ${adminResponse.status} - ${errorText}`);
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Web3Forms email failed (${response.status}):`, errorText);
+      throw new Error(`Web3Forms failed: ${response.status} - ${errorText}`);
     }
 
     return { success: true };
   } catch (error) {
-    console.error('SendGrid Email Error:', error);
+    console.error('Web3Forms Email Error:', error);
     return { success: false, error: error.message };
   }
 };
@@ -282,24 +221,28 @@ export const handleContact = async (request, env, ctx, origin) => {
     }
 
     // Check for API keys
-    const sendGridKey = env.SENDGRID_API_KEY;
-    const adminEmail = env.ADMIN_EMAIL || 'info@techguruofficial.us';
+    const web3FormsKey = env.WEB3FORMS_ACCESS_KEY;
 
-    if (!sendGridKey) {
-      console.error('SENDGRID_API_KEY not configured');
+    if (!web3FormsKey) {
+      console.error('WEB3FORMS_ACCESS_KEY not configured');
       return new Response(
-        JSON.stringify({ error: 'Email service is not properly configured' }),
+        JSON.stringify({ error: 'Form service is not properly configured' }),
         { status: 500, headers: corsHeaders }
       );
     }
 
     // Send emails
-    await sendEmailViaSendGrid(
+    const result = await sendViaWeb3Forms(
       validation.data,
-      sendGridKey,
-      adminEmail,
-      adminEmail
+      web3FormsKey
     );
+
+    if (!result.success) {
+      return new Response(
+        JSON.stringify({ error: 'Failed to process submission. Please try again.' }),
+        { status: 500, headers: corsHeaders }
+      );
+    }
 
     // Success response
     return new Response(

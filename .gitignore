@@ -1,4 +1,12 @@
 
-
 #Ignore vscode AI rules
 .github\instructions\codacy.instructions.md
+
+# Environment variables
+.env
+.env.*
+!.env.example
+.dev.vars
+
+# Dependencies
+node_modules/
