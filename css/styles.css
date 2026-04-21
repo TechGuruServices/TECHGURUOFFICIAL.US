@@ -406,9 +406,44 @@ section {
   display: none !important;
 }
 
-.nav-phone-link {
+.nav-phone-mobile-item {
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.nav-phone-mobile-link {
+  color: var(--color-accent);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
   flex-shrink: 0;
+}
+
+.nav-phone-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
 }
 
 /* Hide phone number text on tablet/narrower desktop to prevent navbar overlap */
