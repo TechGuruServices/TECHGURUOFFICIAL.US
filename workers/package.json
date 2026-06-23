@@ -12,6 +12,6 @@
   "author": "TechGuru",
   "license": "MIT",
   "devDependencies": {
-    "wrangler": "^3.26.0"
+    "wrangler": "^4.103.0"
   }
 }
