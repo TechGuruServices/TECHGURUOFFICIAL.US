@@ -5,6 +5,11 @@
  * exit intent popup, smooth interactions, and theme toggle.
  */
 
+// Fade in decorative SVG icons (star & triangle) after page load to prevent flash
+window.addEventListener('load', () => {
+  document.documentElement.classList.add('decor-loaded');
+});
+
 document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   // API BASE URL - Cloudflare Worker
@@ -347,39 +352,50 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if (exitPopupForm) {
-    exitPopupForm.addEventListener('submit', async (e) => {
+  const exitPopupFormObj = document.getElementById('exit-popup-form');
+  if (exitPopupFormObj) {
+    exitPopupFormObj.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const emailInput = exitPopupForm.querySelector('input[type="email"]');
-      const email = emailInput.value.trim();
+      const emailInput = exitPopupFormObj.querySelector('input[name="email"]');
+      const email = emailInput ? emailInput.value.trim() : '';
+      const button = exitPopupFormObj.querySelector('button');
+      const originalText = button.textContent;
 
-      if (!email) return;
+      if (!email) {
+        showFormMessage(exitPopupFormObj, 'Please enter a valid email address.', 'error');
+        return;
+      }
+
+      button.textContent = 'Sending...';
+      button.disabled = true;
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(`${API_BASE}/api/subscribe`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({ 
-            email, 
-            source: 'exit-popup'
+            email,
+            source: 'exit_popup'
           })
         });
+        if (!res.ok) throw new Error('Network response was not ok');
 
-        if (res.ok) {
-          exitPopupForm.innerHTML = '<p style="color: var(--color-accent);">✓ You\'re in! Check your inbox.</p>';
-          setTimeout(() => exitPopup.classList.remove('active'), 2000);
-        } else {
-          throw new Error('Subscription failed');
-        }
+        showFormMessage(exitPopupFormObj, '✓ Success! Check your inbox for the starter kit.', 'success');
+        exitPopupFormObj.reset();
+        setTimeout(() => {
+          if (exitPopup) exitPopup.classList.remove('active');
+        }, 2500);
       } catch (err) {
         console.error(err);
-        exitPopupForm.innerHTML = '<p style="color: #ff6b6b;">Something went wrong. Try again later.</p>';
+        showFormMessage(exitPopupFormObj, 'Something went wrong. Please try again.', 'error');
+      } finally {
+        button.textContent = originalText;
+        button.disabled = false;
       }
     });
   }
-
   // ============================================
   // NEWSLETTER SUBSCRIPTION
   // ============================================
@@ -401,7 +417,7 @@ document.addEventListener('DOMContentLoaded', () => {
       button.disabled = true;
 
       try {
-        const res = await fetch('/api/subscribe', {
+        const res = await fetch(`${API_BASE}/api/subscribe`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json'
@@ -429,38 +445,45 @@ document.addEventListener('DOMContentLoaded', () => {
   // CONTACT FORM
   // ============================================
   if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      const formData = new FormData(contactForm);
-      const payload = Object.fromEntries(formData.entries());
-      
-      const button = contactForm.querySelector('button');
+
+      const name = document.getElementById('contact-name')?.value || '';
+      const email = document.getElementById('contact-email')?.value || '';
+      const company = document.getElementById('contact-company')?.value || '';
+      const phone = document.getElementById('contact-phone')?.value || '';
+      const service = document.getElementById('contact-service')?.value || '';
+      const message = document.getElementById('contact-message')?.value || '';
+      const button = contactForm.querySelector('button[type="submit"]');
       const originalText = button.textContent;
+
+      if (!name || !email || !service || !message) {
+        showFormMessage(contactForm, 'Please fill out all required fields.', 'error');
+        return;
+      }
 
       button.textContent = 'Sending...';
       button.disabled = true;
 
       try {
-        const res = await fetch('/api/contact', {
+        const res = await fetch(`${API_BASE}/api/contact`, {
           method: 'POST',
           headers: { 
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ 
+            name, email, company, phone, service, message,
+            source: 'contact-form'
+          })
         });
-        if (!res.ok) {
-          const errorData = await res.json().catch(() => ({}));
-          const errorMessage = errorData.details
-            ? errorData.details.join('\n')
-            : (errorData.error || 'Network response was not ok');
-          throw new Error(errorMessage);
-        }
+        
+        if (!res.ok) throw new Error('Network response was not ok');
 
-        showFormMessage(contactForm, '✓ Message sent! We\'ll respond within 24 hours.', 'success');
+        showFormMessage(contactForm, '✓ Message sent successfully! We will get back to you soon.', 'success');
         contactForm.reset();
       } catch (err) {
         console.error(err);
-        showFormMessage(contactForm, err.message || 'Something went wrong. Please try again or contact us directly.', 'error');
+        showFormMessage(contactForm, 'Something went wrong. Please try again or email us directly.', 'error');
       } finally {
         button.textContent = originalText;
         button.disabled = false;

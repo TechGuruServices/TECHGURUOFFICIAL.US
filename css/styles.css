@@ -7,6 +7,19 @@
 
 /* Google Fonts are now loaded via <link> tags in HTML for better performance */
 
+/*
+ * FOIT/FOUT Fix — Prevent decorative SVG star & triangle from flashing
+ * on page load. They start invisible and fade in once the page is ready.
+ */
+.hero .decor-icon {
+  opacity: 0;
+  transition: opacity 0.6s ease-in;
+}
+
+.decor-loaded .hero .decor-icon {
+  opacity: 0.9;
+}
+
 :root,
 body.dark-theme {
   --color-bg: #080a0f;
@@ -1453,7 +1466,7 @@ video.hero-slide {
   z-index: 1;
   /* below content (z=2), above bg (z=0) */
   pointer-events: none;
-  opacity: 0.9;
+  /* opacity controlled by .decor-loaded fade-in (top of file) */
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
 }
 

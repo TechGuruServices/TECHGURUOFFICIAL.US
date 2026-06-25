@@ -3,26 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ᴛᴇᴄʜɢᴜʀᴜ — sᴛʀᴇᴀᴍʟɪɴᴇ. ᴀᴜᴛᴏᴍᴀᴛᴇ. ᴇʟᴇᴠᴀᴛᴇ.</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="TECHGURU - Missoula, Montana's premier tech support agency and AI automation experts. Web development, AI chatbots, workflow automation, and tech consulting for startups and businesses. Save 40+ hours monthly. Free consultation.">
+        content="TECHGURU - Fort Lauderdale, FL's premier tech support agency and AI automation experts. Web development, AI chatbots, workflow automation, and tech consulting for startups and businesses. Save 40+ hours monthly. Free consultation.">
     <meta name="keywords"
-        content="Missoula Montana web developer, techguru, AI automations, tech support agency Missoula, tech consultants Montana, business automation, AI chatbots, workflow automation, web development, digital transformation, AI integration, process automation, Missoula tech company, Montana web design">
+        content="Fort Lauderdale FL web developer, techguru, AI automations, tech support agency Fort Lauderdale, tech consultants Florida, business automation, AI chatbots, workflow automation, web development, digital transformation, AI integration, process automation, Fort Lauderdale tech company, Florida web design">
     <meta name="author" content="TECHGURU">
     <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="US-MT">
-    <meta name="geo.placename" content="Missoula, Montana">
+    <meta name="geo.region" content="US-FL">
+    <meta name="geo.placename" content="Fort Lauderdale, FL">
     <link rel="canonical" href="https://techguruofficial.us/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://techguruofficial.us/">
-    <meta property="og:title" content="TECHGURU | Missoula Montana AI Automation & Web Development">
+    <meta property="og:title" content="TECHGURU | Fort Lauderdale FL AI Automation & Web Development">
     <meta property="og:description"
-        content="Missoula's premier tech support agency. Enterprise-grade AI automations, web development, and tech consulting for startups. Save 40+ hours monthly. Free consultation.">
+        content="Fort Lauderdale's premier tech support agency. Enterprise-grade AI automations, web development, and tech consulting for startups. Save 40+ hours monthly. Free consultation.">
     <meta property="og:image" content="https://techguruofficial.us/images/og-image.png">
     <meta property="og:site_name" content="TECHGURU">
     <meta property="og:locale" content="en_US">
@@ -30,9 +30,9 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://techguruofficial.us/">
-    <meta name="twitter:title" content="TECHGURU | Missoula Montana AI Automation & Web Development">
+    <meta name="twitter:title" content="TECHGURU | Fort Lauderdale FL AI Automation & Web Development">
     <meta name="twitter:description"
-        content="Missoula's premier tech support agency. AI automations, web development, and tech consulting for startups. Save 40+ hours monthly.">
+        content="Fort Lauderdale's premier tech support agency. AI automations, web development, and tech consulting for startups. Save 40+ hours monthly.">
     <meta name="twitter:image" content="https://techguruofficial.us/images/og-image.png">
 
     <!-- Favicons - Optimized for Google Search Results -->
@@ -48,13 +48,13 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <!-- PWA Theme Customization -->
-    <meta name="theme-color" content="#4a6cf7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="TECHGURU">
 
     <!-- Additional Sizes (for completeness) -->
     <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+
 
     <!-- Google Fonts - Optimized Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -289,7 +289,7 @@
                     <img src="images/hero-1.webp" alt="TechGuru Automation" class="hero-slide active">
                     <img src="images/hero-3.webp" alt="AI Efficiency" class="hero-slide">
                     <img src="images/hero-4.webp" alt="Advanced Workflows" class="hero-slide">
-                    <video class="hero-slide" autoplay muted loop playsinline webkit-playsinline poster="images/video-poster.webp"
+                    <video class="hero-slide" autoplay muted loop playsinline poster="images/video-poster.webp"
                         id="hero-video" aria-hidden="true">
                         <source src="assets/herovideo.mp4" type="video/mp4">
                     </video>
@@ -753,14 +753,27 @@
                                 <polyline points="20 6 9 17 4 12" />
                             </svg> Workflow Optimization Checklist</li>
                     </ul>
-                    <form id="subscribe-form" aria-label="Subscribe to get free resources">
-                        <div class="form-group-inline">
-                            <label for="subscribe-email" class="sr-only">Email address</label>
-                            <input type="email" id="subscribe-email" placeholder="Enter your email" required
-                                autocomplete="email">
-                            <button type="submit" class="btn btn-primary">Get Free Access →</button>
-                        </div>
-                    </form>
+                    <form
+  id="subscribe-form"
+  aria-label="Subscribe to get free resources"
+>
+  <input type="hidden" name="subject" value="New Lead Magnet Subscriber — TechGuru">
+  <input type="hidden" name="redirect" value="https://techguruofficial.us/thank-you.html">
+  <input type="checkbox" name="botcheck" class="hidden" aria-label="Bot check" title="botcheck">
+
+  <div class="form-group-inline">
+    <label for="subscribe-email" class="sr-only">Email address</label>
+    <input
+      type="email"
+      id="subscribe-email"
+      name="email"
+      placeholder="Enter your email"
+      required
+      autocomplete="email"
+    >
+    <button type="submit" class="btn btn-primary">Get Free Access →</button>
+  </div>
+</form>
                     <p class="privacy-note">Join 2,500+ professionals. Unsubscribe anytime.</p>
                 </div>
                 <div class="lead-magnet-preview">
@@ -864,7 +877,19 @@
             <h2>Let's Build Something Great</h2>
             <p class="contact-subtitle">Book a free strategy call or send us a message. We respond within 24 hours.</p>
             <div class="contact-wrapper">
-                <form id="contact-form" class="contact-form" aria-label="Contact form">
+                <form
+  id="contact-form"
+  class="contact-form"
+  aria-label="Contact form"
+>
+  <!-- Email subject line you'll see in your inbox -->
+  <input type="hidden" name="subject" value="New Contact Form Submission — TechGuru">
+
+  <!-- Redirects user to a thank-you page after submit (optional but professional) -->
+  <input type="hidden" name="redirect" value="https://techguruofficial.us/thank-you.html">
+
+  <!-- Honeypot spam filter — leave this exactly as-is -->
+  <input type="checkbox" name="botcheck" class="hidden" aria-label="Bot check" title="botcheck">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="contact-name" class="form-label">Your Name <span
@@ -1055,10 +1080,16 @@
                 <h3>Wait—Don't Leave Empty-Handed</h3>
                 <p>Grab our <strong>free AI Automation Starter Kit</strong> before you go. 5 GPT templates, automation
                     playbook, and more.</p>
-                <form id="exit-popup-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn btn-primary">Get Free Access</button>
-                </form>
+                <form
+  id="exit-popup-form"
+>
+  <input type="hidden" name="subject" value="Exit Popup Lead — TechGuru">
+  <input type="hidden" name="redirect" value="https://techguruofficial.us/thank-you.html">
+  <input type="checkbox" name="botcheck" class="hidden" aria-label="Bot check" title="botcheck">
+
+  <input type="email" name="email" placeholder="Enter your email" required>
+  <button type="submit" class="btn btn-primary">Get Free Access</button>
+</form>
                 <p class="exit-popup-note">Join 2,500+ professionals. No spam, ever.</p>
             </div>
         </div>
