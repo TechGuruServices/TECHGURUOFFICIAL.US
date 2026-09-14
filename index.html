@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ᴛᴇᴄʜɢᴜʀᴜ — sᴛʀᴇᴀᴍʟɪɴᴇ. ᴀᴜᴛᴏᴍᴀᴛᴇ. ᴇʟᴇᴠᴀᴛᴇ.</title>
+    <title>TECHGURU — Websites, Branding & AI Tools for Local Businesses</title>
 
     <!-- SEO Meta Tags -->
     <meta name="description"
-        content="TECHGURU - Fort Lauderdale, FL's premier tech support agency and AI automation experts. Web development, AI chatbots, workflow automation, and tech consulting for startups and businesses. Save 40+ hours monthly. Free consultation.">
+        content="TECHGURU is a one-person web design & branding studio in Fort Lauderdale, FL, building custom websites, brand identities, and AI chat/FAQ widgets for local and small businesses. No agency overhead — you work directly with the person building your site.">
     <meta name="keywords"
-        content="Fort Lauderdale FL web developer, techguru, AI automations, tech support agency Fort Lauderdale, tech consultants Florida, business automation, AI chatbots, workflow automation, web development, digital transformation, AI integration, process automation, Fort Lauderdale tech company, Florida web design">
+        content="Fort Lauderdale FL web designer, small business website builder, local business web design, freelance web developer Florida, AI chatbot for small business, FAQ chat widget, brand identity design, logo design, custom CRM developer, solo web developer Fort Lauderdale">
     <meta name="author" content="TECHGURU">
     <meta name="robots" content="index, follow">
     <meta name="geo.region" content="US-FL">
@@ -20,9 +20,9 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://techguruofficial.us/">
-    <meta property="og:title" content="TECHGURU | Fort Lauderdale FL AI Automation & Web Development">
+    <meta property="og:title" content="TECHGURU | Websites, Branding & AI Tools for Local Businesses">
     <meta property="og:description"
-        content="Fort Lauderdale's premier tech support agency. Enterprise-grade AI automations, web development, and tech consulting for startups. Save 40+ hours monthly. Free consultation.">
+        content="A one-person web design & branding studio building custom websites, logos, and AI chat/FAQ widgets for local businesses — direct access to the person building your site, no agency markup.">
     <meta property="og:image" content="https://techguruofficial.us/images/og-image.png">
     <meta property="og:site_name" content="TECHGURU">
     <meta property="og:locale" content="en_US">
@@ -30,9 +30,9 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://techguruofficial.us/">
-    <meta name="twitter:title" content="TECHGURU | Fort Lauderdale FL AI Automation & Web Development">
+    <meta name="twitter:title" content="TECHGURU | Websites, Branding & AI Tools for Local Businesses">
     <meta name="twitter:description"
-        content="Fort Lauderdale's premier tech support agency. AI automations, web development, and tech consulting for startups. Save 40+ hours monthly.">
+        content="A one-person web design & branding studio building custom websites, logos, and AI chat/FAQ widgets for local businesses.">
     <meta name="twitter:image" content="https://techguruofficial.us/images/og-image.png">
 
     <!-- Favicons - Optimized for Google Search Results -->
@@ -69,6 +69,64 @@
     <link rel="stylesheet" href="css/styles.css?v=20251224f">
     <script src="js/scripts.js" defer></script>
 
+    <!-- Portfolio Section Styles (self-contained, does not modify styles.css) -->
+    <style>
+        .portfolio-section { padding: 6rem 1.5rem; max-width: 1200px; margin: 0 auto; }
+        .portfolio-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-top: 2.5rem; }
+        .portfolio-card {
+            background: var(--glass-bg-light, rgba(255,255,255,0.03));
+            border: 1px solid var(--glass-border, rgba(255,255,255,0.1));
+            border-radius: 20px;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+        }
+        @media (max-width: 860px) { .portfolio-card { grid-template-columns: 1fr; } }
+        .portfolio-media {
+            position: relative;
+            min-height: 260px;
+            background: linear-gradient(135deg, rgba(74,108,247,0.18), rgba(162,116,255,0.14));
+            display: grid;
+            grid-auto-flow: row;
+            gap: 0.75rem;
+            padding: 1rem;
+            grid-template-columns: 1fr 1fr;
+        }
+        .portfolio-media.single { grid-template-columns: 1fr; }
+        .portfolio-shot {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 200px;
+            background: rgba(255,255,255,0.04);
+            border: 1px dashed var(--glass-border, rgba(255,255,255,0.15));
+        }
+        .portfolio-shot img, .portfolio-shot video {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            position: absolute; inset: 0;
+        }
+        .portfolio-shot-placeholder {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            color: var(--color-text-muted, rgba(242,244,250,0.6));
+            font-size: 0.8rem; padding: 0.75rem; gap: 0.4rem;
+        }
+        .portfolio-shot-placeholder svg { width: 28px; height: 28px; opacity: 0.6; }
+        .portfolio-body { padding: 2rem; display: flex; flex-direction: column; }
+        .portfolio-tag { display: inline-block; font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase;
+            color: var(--color-accent, #64dedf); margin-bottom: 0.5rem; font-weight: 600; }
+        .portfolio-body h3 { margin: 0 0 0.5rem; font-size: 1.4rem; }
+        .portfolio-body .portfolio-role { color: var(--color-text-muted, rgba(242,244,250,0.7)); font-size: 0.95rem; margin-bottom: 1rem; }
+        .portfolio-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; }
+        .portfolio-stack span {
+            font-size: 0.72rem; padding: 0.3rem 0.65rem; border-radius: 999px;
+            background: rgba(255,255,255,0.06); border: 1px solid var(--glass-border, rgba(255,255,255,0.1));
+            color: var(--color-text-light, #f2f4fa);
+        }
+        .portfolio-links { margin-top: auto; padding-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .portfolio-note { margin-top: 1.5rem; font-size: 0.85rem; color: var(--color-text-muted, rgba(242,244,250,0.6)); }
+    </style>
+
     <!-- FAQ Schema Markup -->
     <script type="application/ld+json">
     {
@@ -77,42 +135,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "How long does a typical project take?",
+          "name": "How long does a typical website project take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most projects launch within 2-6 weeks, depending on scope. We prioritize lean architecture and fast iteration—you'll see progress within the first week."
+            "text": "Most local business websites launch within 2-4 weeks. Branding and AI chat widget add-ons typically add 3-7 days. Because it's just me, you're never waiting on a queue of other clients' projects."
           }
         },
         {
           "@type": "Question",
-          "name": "What industries do you work with?",
+          "name": "What kind of businesses do you work with?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We serve startups, agencies, e-commerce brands, and enterprise teams. If you need automation, AI integration, or premium web experiences—we can help."
+            "text": "Mainly local and small businesses — contractors, auto shops, service businesses, and small brands that need a real website, a clean brand identity, or an AI chat widget for their site, without agency pricing or overhead."
           }
         },
         {
           "@type": "Question",
-          "name": "Do you offer ongoing support?",
+          "name": "Do you offer ongoing support after launch?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Every project includes 30 days of post-launch support. We also offer retainer packages for continuous optimization and 24/7 monitoring."
+            "text": "Yes. Every project includes 30 days of post-launch support, and monthly Care Plans are available for hosting, small edits, and updates after that."
           }
         },
         {
           "@type": "Question",
-          "name": "What's your pricing structure?",
+          "name": "What's your pricing?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We offer project-based pricing starting at $2,500 for automation workflows. Custom AI solutions and full-stack builds are quoted after a free consultation."
+            "text": "Websites start around $900 for a starter site and typically run $2,200-$4,000 for a full custom build with branding. AI chat/FAQ widgets start around $600. Exact pricing depends on scope and is quoted after a free consultation."
           }
         },
         {
           "@type": "Question",
-          "name": "Can you integrate with our existing tools?",
+          "name": "Can you build custom tools beyond a website, like a CRM?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. We specialize in connecting systems—CRMs, payment processors, APIs, databases. Clean integrations with minimal disruption."
+            "text": "Yes. Alongside websites I build custom internal tools when a business needs them — for example, a customer/inventory management platform for an auto parts shop. Custom app builds are quoted separately based on scope."
           }
         },
         {
@@ -120,7 +178,7 @@
           "name": "What if I'm not sure what I need?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "That's what consultations are for. We'll analyze your workflows, identify bottlenecks, and recommend the highest-impact solutions. No obligation."
+            "text": "That's what the free consultation is for. I'll look at what you have (or don't have yet) and recommend the highest-impact starting point — no obligation."
           }
         }
       ]
@@ -135,7 +193,7 @@
       "name": "TECHGURU",
       "url": "https://techguruofficial.us",
       "logo": "https://techguruofficial.us/images/icons/nav-icon-new.webp",
-      "description": "Premium automation and AI systems for modern businesses",
+      "description": "One-person web design, branding, and AI automation studio building websites and chat/FAQ widgets for local businesses",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Fort Lauderdale",
@@ -197,6 +255,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#faq">FAQ</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -247,26 +306,27 @@
             <!-- Tubes Cursor Canvas Background -->
             <canvas id="tubes-canvas" aria-hidden="true"></canvas>
             <div class="hero-content">
-                <h1>Premium Automation & AI Systems for Modern Businesses</h1>
-                <p class="rotating-tagline" id="rotating-tagline" aria-live="polite">Streamline. Automate. Elevate.</p>
-                <p class="hero-description">Tech‑driven solutions built fast, refined, and ready to scale.
-                    Automation‑first consulting, AI‑powered workflows, and luxury design tailored to your brand.</p>
+                <h1>Websites, Branding & AI Tools — Built by One Techguru, For Local Businesses</h1>
+                <p class="rotating-tagline" id="rotating-tagline" aria-live="polite">Build. Brand. Automate.</p>
+                <p class="hero-description">I'm a solo web designer & developer helping local and small businesses
+                    get a real website, a clean brand identity, and simple AI tools — like a chat widget that
+                    answers customer FAQs — without agency prices or a committee of account managers.</p>
                 <ul class="hero-highlights">
                     <li><svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" aria-hidden="true">
                             <polygon
                                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg> Save 40+ hours monthly with custom automation</li>
+                        </svg> Custom-built websites, not drag-and-drop templates</li>
                     <li><svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" aria-hidden="true">
                             <polygon
                                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg> AI‑powered workflows for customer & internal operations</li>
+                        </svg> AI chat & FAQ widgets that handle customer questions 24/7</li>
                     <li><svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" aria-hidden="true">
                             <polygon
                                 points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                        </svg> Launch in weeks, not months</li>
+                        </svg> You talk directly to the person building your site</li>
                     <li><svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" aria-hidden="true">
                             <polygon
@@ -274,15 +334,15 @@
                         </svg> 30-day post-launch support included</li>
                 </ul>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary btn-pulse">Book Your Free Strategy Call <span
+                    <a href="#contact" class="btn btn-primary btn-pulse">Book a Free Consultation <span
                             class="cta-arrow" aria-hidden="true">→</span></a>
-                    <a href="#services" class="btn btn-secondary">Explore Solutions & Pricing</a>
+                    <a href="#services" class="btn btn-secondary">See Services & Pricing</a>
                 </div>
                 <p class="hero-urgency"><svg class="tg-icon tg-icon-sm urgency-icon" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path
                             d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z" />
-                    </svg> Limited availability — Only accepting 3 new projects this month</p>
+                    </svg> Taking on a limited number of new projects each month — book early to lock in your spot</p>
             </div>
             <div class="hero-image">
                 <div class="hero-image-rotator">
@@ -299,8 +359,8 @@
 
         <!-- Why TechGuru Section -->
         <section class="why-section" id="why">
-            <h2>Why TECHGURU</h2>
-            <p class="section-subtitle">The smart alternative to traditional agencies and MSPs</p>
+            <h2>Why Work With Me Directly</h2>
+            <p class="section-subtitle">The smart alternative to pricey agencies and DIY website builders</p>
             <div class="why-grid">
                 <div class="why-card bento-span-large">
                     <div class="glass-icon">
@@ -308,8 +368,8 @@
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3>Faster Than Agencies</h3>
-                    <p>Rapid delivery without overhead or delays. Launch in weeks, not months. We ship features while others still schedule meetings.</p>
+                    <h3>No Agency, No Overhead</h3>
+                    <p>You're talking to the person who actually designs, builds, and ships your project — not an account manager relaying messages to a dev team. That means faster turnaround and prices that reflect one person's time, not an agency's overhead.</p>
                 </div>
                 <div class="why-card">
                     <div class="glass-icon">
@@ -318,8 +378,8 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3>More Modern Than MSPs</h3>
-                    <p>Automation‑first, AI‑enabled digital infrastructure built for today's needs.</p>
+                    <h3>Better Than a Template Builder</h3>
+                    <p>Custom-designed and coded for your business, not a generic Wix or Squarespace theme with your logo dropped in.</p>
                 </div>
                 <div class="why-card bento-span-medium">
                     <div class="glass-icon">
@@ -329,8 +389,8 @@
                                 stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>Automation‑Driven</h3>
-                    <p>Workflows, scripts, and systems built to eliminate repetitive tasks and human error.</p>
+                    <h3>Real Proof of Work</h3>
+                    <p>Live websites and a custom CRM platform already running for real local businesses — you can see the actual work below, not a mockup.</p>
                 </div>
                 <div class="why-card bento-span-medium">
                     <div class="glass-icon">
@@ -340,8 +400,8 @@
                             <path d="M12 8v3M7 15h.01M17 15h.01M10 18h4" stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3>AI‑Enhanced</h3>
-                    <p>Intelligent tools that elevate customer experience and internal operations with surgical precision.</p>
+                    <h3>AI That Actually Helps</h3>
+                    <p>Chat and FAQ widgets that answer real customer questions on your site — no gimmicks, just fewer repetitive calls and emails for you to handle.</p>
                 </div>
                 <div class="why-card">
                     <div class="glass-icon">
@@ -350,8 +410,8 @@
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3>Luxury Design Finish</h3>
-                    <p>Apple‑grade clarity meets LV‑level polish across UI/UX.</p>
+                    <h3>Design That Looks the Part</h3>
+                    <p>Polished, modern design — the kind that makes a small local business look established the moment someone lands on the site.</p>
                 </div>
                 <div class="why-card">
                     <div class="glass-icon">
@@ -360,8 +420,8 @@
                                 stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3>Lean Architecture</h3>
-                    <p>Lightweight, reliable, static‑site optimized builds.</p>
+                    <h3>Built to Last</h3>
+                    <p>Fast, lightweight, reliably-hosted builds — not a bloated site that slows down or breaks after handoff.</p>
                 </div>
             </div>
         </section>
@@ -370,10 +430,10 @@
         <section class="process-section-premium" id="process">
             <div class="process-container">
                 <div class="process-header">
-                    <span class="process-label">Our Process</span>
-                    <h2>How We Work</h2>
-                    <p class="section-subtitle">A streamlined 4-step process designed for speed, precision, and
-                        exceptional results</p>
+                    <span class="process-label">My Process</span>
+                    <h2>How I Work</h2>
+                    <p class="section-subtitle">A simple 4-step process — no committees, no handoffs, just direct
+                        communication start to finish</p>
                 </div>
 
                 <div class="process-timeline-premium horizontal-scroll-container">
@@ -397,8 +457,9 @@
                             </div>
                             <div class="step-details">
                                 <h3>Discovery Call</h3>
-                                <p>We learn about your goals, pain points, and vision in a free 30-minute consultation.
-                                    No sales pressure—just honest conversation about how we can help.</p>
+                                <p>We talk through your business, your goals, and what's missing — in a free 30-minute
+                                    call with me directly. No sales pressure, just an honest read on what would
+                                    actually help.</p>
                                 <ul class="step-checklist">
                                     <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" aria-hidden="true">
@@ -441,9 +502,9 @@
                                 </div>
                             </div>
                             <div class="step-details">
-                                <h3>Strategy & Scope</h3>
-                                <p>We craft a detailed proposal with clear deliverables, timeline, and transparent
-                                    pricing. You'll know exactly what to expect before we begin.</p>
+                                <h3>Scope & Flat Pricing</h3>
+                                <p>I send over a simple proposal — what's included, the timeline, and a flat price.
+                                    No hourly guessing games, no surprise invoices later.</p>
                                 <ul class="step-checklist">
                                     <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" aria-hidden="true">
@@ -485,9 +546,9 @@
                                 </div>
                             </div>
                             <div class="step-details">
-                                <h3>Build & Iterate</h3>
-                                <p>Agile development with weekly updates. You see progress from day one with regular
-                                    demos, feedback loops, and real-time collaboration.</p>
+                                <h3>Build & Review</h3>
+                                <p>I build in stages and send you progress along the way — you see and approve the
+                                    design before anything's final, with quick revisions between rounds.</p>
                                 <ul class="step-checklist">
                                     <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" aria-hidden="true">
@@ -529,8 +590,9 @@
                             </div>
                             <div class="step-details">
                                 <h3>Launch & Support</h3>
-                                <p>Go live with confidence. Every project includes 30+ days of post-launch support,
-                                    documentation, and training to ensure long-term success.</p>
+                                <p>Your site goes live, and I walk you through how to manage it. Every project
+                                    includes 30+ days of post-launch support — and a Care Plan if you'd rather I
+                                    keep handling it.</p>
                                 <ul class="step-checklist">
                                     <li><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2.5" aria-hidden="true">
@@ -556,7 +618,7 @@
 
                 <!-- Process CTA -->
                 <div class="process-cta">
-                    <p>Ready to transform your operations?</p>
+                    <p>Ready to get your business online — or online done right?</p>
                     <a href="#contact" class="btn btn-primary btn-pulse">Start Your Project →</a>
                 </div>
             </div>
@@ -567,31 +629,31 @@
         <section class="services" id="services">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-label">What We Offer</span>
-                    <h2>Our Services</h2>
-                    <p class="section-subtitle">Enterprise-grade solutions tailored for startups and growing businesses.</p>
+                    <span class="section-label">What I Offer</span>
+                    <h2>Websites, Branding & AI — Priced for Local Business</h2>
+                    <p class="section-subtitle">Flat, transparent packages. No agency markup, no $8,000 minimums.</p>
                 </div>
 
                 <div class="services-grid">
-                    <!-- Service 1: Automation -->
-                    <div class="service-card bento-span-large" data-category="automation">
+                    <!-- Service 1: Website Design & Build (flagship) -->
+                    <div class="service-card bento-span-large" data-category="website">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke-linecap="round" />
-                                <circle cx="12" cy="12" r="3" />
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" stroke-linecap="round" />
                             </svg>
                         </div>
-                        <h3>Automation & Workflows</h3>
-                        <p>Eliminate repetitive tasks with custom automation solutions. We integrate Zapier, Make, n8n, and build custom scripts that scale with your business while saving you 40+ hours every month.</p>
+                        <h3>Website Design & Build</h3>
+                        <p>A custom-designed, mobile-first website for your business — not a generic template. Built the same way as the live local-business sites in my portfolio below, with clean code, fast load times, and a contact/booking flow that actually converts visitors.</p>
                         <ul class="service-list">
-                            <li>Multi-step workflow automation</li>
-                            <li>Cross-platform integrations</li>
-                            <li>Real-time monitoring</li>
+                            <li>Custom design, not a theme</li>
+                            <li>Mobile-first & fast-loading</li>
+                            <li>Contact forms, booking links, SEO basics</li>
                         </ul>
-                        <span class="service-price">From $2,500</span>
+                        <span class="service-price">From $900</span>
                     </div>
 
-                    <!-- Service 2: AI Integration -->
+                    <!-- Service 2: AI Chat & FAQ Widgets -->
                     <div class="service-card bento-span-medium" data-category="ai">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -600,52 +662,69 @@
                                 <path d="M12 8v3M8 15h.01M12 15h.01M16 15h.01" stroke-linecap="round" />
                             </svg>
                         </div>
-                        <h3>AI Integration & Chatbots</h3>
-                        <p>Deploy GPT-4, Claude, and custom AI models to transform customer experience and streamline support workflows.</p>
+                        <h3>AI Chat & FAQ Widgets</h3>
+                        <p>An AI-powered chat widget for your site — like the one in the corner of this page — trained on your business's FAQs, hours, services, and pricing so it can answer customers automatically, day or night.</p>
                         <ul class="service-list">
-                            <li>Custom LLM integration</li>
-                            <li>Natural language chatbots</li>
-                            <li>Knowledge base training</li>
+                            <li>Trained on your FAQs & services</li>
+                            <li>Matches your site's branding</li>
+                            <li>Add-on to any site, or standalone</li>
                         </ul>
-                        <span class="service-price">From $3,500</span>
+                        <span class="service-price">From $600</span>
                     </div>
 
-                    <!-- Service 3: Web Development -->
-                    <div class="service-card" data-category="web">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="2" y="3" width="20" height="14" rx="2" />
-                                <path d="M8 21h8M12 17v4" stroke-linecap="round" />
-                            </svg>
-                        </div>
-                        <h3>Web Development</h3>
-                        <p>Lightning-fast websites built for performance and conversions. Modern frameworks, CDN deployment, and Core Web Vitals optimized.</p>
-                        <ul class="service-list">
-                            <li>Sub-second load times</li>
-                            <li>SEO optimized</li>
-                            <li>Mobile-first design</li>
-                        </ul>
-                        <span class="service-price">From $2,000</span>
-                    </div>
-
-                    <!-- Service 4: Brand & Design -->
+                    <!-- Service 3: Branding & Identity -->
                     <div class="service-card" data-category="design">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7L12 17l-6.3 4 2.3-7-6-4.6h7.6L12 2z" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <h3>Brand & UI/UX Design</h3>
-                        <p>Cohesive brand identities and intuitive interfaces that convert. From typography to micro-interactions—every detail matters.</p>
+                        <h3>Branding & Logo Design</h3>
+                        <p>A logo and simple brand identity — colors, fonts, and basic guidelines — so your business looks consistent across your site, truck wraps, signage, and social pages.</p>
                         <ul class="service-list">
-                            <li>Brand strategy & identity</li>
-                            <li>UI/UX research & design</li>
-                            <li>Design systems</li>
+                            <li>Logo design & revisions</li>
+                            <li>Color palette & typography</li>
+                            <li>Bundled discount with a website</li>
                         </ul>
-                        <span class="service-price">From $3,000</span>
+                        <span class="service-price">From $350</span>
                     </div>
 
-                    <!-- Service 5: Consulting -->
+                    <!-- Service 4: Custom Tools / Internal Apps -->
+                    <div class="service-card" data-category="apps">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" stroke-linecap="round" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </div>
+                        <h3>Custom Business Tools</h3>
+                        <p>For businesses that need more than a website — custom internal tools like a CRM, inventory tracker, or customer database, built around how you actually work. See the Zempel Auto platform in my portfolio.</p>
+                        <ul class="service-list">
+                            <li>Customer & inventory tracking</li>
+                            <li>Built around your workflow</li>
+                            <li>Quoted after a scope call</li>
+                        </ul>
+                        <span class="service-price">Custom quote</span>
+                    </div>
+
+                    <!-- Service 5: Care Plans -->
+                    <div class="service-card" data-category="care">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h3>Monthly Care Plans</h3>
+                        <p>Hosting, uptime monitoring, and small content updates handled for you every month, so your site stays fast, current, and online without you having to think about it.</p>
+                        <ul class="service-list">
+                            <li>Hosting & uptime included</li>
+                            <li>Small edits & content updates</li>
+                            <li>Priority response if something breaks</li>
+                        </ul>
+                        <span class="service-price">From $75/mo</span>
+                    </div>
+
+                    <!-- Service 6: Consulting -->
                     <div class="service-card" data-category="consulting">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -653,14 +732,14 @@
                                 <path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <h3>Technical Consulting</h3>
-                        <p>Strategic guidance on digital transformation, architecture decisions, and technology roadmaps. Expert advice without long-term commitments.</p>
+                        <h3>Hourly Consulting</h3>
+                        <p>Need advice, not a full project? One-off help picking tools, fixing something broken, or planning your next step online.</p>
                         <ul class="service-list">
-                            <li>Architecture review</li>
-                            <li>Tech stack guidance</li>
-                            <li>Team training</li>
+                            <li>No package required</li>
+                            <li>Billed in 30-min increments</li>
+                            <li>Great for a second opinion</li>
                         </ul>
-                        <span class="service-price">From $500/hr</span>
+                        <span class="service-price">From $75/hr</span>
                     </div>
                 </div>
 
@@ -671,35 +750,130 @@
             </div>
         </section>
 
+        <!-- Portfolio Section -->
+        <section class="portfolio-section" id="portfolio">
+            <div class="section-header">
+                <span class="section-label">Recent Work</span>
+                <h2>Real Projects, Built and Live</h2>
+                <p class="section-subtitle">A couple of the local businesses I've built websites, branding, and
+                    tools for. Drop your own screenshots or a short video clip of each project into
+                    <code>images/portfolio/</code> and they'll show up automatically in the frames below.</p>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- Case Study 1: Creative Drywall -->
+                <article class="portfolio-card">
+                    <div class="portfolio-media">
+                        <div class="portfolio-shot">
+                            <img src="images/portfolio/creative-drywall-1.jpg" alt="Creative Drywall website desktop screenshot"
+                                onload="this.previousElementSibling.style.display='none'"
+                                onerror="this.style.display='none'">
+                            <div class="portfolio-shot-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+                                Add screenshot: creative-drywall-1.jpg
+                            </div>
+                        </div>
+                        <div class="portfolio-shot">
+                            <video src="images/portfolio/creative-drywall-clip.mp4" muted loop playsinline autoplay
+                                onloadeddata="this.previousElementSibling.style.display='none'"
+                                onerror="this.style.display='none'"></video>
+                            <div class="portfolio-shot-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Add clip: creative-drywall-clip.mp4
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-body">
+                        <span class="portfolio-tag">Website Design & Build</span>
+                        <h3>Creative Drywall</h3>
+                        <p class="portfolio-role">A full website design and rebuild for a drywall contractor in
+                            Missoula, Montana — moved off a generic corporate look into a warm, hometown feel with a
+                            custom copper &amp; Big Sky blue palette, so the site actually looks like the local
+                            business it belongs to.</p>
+                        <ul class="service-list">
+                            <li>Full UI/design overhaul — corporate to hometown aesthetic</li>
+                            <li>Custom color palette & typography system</li>
+                            <li>Contact form &amp; email routing wired up and tested</li>
+                        </ul>
+                        <div class="portfolio-stack">
+                            <span>React</span><span>Vite</span><span>Tailwind CSS</span><span>Cloudflare Pages</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Case Study 2: Zempel Auto -->
+                <article class="portfolio-card">
+                    <div class="portfolio-media">
+                        <div class="portfolio-shot">
+                            <img src="images/portfolio/zempel-auto-1.jpg" alt="Zempel Auto CRM dashboard screenshot"
+                                onload="this.previousElementSibling.style.display='none'"
+                                onerror="this.style.display='none'">
+                            <div class="portfolio-shot-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+                                Add screenshot: zempel-auto-1.jpg
+                            </div>
+                        </div>
+                        <div class="portfolio-shot">
+                            <video src="images/portfolio/zempel-auto-clip.mp4" muted loop playsinline autoplay
+                                onloadeddata="this.previousElementSibling.style.display='none'"
+                                onerror="this.style.display='none'"></video>
+                            <div class="portfolio-shot-placeholder">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                                Add clip: zempel-auto-clip.mp4
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-body">
+                        <span class="portfolio-tag">Custom Business Tool + Branding</span>
+                        <h3>Zempel Auto — CRM &amp; Inventory Platform</h3>
+                        <p class="portfolio-role">A fully functional, custom-built CRM-style platform for an auto
+                            parts shop — handling customer records, inventory, and a parts-catalog integration, plus
+                            the logo and brand identity for the business itself. Built and running in production,
+                            not a demo.</p>
+                        <ul class="service-list">
+                            <li>Customer & inventory database, built around the shop's workflow</li>
+                            <li>Parts-catalog integration for day-to-day lookups</li>
+                            <li>Logo design & brand identity for the shop</li>
+                        </ul>
+                        <div class="portfolio-stack">
+                            <span>FastAPI</span><span>Cloudflare Workers</span><span>Custom CRM</span><span>Logo Design</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            <p class="portfolio-note">More case studies added as new projects launch. Want to see a fuller demo of
+                either project? Mention it on a call and I'll walk you through it live.</p>
+        </section>
+
         <!-- About Section -->
         <section class="about-section" id="about">
             <div class="about-content">
-                <h2>Our Mission</h2>
-                <p class="about-lead">TECHGURU exists to bring together premium design sensibilities and cutting‑edge
-                    automation. We believe that small businesses and startups should have access to the same
-                    sophisticated technologies enjoyed by large enterprises—delivered with speed, elegance, and
-                    precision.</p>
+                <h2>About Me</h2>
+                <p class="about-lead">I'm the person behind TECHGURU — I believe local businesses deserve the same
+                    quality of website, branding, and technology that big companies pay agencies tens of thousands
+                    for, without the agency price tag or the runaround.</p>
 
                 <div class="about-story">
-                    <h3>Our Story</h3>
-                    <p>Founded by L|T, a technologist with a passion for creating beautiful and efficient digital
-                        experiences, TECHGURU combines deep engineering expertise with refined aesthetics. We've seen
-                        how bloated agencies and traditional MSPs slow down innovation. TECHGURU was born as a lean
-                        alternative that provides high‑impact automation and design without the unnecessary overhead.
-                    </p>
+                    <h3>My Story</h3>
+                    <p>I'm a full-stack developer and designer based in Fort Lauderdale, FL, and TECHGURU is a
+                        one-person studio — not a front for a team you'll never meet. I build every website, every
+                        chat widget, and every custom tool myself, from the sites in my portfolio (like Creative
+                        Drywall and the Zempel Auto CRM platform) to whatever your business needs next. I started
+                        TECHGURU because too many local businesses either overpay an agency or get stuck with a
+                        generic template site that doesn't represent them.</p>
                 </div>
 
                 <div class="about-approach">
-                    <h3>Our Approach</h3>
+                    <h3>How I Approach Every Project</h3>
                     <ul class="approach-list">
-                        <li><strong>Automation First:</strong> We identify repetitive processes and replace them with
-                            efficient workflows.</li>
+                        <li><strong>Built for Your Business:</strong> No copy-paste templates — every site is
+                            designed around how your customers actually find and use it.</li>
                         <li><strong>Design Matters:</strong> Every visual element is intentional, aligning with your
-                            brand's identity.</li>
-                        <li><strong>AI as a Partner:</strong> Intelligent systems augment human decision‑making and
-                            improve customer interactions.</li>
-                        <li><strong>Transparency:</strong> You're involved at every step, with clear timelines and
-                            deliverables.</li>
+                            brand's identity, not a stock theme.</li>
+                        <li><strong>AI as a Tool, Not a Gimmick:</strong> Chat and FAQ widgets that genuinely save you
+                            time answering the same questions over and over.</li>
+                        <li><strong>Straight Talk:</strong> You'll know the price and timeline upfront, and you're
+                            talking to me directly at every step — no account managers in between.</li>
                     </ul>
                 </div>
             </div>
@@ -708,24 +882,23 @@
         <!-- Features Section -->
         <section class="features" id="features">
             <div class="feature-card">
-                <h3>AI Expertise</h3>
-                <p>Our team harnesses machine learning and advanced analytics to build intelligent systems tailored to
-                    your needs.</p>
+                <h3>Custom-Built Websites</h3>
+                <p>Every site is designed and coded for your business — the same approach behind Creative Drywall
+                    and every other project in my portfolio.</p>
             </div>
             <div class="feature-card">
-                <h3>Process Automation</h3>
-                <p>Automate repetitive tasks and complex workflows to free up your time and resources for strategic
-                    growth.</p>
+                <h3>AI Chat & FAQ Widgets</h3>
+                <p>A trained AI widget on your site that answers common customer questions automatically, so you're
+                    not fielding the same call five times a day.</p>
             </div>
             <div class="feature-card">
-                <h3>Cloud Infrastructure</h3>
-                <p>Secure, scalable cloud solutions designed to support modern applications and drive innovation at
-                    scale.</p>
+                <h3>Reliable Hosting</h3>
+                <p>Fast, secure hosting on Cloudflare's network — the same infrastructure powering the live projects
+                    in my portfolio.</p>
             </div>
             <div class="feature-card">
-                <h3>24/7 Support</h3>
-                <p>Our experts provide continuous support and maintenance so your systems run smoothly around the clock.
-                </p>
+                <h3>Direct Support</h3>
+                <p>Questions or issues after launch go straight to me — no ticket queue, no tiered support desk.</p>
             </div>
         </section>
 
@@ -733,25 +906,26 @@
         <section class="lead-magnet" id="lead">
             <div class="lead-magnet-content">
                 <div class="lead-magnet-text">
-                    <h2>Free: AI Automation Starter Kit</h2>
-                    <p>Get instant access to our most popular resources—built by engineers, designed for results.</p>
+                    <h2>Free: Local Business Website Checklist</h2>
+                    <p>A quick, no-fluff checklist to see how your current site (or lack of one) stacks up — sent
+                        straight to your inbox.</p>
                     <ul class="lead-magnet-list">
                         <li><svg class="tg-icon tg-icon-sm check-icon" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> 5 Ready-to-Use GPT Prompt Templates</li>
+                            </svg> 12-point website & branding checklist</li>
                         <li><svg class="tg-icon tg-icon-sm check-icon" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Automation Playbook (Step-by-Step Guide)</li>
+                            </svg> What an AI FAQ widget can (and can't) do for you</li>
                         <li><svg class="tg-icon tg-icon-sm check-icon" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> AI Tools Comparison Cheat Sheet</li>
+                            </svg> Real 2026 website pricing, explained</li>
                         <li><svg class="tg-icon tg-icon-sm check-icon" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="2.5" aria-hidden="true" focusable="false">
                                 <polyline points="20 6 9 17 4 12" />
-                            </svg> Workflow Optimization Checklist</li>
+                            </svg> Common mistakes local business sites make</li>
                     </ul>
                     <form
   id="subscribe-form"
@@ -774,7 +948,7 @@
     <button type="submit" class="btn btn-primary">Get Free Access →</button>
   </div>
 </form>
-                    <p class="privacy-note">Join 2,500+ professionals. Unsubscribe anytime.</p>
+                    <p class="privacy-note">No spam — just the checklist. Unsubscribe anytime.</p>
                 </div>
                 <div class="lead-magnet-preview">
                     <div class="mockup-stack">
@@ -786,20 +960,20 @@
                                 <line x1="16" y1="13" x2="8" y2="13" />
                                 <line x1="16" y1="17" x2="8" y2="17" />
                                 <polyline points="10 9 9 9 8 9" />
-                            </svg> GPT Prompts</div>
+                            </svg> Website Checklist</div>
                         <div class="mockup-item mockup-2"><svg class="tg-icon tg-icon-sm mockup-icon"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 aria-hidden="true" focusable="false">
                                 <path d="M4 19.5A2.5 2.5 0 016.5 17H20" />
                                 <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z" />
-                            </svg> Playbook</div>
+                            </svg> Pricing Guide</div>
                         <div class="mockup-item mockup-3"><svg class="tg-icon tg-icon-sm mockup-icon"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 aria-hidden="true" focusable="false">
                                 <line x1="18" y1="20" x2="18" y2="10" />
                                 <line x1="12" y1="20" x2="12" y2="4" />
                                 <line x1="6" y1="20" x2="6" y2="14" />
-                            </svg> Cheat Sheet</div>
+                            </svg> AI Widget Guide</div>
                     </div>
                 </div>
             </div>
@@ -811,52 +985,56 @@
             <div class="faq-grid">
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>How long does a typical project take?</span>
+                        <span>How long does a typical website project take?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Most projects launch within 2-6 weeks, depending on scope. We prioritize lean architecture
-                            and fast iteration—you'll see progress within the first week.</p>
+                        <p>Most local business websites launch within 2-4 weeks. Branding and AI chat widget add-ons
+                            typically add 3-7 days. Since it's just me, you're never waiting on a queue of other
+                            clients' projects.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>What industries do you work with?</span>
+                        <span>What kind of businesses do you work with?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We serve startups, agencies, e-commerce brands, and enterprise teams. If you need automation,
-                            AI integration, or premium web experiences—we can help.</p>
+                        <p>Mainly local and small businesses — contractors, auto shops, service businesses, and
+                            small brands that need a real website, a clean brand identity, or an AI chat widget,
+                            without agency pricing or overhead.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>Do you offer ongoing support?</span>
+                        <span>Do you offer ongoing support after launch?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Yes. Every project includes 30 days of post-launch support. We also offer retainer packages
-                            for continuous optimization and 24/7 monitoring.</p>
+                        <p>Yes. Every project includes 30 days of post-launch support, and monthly Care Plans are
+                            available for hosting, small edits, and updates after that.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>What's your pricing structure?</span>
+                        <span>What's your pricing?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We offer project-based pricing starting at $2,500 for automation workflows. Custom AI
-                            solutions and full-stack builds are quoted after a free consultation.</p>
+                        <p>Websites start around $900 and typically run $2,200-$4,000 for a full custom build with
+                            branding. AI chat/FAQ widgets start around $600. Exact pricing depends on scope and is
+                            quoted after a free consultation — see the Services section above for the full breakdown.</p>
                     </div>
                 </div>
                 <div class="faq-item">
                     <button class="faq-question" aria-expanded="false">
-                        <span>Can you integrate with our existing tools?</span>
+                        <span>Can you build custom tools beyond a website, like a CRM?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Absolutely. We specialize in connecting systems—CRMs, payment processors, APIs, databases.
-                            Clean integrations with minimal disruption.</p>
+                        <p>Yes — alongside websites I build custom internal tools when a business needs them. The
+                            Zempel Auto platform in my portfolio is a full customer & inventory management system
+                            I built for an auto parts shop. Custom app builds are quoted separately based on scope.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -865,8 +1043,8 @@
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>That's what consultations are for. We'll analyze your workflows, identify bottlenecks, and
-                            recommend the highest-impact solutions. No obligation.</p>
+                        <p>That's what the free consultation is for. I'll look at what you have (or don't have yet)
+                            and recommend the highest-impact starting point. No obligation.</p>
                     </div>
                 </div>
             </div>
@@ -875,7 +1053,7 @@
         <!-- Contact Section -->
         <section class="contact-section" id="contact">
             <h2>Let's Build Something Great</h2>
-            <p class="contact-subtitle">Book a free strategy call or send us a message. We respond within 24 hours.</p>
+            <p class="contact-subtitle">Book a free consultation or send me a message. I respond within 24 hours.</p>
             <div class="contact-wrapper">
                 <form
   id="contact-form"
@@ -913,20 +1091,21 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="contact-service" class="form-label">How can we help? <span
+                        <label for="contact-service" class="form-label">How can I help? <span
                                 class="required">*</span></label>
                         <select id="contact-service" name="service" required>
                             <option value="" disabled selected>Select a service</option>
-                            <option value="automation">Process Automation</option>
-                            <option value="ai-integration">AI Integration & Chatbots</option>
-                            <option value="web-development">Static Sites & Performance</option>
-                            <option value="design">Brand & UI/UX Design</option>
-                            <option value="consulting">Technical Consulting & Strategy</option>
+                            <option value="website">Website Design & Build</option>
+                            <option value="ai-widget">AI Chat & FAQ Widget</option>
+                            <option value="branding">Branding & Logo Design</option>
+                            <option value="custom-tool">Custom Business Tool (CRM, etc.)</option>
+                            <option value="care-plan">Monthly Care Plan</option>
+                            <option value="consulting">Hourly Consulting</option>
                             <option value="other">Other / Not Sure</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="contact-message" class="form-label">Tell us about your project <span
+                        <label for="contact-message" class="form-label">Tell me about your project <span
                                 class="required">*</span></label>
                         <textarea id="contact-message" name="message" rows="4" required></textarea>
                     </div>
@@ -1011,14 +1190,14 @@
                         <img src="images/icons/nav-icon-new.webp" alt="TechGuru Logo" class="footer-logo-icon">
                         TECHGURU
                     </div>
-                    <p>Engineered Efficiency. Designed for Impact.</p>
+                    <p>Websites, Branding & AI Tools — Built by One Techguru.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#lead">Free Tools</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
                         <li><a href="#faq">FAQ</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
@@ -1064,7 +1243,7 @@
                 </div>
                 <div class="footer-cta">
                     <h4>Ready to Start?</h4>
-                    <p>Transform complexity into beautiful simplicity.</p>
+                    <p>Let's build a site your business actually deserves.</p>
                     <a href="#contact" class="btn btn-primary">Get Free Consultation</a>
                 </div>
             </div>
@@ -1078,8 +1257,8 @@
             <div class="exit-popup">
                 <button class="exit-popup-close" id="exit-popup-close" aria-label="Close popup">×</button>
                 <h3>Wait—Don't Leave Empty-Handed</h3>
-                <p>Grab our <strong>free AI Automation Starter Kit</strong> before you go. 5 GPT templates, automation
-                    playbook, and more.</p>
+                <p>Grab the <strong>free Local Business Website Checklist</strong> before you go — 12 points to check,
+                    plus real pricing for websites and AI chat widgets.</p>
                 <form
   id="exit-popup-form"
 >
@@ -1090,7 +1269,7 @@
   <input type="email" name="email" placeholder="Enter your email" required>
   <button type="submit" class="btn btn-primary">Get Free Access</button>
 </form>
-                <p class="exit-popup-note">Join 2,500+ professionals. No spam, ever.</p>
+                <p class="exit-popup-note">No spam, ever.</p>
             </div>
         </div>
 
@@ -1098,7 +1277,7 @@
         <div class="chat-widget-container" role="complementary" aria-label="Chat support widget">
             <!-- Floating CTA Buttons (hidden by default, show on interaction) -->
             <div class="chat-floating-ctas" id="chat-floating-ctas" role="group" aria-label="Quick contact options">
-                <a href="https://wa.me/17866369964?text=Hi%20TechGuru!%20I%27m%20interested%20in%20learning%20more%20about%20your%20automation%20services."
+                <a href="https://wa.me/17866369964?text=Hi%20TechGuru!%20I%27m%20interested%20in%20a%20website%20or%20AI%20chat%20widget%20for%20my%20business."
                     target="_blank" rel="noopener noreferrer" class="chat-cta-btn whatsapp"
                     aria-label="Chat with us on WhatsApp (opens in new tab)">
                     <span class="chat-cta-icon" aria-hidden="true"><svg class="tg-icon tg-icon-sm" viewBox="0 0 24 24"
