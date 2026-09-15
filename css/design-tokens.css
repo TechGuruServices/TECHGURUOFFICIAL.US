@@ -15,8 +15,8 @@
     --color-accent: #64dedf;
     --color-gold: #fbbf24;
     --color-gold-deep: #d97706;
-    --color-success: #34d399;
-    --color-success-deep: #059669;
+    --color-success: #64dedf;
+    --color-success-deep: #4a6cf7;
     --color-danger: #f87171;
 
     /* ---- Surfaces (dark, default) ---- */
@@ -46,7 +46,7 @@
     --gradient-primary: linear-gradient(135deg, #4a6cf7 0%, #a274ff 100%);
     --gradient-accent: linear-gradient(90deg, #64dedf 0%, #4a6cf7 100%);
     --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-    --gradient-success: linear-gradient(180deg, #34d399 0%, #059669 100%);
+    --gradient-success: linear-gradient(135deg, #64dedf 0%, #4a6cf7 100%);
     --gradient-glass: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .018));
     --gradient-page: radial-gradient(1100px 520px at 12% -6%, rgba(74, 108, 247, .16), transparent 62%),
         radial-gradient(900px 480px at 88% 4%, rgba(162, 116, 255, .13), transparent 64%),
@@ -76,9 +76,10 @@
     --shadow-sm: 0 6px 18px -10px rgba(0, 0, 0, .8);
     --shadow-md: 0 18px 44px -30px rgba(0, 0, 0, .95);
     --shadow-lg: 0 30px 70px -34px rgba(0, 0, 0, 1);
-    --shadow-glow-primary: 0 16px 34px -18px rgba(74, 108, 247, .95);
-    --shadow-glow-accent: 0 0 0 1px rgba(100, 222, 223, .16), 0 20px 46px -28px rgba(100, 222, 223, .55);
     --ring-focus: 0 0 0 3px rgba(100, 222, 223, .35);
+
+    /* ---- Gradient border animation (crisp, no blur — used on cards/icons) ---- */
+    --tg-border-gradient: conic-gradient(from var(--tg-angle, 0deg), #4a6cf7, #a274ff, #64dedf, #4a6cf7);
 
     /* ---- Motion ---- */
     --ease-out: cubic-bezier(.2, .7, .3, 1);
@@ -128,4 +129,20 @@ body.light-theme {
     --shadow-sm: 0 6px 18px -12px rgba(19, 23, 34, .25);
     --shadow-md: 0 18px 44px -30px rgba(19, 23, 34, .3);
     --shadow-lg: 0 30px 70px -34px rgba(19, 23, 34, .35);
+}
+
+/* --------------------------------------------------------------------------
+   ANIMATED GRADIENT BORDER — registered custom property so the conic-gradient
+   above can be rotated smoothly by the browser's compositor. No blur, no
+   colour bleed outside the 1px ring — crisp on every display density.
+   Falls back gracefully (static gradient, no rotation) on older browsers.
+   -------------------------------------------------------------------------- */
+@property --tg-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root { --tg-border-spin-duration: 0s; }
 }

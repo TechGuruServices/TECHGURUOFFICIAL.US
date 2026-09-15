@@ -32,7 +32,7 @@
 
 .btn:hover::after { opacity: 1; }
 
-.btn-primary { box-shadow: var(--shadow-glow-primary); }
+.btn-primary { box-shadow: var(--shadow-md); }
 
 .btn-secondary {
     background: var(--glass-bg);
@@ -60,15 +60,19 @@
 .btn:disabled,
 .btn[aria-disabled="true"] { opacity: .55; pointer-events: none; }
 
-/* attention pulse on primary CTAs */
+/* attention pulse on primary CTAs — crisp elevation breathing, no colour glow */
 .btn-pulse { animation: tg-pulse 2.6s var(--ease-out) infinite; }
 
 @keyframes tg-pulse {
 
     0%,
-    100% { box-shadow: var(--shadow-glow-primary), 0 0 0 0 rgba(74, 108, 247, .45); }
+    100% { box-shadow: var(--shadow-md); }
 
-    55% { box-shadow: var(--shadow-glow-primary), 0 0 0 14px rgba(74, 108, 247, 0); }
+    50% { box-shadow: var(--shadow-lg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-pulse { animation: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -170,6 +174,7 @@ input[name="botcheck"] {
 .contact-form,
 .about-side-card,
 .footer-cta {
+    position: relative;
     background: var(--gradient-glass);
     border: 1px solid var(--glass-border-soft);
     backdrop-filter: var(--glass-blur);
@@ -187,6 +192,98 @@ body.light-theme .contact-form,
 body.light-theme .about-side-card {
     background: var(--gradient-glass);
     box-shadow: var(--shadow-md);
+}
+
+/* --------------------------------------------------------------------------
+   Animated gradient border — crisp, minimal, zero blur/glow. Applied to
+   every card-like surface on the site as a thin rotating conic-gradient
+   ring (blue -> violet -> teal), masked so only the 1px edge is visible.
+   Idle state is a faint ambient hairline; hover brightens it. Falls back to
+   a static (non-rotating) gradient ring in browsers without @property
+   support, and freezes under prefers-reduced-motion.
+   -------------------------------------------------------------------------- */
+.why-card,
+.service-card,
+.feature-card,
+.step-card,
+.faq-item,
+.portfolio-card,
+.contact-info,
+.contact-form,
+.about-side-card,
+.footer-cta,
+.about-panel,
+.booking-section,
+.mockup-item,
+.exit-popup,
+.hero-image-rotator {
+    isolation: isolate;
+}
+
+.why-card::after,
+.service-card::after,
+.feature-card::after,
+.step-card::after,
+.faq-item::after,
+.portfolio-card::after,
+.contact-info::after,
+.contact-form::after,
+.about-side-card::after,
+.footer-cta::after,
+.about-panel::after,
+.booking-section::after,
+.mockup-item::after,
+.exit-popup::after,
+.hero-image-rotator::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    background: var(--tg-border-gradient, conic-gradient(from 0deg, #4a6cf7, #a274ff, #64dedf, #4a6cf7));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: .28;
+    pointer-events: none;
+    animation: tg-border-spin 7s linear infinite;
+    animation-duration: var(--tg-border-spin-duration, 7s);
+    transition: opacity .35s ease;
+}
+
+.why-card:hover::after,
+.service-card:hover::after,
+.feature-card:hover::after,
+.step-card:hover::after,
+.faq-item:hover::after,
+.portfolio-card:hover::after,
+.about-side-card:hover::after,
+.mockup-item:hover::after,
+.booking-section:hover::after { opacity: .65; }
+
+.hero-image-rotator::after,
+.exit-popup::after { opacity: .45; }
+
+@keyframes tg-border-spin { to { --tg-angle: 360deg; } }
+
+@media (prefers-reduced-motion: reduce) {
+
+    .why-card::after,
+    .service-card::after,
+    .feature-card::after,
+    .step-card::after,
+    .faq-item::after,
+    .portfolio-card::after,
+    .contact-info::after,
+    .contact-form::after,
+    .about-side-card::after,
+    .footer-cta::after,
+    .about-panel::after,
+    .booking-section::after,
+    .mockup-item::after,
+    .exit-popup::after,
+    .hero-image-rotator::after { animation: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -346,7 +443,7 @@ body.light-theme .about-side-card {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     background: var(--gradient-glass), var(--color-bg-raised);
-    box-shadow: var(--shadow-lg), var(--shadow-glow-accent);
+    box-shadow: var(--shadow-lg);
     text-align: center;
     transform: translateY(16px) scale(.97);
     transition: transform var(--dur-med) var(--ease-spring);
