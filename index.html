@@ -585,20 +585,12 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 .trust-chip svg { width: 15px; height: 15px; flex: none; color: var(--tg-accent); }
 
 .trust-chip + .trust-chip::before {
-    content: "";
-    position: absolute;
-    left: -.95rem;
-    top: 50%;
-    width: 4px; height: 4px;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, .3);
+    content: none;
 }
 
 @media (max-width: 700px) {
     .trust-bar-inner { gap: .6rem 1.2rem; }
     .trust-chip { font-size: .8rem; text-align: left; }
-    .trust-chip + .trust-chip::before { display: none; }
 }
 
 /* --------------------------------------------------------------------------
