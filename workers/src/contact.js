@@ -24,8 +24,7 @@ const sanitizeText = (text, maxLength = 1000) => {
   if (typeof text !== 'string') return '';
   
   return text
-    .replace(/<[^>]*>/g, '') // Remove HTML tags
-    .replace(/[^\w\s\-.,!?()']/g, '') // Remove special chars except basic punctuation
+    .replace(/[^\w\s\-.,!?()']/g, '') // Allowlist basic safe characters only
     .trim()
     .slice(0, maxLength);
 };
