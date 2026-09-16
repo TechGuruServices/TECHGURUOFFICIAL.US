@@ -1189,12 +1189,48 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     color: var(--tg-faint);
 }
 
+.about-portrait {
+    display: flex;
+    justify-content: center;
+    margin-bottom: .9rem;
+}
+
+.about-portrait picture {
+    box-sizing: border-box;
+    display: block;
+    width: 132px;
+    height: 132px;
+    padding: 4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--tg-blue), var(--tg-violet) 55%, var(--tg-accent));
+    box-shadow: var(--tg-shadow);
+}
+
+.about-portrait img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .about-signature {
     margin: 1.1rem 0 0;
     padding-top: 1rem;
     border-top: 1px solid var(--tg-border);
     font-size: .88rem;
     color: var(--tg-muted);
+}
+
+/* Variant used above the facts list, right under the portrait, instead of
+   as a trailing footer under them — centered under the circular photo,
+   with the divider below it rather than above */
+.about-signature-top {
+    margin: 0 0 1.1rem;
+    padding: 0 0 1rem;
+    border-top: 0;
+    border-bottom: 1px solid var(--tg-border);
+    text-align: center;
 }
 
 .about-signature strong {
@@ -2764,6 +2800,17 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 
                 <aside class="about-side">
                     <div class="about-side-card">
+                        <div class="about-portrait">
+                            <picture>
+                                <source srcset="images/owner-portrait.webp" type="image/webp">
+                                <img src="images/owner-portrait.jpg" alt="Photo of the founder of TECHGURU"
+                                    width="480" height="480" loading="lazy">
+                            </picture>
+                        </div>
+                        <p class="about-signature about-signature-top">
+                            <strong data-owner-name>TECHGURU</strong>
+                            Founder &amp; Developer &middot; Missoula, MT
+                        </p>
                         <h3>Where I Work</h3>
                         <dl class="about-facts">
                             <div>
@@ -2810,10 +2857,6 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                                 </div>
                             </div>
                         </dl>
-                        <p class="about-signature">
-                            <strong data-owner-name>TECHGURU</strong>
-                            Founder &amp; Developer &middot; Missoula, MT
-                        </p>
                     </div>
                 </aside>
             </div>
