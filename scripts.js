@@ -140,12 +140,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ============================================
   const taglines = [
     "Build. Brand. Automate.",
-    "Websites Built By One Person, For Your Business.",
     "Custom Sites. Real Branding. Smart AI Widgets.",
     "No Agency. No Templates. Just Your Site, Done Right.",
     "AI Chat Widgets That Actually Answer Questions.",
-    "From Missoula, Montana — For Local Businesses Everywhere.",
-    "Design, Branding & AI Tools From One Techguru.",
+    "Based in Missoula, Montana — For Local Businesses Everywhere.",
+    "One person builds your site, start to finish. Me.",
     "Flat Pricing. Direct Access. Real Work."
   ];
 
