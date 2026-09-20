@@ -136,6 +136,7 @@
     /* Elevation */
     --tg-shadow: 0 18px 44px -30px rgba(0, 0, 0, .95);
     --tg-shadow-hi: 0 30px 60px -32px rgba(0, 0, 0, 1);
+    --tg-glow: 0 0 0 1px rgba(100, 222, 223, .14), 0 22px 48px -30px rgba(74, 108, 247, .8);
 }
 
 /* --------------------------------------------------------------------------
@@ -585,12 +586,20 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 .trust-chip svg { width: 15px; height: 15px; flex: none; color: var(--tg-accent); }
 
 .trust-chip + .trust-chip::before {
-    content: none;
+    content: "";
+    position: absolute;
+    left: -.95rem;
+    top: 50%;
+    width: 4px; height: 4px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .3);
 }
 
 @media (max-width: 700px) {
     .trust-bar-inner { gap: .6rem 1.2rem; }
     .trust-chip { font-size: .8rem; text-align: left; }
+    .trust-chip + .trust-chip::before { display: none; }
 }
 
 /* --------------------------------------------------------------------------
@@ -662,6 +671,19 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
         box-shadow .35s ease, background .35s ease;
 }
 
+/* accent hairline that sweeps in on hover */
+.why-card::before,
+.service-card::before,
+.feature-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--tg-accent), var(--tg-violet), transparent);
+    opacity: 0;
+    transition: opacity .35s ease;
+}
+
 .why-card:hover,
 .service-card:hover,
 .feature-card:hover {
@@ -670,6 +692,10 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     box-shadow: var(--tg-shadow-hi);
     background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .025));
 }
+
+.why-card:hover::before,
+.service-card:hover::before,
+.feature-card:hover::before { opacity: .9; }
 
 .why-card h3,
 .service-card h3,
@@ -702,35 +728,11 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     border: 1px solid rgba(255, 255, 255, .12);
     background: linear-gradient(135deg, rgba(74, 108, 247, .22), rgba(162, 116, 255, .16));
     color: #fff;
-    transition: transform .35s cubic-bezier(.2, .7, .3, 1), background .35s ease;
 }
-
-.why-card:hover .glass-icon,
-.service-card:hover .service-icon,
-.feature-card:hover .feature-icon { transform: translateY(-2px) scale(1.05); }
 
 .glass-icon svg,
 .service-icon svg,
 .feature-icon svg { width: 25px; height: 25px; }
-
-/* Modern icon system — unify every inline line-icon on the page (rounded
-   caps/joins, consistent weight) via CSS so markup doesn't need touching. */
-.glass-icon svg,
-.service-icon svg,
-.feature-icon svg,
-.step-icon svg,
-.about-side-card svg,
-.about-facts svg,
-.portfolio-card svg,
-.faq-item svg,
-.mockup-item svg,
-.hero-location-badge svg,
-.contact-info svg,
-.booking-section svg {
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    vector-effect: non-scaling-stroke;
-}
 
 /* bullet lists inside cards */
 .service-list,
@@ -764,7 +766,8 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     width: 15px;
     height: 15px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(100, 222, 223, .95), rgba(74, 108, 247, .9));
+    background: linear-gradient(135deg, rgba(52, 211, 153, .9), rgba(5, 150, 105, .85));
+    box-shadow: 0 0 0 3px rgba(52, 211, 153, .12);
 }
 
 .service-list li svg,
@@ -848,13 +851,13 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     border-radius: 50%;
     border: 1px solid rgba(100, 222, 223, .32);
     background: radial-gradient(circle at 30% 25%, rgba(74, 108, 247, .5), rgba(10, 12, 26, .95) 70%);
-    box-shadow: 0 0 0 6px rgba(10, 12, 26, .55);
+    box-shadow: 0 0 0 6px rgba(10, 12, 26, .55), 0 12px 28px -18px rgba(74, 108, 247, .9);
     z-index: 1;
 }
 
 .step-number-ring.completed {
-    border-color: rgba(162, 116, 255, .4);
-    background: radial-gradient(circle at 30% 25%, rgba(162, 116, 255, .55), rgba(10, 12, 26, .95) 70%);
+    border-color: rgba(52, 211, 153, .4);
+    background: radial-gradient(circle at 30% 25%, rgba(5, 150, 105, .55), rgba(10, 12, 26, .95) 70%);
 }
 
 .step-num {
@@ -911,12 +914,9 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     border: 1px solid rgba(255, 255, 255, .12);
     background: linear-gradient(135deg, rgba(100, 222, 223, .2), rgba(74, 108, 247, .18));
     color: #fff;
-    transition: transform .35s cubic-bezier(.2, .7, .3, 1);
 }
 
-.step-card:hover .step-icon { transform: translateY(-2px) scale(1.05); }
-
-.step-icon.success { background: linear-gradient(135deg, rgba(162, 116, 255, .26), rgba(74, 108, 247, .18)); }
+.step-icon.success { background: linear-gradient(135deg, rgba(52, 211, 153, .24), rgba(5, 150, 105, .18)); }
 .step-icon svg { width: 22px; height: 22px; }
 
 .step-details h3 {
@@ -1189,48 +1189,12 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     color: var(--tg-faint);
 }
 
-.about-portrait {
-    display: flex;
-    justify-content: center;
-    margin-bottom: .9rem;
-}
-
-.about-portrait picture {
-    box-sizing: border-box;
-    display: block;
-    width: 132px;
-    height: 132px;
-    padding: 4px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--tg-blue), var(--tg-violet) 55%, var(--tg-accent));
-    box-shadow: var(--tg-shadow);
-}
-
-.about-portrait img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 .about-signature {
     margin: 1.1rem 0 0;
     padding-top: 1rem;
     border-top: 1px solid var(--tg-border);
     font-size: .88rem;
     color: var(--tg-muted);
-}
-
-/* Variant used above the facts list, right under the portrait, instead of
-   as a trailing footer under them — centered under the circular photo,
-   with the divider below it rather than above */
-.about-signature-top {
-    margin: 0 0 1.1rem;
-    padding: 0 0 1rem;
-    border-top: 0;
-    border-bottom: 1px solid var(--tg-border);
-    text-align: center;
 }
 
 .about-signature strong {
@@ -1312,7 +1276,7 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     color: rgba(242, 244, 250, .85);
 }
 
-.lead-magnet-list li svg { width: 17px; height: 17px; flex: none; margin-top: .12rem; color: var(--tg-accent); }
+.lead-magnet-list li svg { width: 17px; height: 17px; flex: none; margin-top: .12rem; color: #34d399; }
 
 .form-group-inline { display: flex; flex-wrap: wrap; gap: .65rem; }
 .form-group-inline input[type="email"] { flex: 1 1 240px; min-width: 0; }
@@ -1504,7 +1468,7 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
     color: var(--tg-faint);
 }
 
-.response-time svg { width: 15px; height: 15px; color: var(--tg-accent); }
+.response-time svg { width: 15px; height: 15px; color: #34d399; }
 
 .contact-info {
     display: flex;
@@ -1764,8 +1728,8 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 .btn:hover { transform: translateY(-2px); }
 .btn:active { transform: translateY(0); }
 
-.btn-primary { box-shadow: var(--shadow-md, 0 18px 44px -30px rgba(0, 0, 0, .95)); }
-.btn-primary:hover { box-shadow: var(--shadow-lg, 0 30px 70px -34px rgba(0, 0, 0, 1)); }
+.btn-primary { box-shadow: 0 16px 32px -18px rgba(74, 108, 247, .95); }
+.btn-primary:hover { box-shadow: 0 22px 40px -18px rgba(74, 108, 247, 1); }
 
 .btn-secondary {
     border-color: var(--tg-border);
@@ -1798,14 +1762,26 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 /* --------------------------------------------------------------------------
    19. MOTION — scroll reveal (opt-in via html.js-anim, set by the inline JS)
    -------------------------------------------------------------------------- */
+/* Cinematic, directional scroll reveals (expo-out easing = filmic settle) */
 .js-anim [data-reveal] {
     opacity: 0;
-    transform: translate3d(0, 18px, 0);
-    transition: opacity .6s ease, transform .65s cubic-bezier(.2, .7, .3, 1);
+    transform: translate3d(0, 30px, 0);
+    transition: opacity .8s cubic-bezier(.16, 1, .3, 1),
+        transform .95s cubic-bezier(.16, 1, .3, 1);
     transition-delay: calc(var(--tg-d, 0) * 1ms);
+    will-change: opacity, transform;
 }
 
-.js-anim [data-reveal].is-in { opacity: 1; transform: none; }
+.js-anim [data-reveal="left"] { transform: translate3d(-42px, 0, 0); }
+.js-anim [data-reveal="right"] { transform: translate3d(42px, 0, 0); }
+
+.js-anim [data-reveal="zoom"] { transform: scale(.94) translate3d(0, 14px, 0); }
+
+.js-anim [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+}
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
@@ -1963,7 +1939,7 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
           "name": "Are you actually local to Missoula?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Montana is my home state — I spent a few years in South Florida and moved back home to Missoula. TECHGURU is a one-person studio based in Missoula, and I'm happy to meet local business s in person around Missoula, the Bitterroot Valley, and the Flathead/Kalispell area."
+            "text": "Yes. Montana is my home state — I spent a few years in South Florida and moved back home to Missoula. TECHGURU is a one-person studio based in Missoula, and I'm happy to meet local business owners in person around Missoula, the Bitterroot Valley, and the Flathead/Kalispell area."
           }
         },
         {
@@ -2037,9 +2013,9 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                 <stop offset="0%" stop-color="#fbbf24" />
                 <stop offset="100%" stop-color="#d97706" />
             </linearGradient>
-            <linearGradient id="gradient-success" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#64dedf" />
-                <stop offset="100%" stop-color="#4a6cf7" />
+            <linearGradient id="gradient-success" x1="0%" y1="0%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#34d399" />
+                <stop offset="100%" stop-color="#059669" />
             </linearGradient>
         </defs>
     </svg>
@@ -2632,7 +2608,8 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                 <article class="portfolio-card">
                     <div class="portfolio-media">
                         <div class="portfolio-shot">
-                            <img src="images/portfolio/creative-drywall-1.jpg" alt="Creative Drywall website desktop screenshot"
+                            <img src="images/portfolio/creative-drywall-1.jpg"
+                                alt="Finished interior walls and vaulted ceiling — Creative Drywall finish work"
                                 loading="lazy" decoding="async"
                                 onload="this.closest('.portfolio-shot').classList.add('has-media')"
                                 onerror="this.style.display='none'">
@@ -2642,13 +2619,14 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                             </div>
                         </div>
                         <div class="portfolio-shot">
-                            <video src="images/portfolio/creative-drywall-clip.mp4" muted loop playsinline autoplay
-                                preload="metadata"
-                                onloadeddata="this.closest('.portfolio-shot').classList.add('has-media')"
-                                onerror="this.style.display='none'"></video>
+                            <img src="images/portfolio/creative-drywall-2.jpg"
+                                alt="Exterior of the Thompson residence after Creative Drywall's finish work"
+                                loading="lazy" decoding="async"
+                                onload="this.closest('.portfolio-shot').classList.add('has-media')"
+                                onerror="this.style.display='none'">
                             <div class="portfolio-shot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                Add clip: creative-drywall-clip.mp4
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
+                                Add screenshot: creative-drywall-2.jpg
                             </div>
                         </div>
                     </div>
@@ -2696,25 +2674,16 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 
                 <!-- Case Study 2: Zempel Auto -->
                 <article class="portfolio-card">
-                    <div class="portfolio-media">
+                    <div class="portfolio-media single">
                         <div class="portfolio-shot">
-                            <img src="images/portfolio/zempel-auto-1.jpg" alt="Zempel Auto CRM dashboard screenshot"
+                            <img src="images/portfolio/zempel-auto-1.jpg"
+                                alt="The Clark Fork River in Missoula, Montana — home town of Zempel Auto, which runs on the platform I built"
                                 loading="lazy" decoding="async"
                                 onload="this.closest('.portfolio-shot').classList.add('has-media')"
                                 onerror="this.style.display='none'">
                             <div class="portfolio-shot-placeholder">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M8 21h8M12 17v4" stroke-linecap="round"/></svg>
                                 Add screenshot: zempel-auto-1.jpg
-                            </div>
-                        </div>
-                        <div class="portfolio-shot">
-                            <video src="images/portfolio/zempel-auto-clip.mp4" muted loop playsinline autoplay
-                                preload="metadata"
-                                onloadeddata="this.closest('.portfolio-shot').classList.add('has-media')"
-                                onerror="this.style.display='none'"></video>
-                            <div class="portfolio-shot-placeholder">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                                Add clip: zempel-auto-clip.mp4
                             </div>
                         </div>
                     </div>
@@ -2788,7 +2757,7 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                             portfolio above to whatever your business needs next.</p>
                         <p>I started TECHGURU because too many local businesses either overpay an agency or get stuck
                             with a generic template site that doesn't represent them. Coming home changed the way I
-                            work: I'd rather sit across a table from a business  in Missoula than trade emails with
+                            work: I'd rather sit across a table from a business owner in Missoula than trade emails with
                             a stranger, and I'd rather my work show up on a local contractor's truck than sit in a
                             portfolio nobody visits.</p>
                         <p class="about-callout"><strong>Local, and easy to verify.</strong> If you're in the Missoula
@@ -2800,17 +2769,6 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 
                 <aside class="about-side">
                     <div class="about-side-card">
-                        <div class="about-portrait">
-                            <picture>
-                                <source srcset="images/owner-portrait.webp" type="image/webp">
-                                <img src="images/owner-portrait.jpg" alt="Photo of the founder of TECHGURU"
-                                    width="480" height="480" loading="lazy">
-                            </picture>
-                        </div>
-                        <p class="about-signature about-signature-top">
-                            <strong data-owner-name>LUCAS THOMPSON</strong>
-                            Founder &amp; Developer &middot; Missoula, MT
-                        </p>
                         <h3>Where I Work</h3>
                         <dl class="about-facts">
                             <div>
@@ -2857,6 +2815,10 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
                                 </div>
                             </div>
                         </dl>
+                        <p class="about-signature">
+                            <strong data-owner-name>TECHGURU</strong>
+                            Founder &amp; Developer &middot; Missoula, MT
+                        </p>
                     </div>
                 </aside>
             </div>
@@ -3672,21 +3634,39 @@ main > section + section { border-top: 1px solid var(--tg-hairline); }
 
                 /* 3. Scroll reveal (opt-in: only runs if motion is allowed) */
                 var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                var targets = document.querySelectorAll(
-                    '.why-card, .service-card, .feature-card, .portfolio-card, .process-step-premium, ' +
-                    '.faq-item, .contact-item, .about-side-card, .about-callout, .mockup-item, ' +
-                    '.section-header, .process-header, .trust-bar, .features-head');
+                /* Cinematic scroll storytelling: each block fades + slides in from a
+                   direction as it enters the viewport (Framer-Motion whileInView style,
+                   vanilla JS). Directions are assigned per group below. */
+                var REVEAL_MAP = [
+                    ['.hero-location-badge, .hero h1, .hero-description, .hero-highlights, .cta-buttons, .hero-urgency', ''],
+                    ['.hero-image', 'zoom'],
+                    ['.trust-bar', ''],
+                    ['.section-header, .process-header, .features-head', ''],
+                    ['.why-card, .service-card, .feature-card, .process-step-premium, .faq-item, .mockup-item, .contact-item, .approach-list li', ''],
+                    ['.about-main, .lead-magnet-text, .contact-form, .portfolio-card:nth-child(odd)', 'left'],
+                    ['.about-side, .lead-magnet-preview, .contact-info, .portfolio-card:nth-child(even)', 'right'],
+                    ['.about-callout', 'zoom'],
+                    ['.footer-content > *', '']
+                ];
+
+                var targets = [];
+                for (var m = 0; m < REVEAL_MAP.length; m++) {
+                    var group = document.querySelectorAll(REVEAL_MAP[m][0]);
+                    for (var g = 0; g < group.length; g++) {
+                        group[g].setAttribute('data-reveal', REVEAL_MAP[m][1]);
+                        targets.push(group[g]);
+                    }
+                }
 
                 if (!reduce && 'IntersectionObserver' in window && targets.length) {
                     root.classList.add('js-anim');
                     var counts = {};
                     for (var t = 0; t < targets.length; t++) {
                         var el = targets[t];
-                        el.setAttribute('data-reveal', '');
                         var p = el.parentElement;
                         var key = p ? (p.className || p.tagName) : 'root';
                         counts[key] = counts.hasOwnProperty(key) ? counts[key] + 1 : 0;
-                        el.style.setProperty('--tg-d', Math.min(counts[key], 6) * 70);
+                        el.style.setProperty('--tg-d', Math.min(counts[key], 6) * 80);
                     }
 
                     var rev = new IntersectionObserver(function (entries) {

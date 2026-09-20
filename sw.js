@@ -1,23 +1,40 @@
 /**
- * TechGuru PWA Service Worker
- * Provides offline functionality, caching strategies, and PWA capabilities
+ * TechGuru PWA Service Worker — FIXED 2026-09-15
+ *
+ * What changed vs sw.js v1.0.6 and why:
+ *  1. CACHE_VERSION bumped -> old caches (which still hold the pre-Missoula
+ *     index.html and the old CSS) are deleted and every visitor picks up the
+ *     new site. v1.0.6 served /index.html CACHE-FIRST, so returning visitors
+ *     never saw the Missoula update.
+ *  2. Navigations are now NETWORK-FIRST (cache = offline fallback only).
+ *     Content updates reach visitors immediately instead of being frozen.
+ *  3. Precache no longer uses cache.addAll(): one 404 in the list used to
+ *     abort the whole precache. Each asset now fails independently.
+ *  4. STATIC_ASSETS matches what index.html actually loads
+ *     (chat-widget-dark-glass.css + chat-widget.js, not the .min names) and
+ *     includes css/layout-v2.css.
+ *
+ * Upload order matters: restore the missing css/ files FIRST, then this file.
  */
 
-const CACHE_VERSION = 'techguru-v1.0.6-20251224';
+const CACHE_VERSION = 'techguru-v1.1.0-20260915';
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const DYNAMIC_CACHE = `${CACHE_VERSION}-dynamic`;
 const IMAGE_CACHE = `${CACHE_VERSION}-images`;
 
-// Static assets to cache on install
+// Static assets to cache on install.
+// Every entry here must exist on the server — a 404 is now logged and skipped
+// instead of killing the install, but keep the list truthful.
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/css/design-tokens.css',
   '/css/components.css',
   '/css/styles.css',
-  '/css/chat-widget-dark-glass.min.css',
+  '/css/layout-v2.css',
+  '/css/chat-widget-dark-glass.css',
   '/js/scripts.js',
-  '/js/chat-widget.min.js',
+  '/js/chat-widget.js',
   '/images/icons/nav-icon-new.webp',
   '/images/chat-avatar.webp',
   '/favicon-48x48.png',
@@ -26,15 +43,20 @@ const STATIC_ASSETS = [
   '/site.webmanifest'
 ];
 
-// Install event - cache static assets
+// Install event - cache static assets (resilient: one bad URL can't abort all)
 self.addEventListener('install', (event) => {
-  console.log('[Service Worker] Installing...');
+  console.log('[Service Worker] Installing ' + CACHE_VERSION + '...');
 
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => {
-        console.log('[Service Worker] Caching static assets');
-        return cache.addAll(STATIC_ASSETS);
+        return Promise.all(
+          STATIC_ASSETS.map((url) =>
+            cache.add(url).catch((err) => {
+              console.warn('[Service Worker] Skipped precache (missing?):', url, err && err.message);
+            })
+          )
+        );
       })
       .then(() => {
         console.log('[Service Worker] Installation complete');
@@ -48,7 +70,7 @@ self.addEventListener('install', (event) => {
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
-  console.log('[Service Worker] Activating...');
+  console.log('[Service Worker] Activating ' + CACHE_VERSION + '...');
 
   event.waitUntil(
     caches.keys()
@@ -73,13 +95,20 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch event - serve from cache with network fallback
+// Fetch event
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
   // Skip cross-origin requests
   if (url.origin !== location.origin) {
+    return;
+  }
+
+  // Page navigations - NETWORK FIRST so site updates actually ship.
+  // Cache (then offline page) is the fallback when the network is unreachable.
+  if (request.mode === 'navigate') {
+    event.respondWith(networkFirstWithOfflineFallback(request));
     return;
   }
 
@@ -95,26 +124,24 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Static assets - cache first, network fallback
+  // Static assets (css/js) - cache first, network fallback.
+  // Safe now that the version is bumped per release.
   event.respondWith(cacheFirstStrategy(request, STATIC_CACHE));
 });
 
 /**
- * Cache-first strategy: Check cache, fallback to network
- * Good for static assets that don't change often
+ * Cache-first strategy: check cache, fall back to network.
+ * Good for versioned static assets.
  */
 async function cacheFirstStrategy(request, cacheName = STATIC_CACHE) {
   try {
-    // Try cache first
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
     }
 
-    // Fetch from network
     const networkResponse = await fetch(request);
 
-    // Cache successful responses
     if (networkResponse && networkResponse.status === 200) {
       const cache = await caches.open(cacheName);
       cache.put(request, networkResponse.clone());
@@ -123,28 +150,17 @@ async function cacheFirstStrategy(request, cacheName = STATIC_CACHE) {
     return networkResponse;
   } catch (error) {
     console.error('[Service Worker] Fetch failed:', error);
-
-    // If HTML request fails, return offline page
-    if (request.destination === 'document') {
-      const offlineCache = await caches.match('/index.html');
-      if (offlineCache) {
-        return offlineCache;
-      }
-    }
-
     throw error;
   }
 }
 
 /**
- * Network-first strategy: Try network, fallback to cache
- * Good for dynamic content and API calls
+ * Network-first strategy: try network, fall back to cache.
  */
 async function networkFirstStrategy(request) {
   try {
     const networkResponse = await fetch(request);
 
-    // Cache successful responses
     if (networkResponse && networkResponse.status === 200) {
       const cache = await caches.open(DYNAMIC_CACHE);
       cache.put(request, networkResponse.clone());
@@ -154,10 +170,37 @@ async function networkFirstStrategy(request) {
   } catch (error) {
     console.error('[Service Worker] Network request failed:', error);
 
-    // Try cache as fallback
     const cachedResponse = await caches.match(request);
     if (cachedResponse) {
       return cachedResponse;
+    }
+
+    throw error;
+  }
+}
+
+/**
+ * Navigations: network first, then cached page, then cached /index.html.
+ */
+async function networkFirstWithOfflineFallback(request) {
+  try {
+    const networkResponse = await fetch(request);
+
+    if (networkResponse && networkResponse.status === 200) {
+      const cache = await caches.open(DYNAMIC_CACHE);
+      cache.put(request, networkResponse.clone());
+    }
+
+    return networkResponse;
+  } catch (error) {
+    const cachedResponse = await caches.match(request);
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+
+    const offlinePage = await caches.match('/index.html');
+    if (offlinePage) {
+      return offlinePage;
     }
 
     throw error;

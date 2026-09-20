@@ -139,16 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ROTATING TAGLINES
   // ============================================
   const taglines = [
-    "Streamline. Automate. Elevate.",
-    "Premium Automation & AI Systems.",
-    "Tech‑driven solutions built fast.",
-    "Where Automation Meets Elegance.",
-    "Modern Systems. Premium Design.",
-    "Faster Than Agencies. More Modern Than MSPs.",
-    "Automation‑First. AI‑Enhanced.",
-    "Apple‑Grade Clarity. LV‑Level Polish.",
-    "Lightweight. Reliable. Scalable.",
-    "Transform Complexity Into Beautiful Simplicity."
+    "Build. Brand. Automate.",
+    "Stop losing jobs to a worse business with a better website.",
+    "One person builds your site, start to finish. Me.",
+    "The chat widget on this page? I can put one on yours.",
+    "Built by hand, not dragged and dropped.",
+    "I answer my own phone.",
+    "Everything in my portfolio is live right now. Go click it."
   ];
 
   const taglineEl = document.getElementById('rotating-tagline');
